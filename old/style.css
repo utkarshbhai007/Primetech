@@ -1,0 +1,35 @@
+body
+
+{	font-family:Verdana; font-size:12px; color:#212121;
+	background: url(images/page-back.jpg) repeat-x; background-color:#36ace3; 
+	MARGIN: 0px; PADDING-TOP: 0px;}
+td	{font-size:12px; font-family:Verdana;} 
+th	{font-size:12px; font-family:Verdana;} 
+
+a:link {color:#000000; text-decoration : none; }
+a:active {color:#000000; text-decoration : none; }
+a:visited {color:#000000; text-decoration : none; }
+a:hover {color:#000000; text-decoration : underline;}
+
+.top	{vertical-align:top;}
+.center	{text-align:center;}
+.white	{background-color:#ffffff;}
+
+.menu1	{background: url(images/menu-back.jpg);}
+
+.side1	{padding: 0px 0px 0px 15px;}
+
+.bottom	{background: url(images/bot-bk.jpg) repeat-x; color:#506168; padding: 20px 0px 0px 30px;}
+.bottom	a:link {color:#506168; text-decoration : none; }
+.bottom	a:active {color:#506168; text-decoration : none; }
+.bottom	a:visited {color:#506168; text-decoration : none; }
+.bottom	a:hover {color:#000000; text-decoration : underline;}
+
+.head1	{font-size:18px; font-weight:bold; color:#ee7004; padding: 5px 0px 15px 0px;}
+.intx1	{text-align:justify; padding: 3px 25px 15px 20px;}
+
+.pro01	{text-align:center; background-color:#f2f8fa; padding: 15px 0px 5px 0px; font-size:16px; font-weight:bold;}
+
+.newwin	a.externallink:link {target: new window;}
+.centop	{text-align:center; font-size:8px; color:#fafafa; background-color:#ffffff;}
+.cenbot	{text-align:center; font-size:8px; color:#fafafa;}

@@ -1,0 +1,239 @@
+.text-brown{color:#ad171e; font-weight: 700;}
+#menu-icon {position:relative; z-index: 1; float: right; padding:10px 50px 10px 10px;  display: inline-block; margin-top:38px; font-size:110%; font-weight:700; color: #fff; text-decoration: none; background-color: rgba(0,0,0,0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+#menu-icon span, #menu-icon span:before, #menu-icon span:after {width: 35px; height:5px; background-color: #fff; display: block; position: absolute; right: 0; top:19px; transition: all 0.3s; border-radius: 5px;}
+#menu-icon span{right: 8px;}
+#menu-icon span:before {content: ''; top: -10px;}
+#menu-icon span:after {content: ''; top: 10px;}
+#menu-icon.active span {background-color: transparent;}
+#menu-icon.active span:before {-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); transform: rotate(45deg); top: 0;}
+#menu-icon.active span:after {-webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); transform: rotate(-45deg); top: 0;}
+
+/* Hero Video Section */
+#banner.hero-video-section, #banner {position:relative; z-index:9; width: 100%; height: auto; overflow:hidden; background-color: #0b0d10;}
+.hero-video-container {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+}
+.hero-video-element {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+}
+.hero-video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+.hero-video-controls {
+    position: absolute;
+    bottom: 24px;
+    right: 80px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: auto !important;
+}
+.hero-control-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(15, 20, 26, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+    transition: all 0.25s ease-in-out;
+    user-select: none;
+    outline: none;
+    line-height: 1;
+    position: relative;
+    z-index: 1001;
+    text-decoration: none !important;
+}
+a.hero-control-btn,
+a.hero-control-btn:visited,
+a.hero-control-btn:focus {
+    color: #ffffff;
+    text-decoration: none !important;
+}
+.hero-control-btn * {
+    pointer-events: none !important;
+}
+.hero-control-btn:hover {
+    background: #ad171e;
+    border-color: #ad171e;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(173, 23, 30, 0.65);
+}
+.hero-control-btn:active {
+    transform: translateY(0);
+}
+.hero-control-btn i {
+    font-size: 14px;
+    line-height: 1;
+    width: 14px;
+    text-align: center;
+}
+.hero-youtube-btn .fa-youtube-play {
+    color: #ff0000;
+    font-size: 16px;
+    width: 16px;
+    transition: color 0.25s ease-in-out;
+}
+.hero-youtube-btn:hover {
+    background: #e62117;
+    border-color: #e62117;
+    color: #ffffff !important;
+    box-shadow: 0 6px 22px rgba(230, 33, 23, 0.65);
+}
+.hero-youtube-btn:hover .fa-youtube-play {
+    color: #ffffff;
+}
+@media (max-width: 991px) {
+    .hero-video-controls {
+        bottom: 18px;
+        right: 70px;
+        gap: 10px;
+    }
+    .hero-control-btn {
+        padding: 9px 15px;
+        font-size: 12px;
+    }
+}
+@media (max-width: 767px) {
+    .hero-video-controls {
+        bottom: 12px;
+        right: 60px;
+        gap: 8px;
+    }
+    .hero-control-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+    .hero-control-btn i {
+        font-size: 12px;
+    }
+}
+@media (max-width: 480px) {
+    .hero-control-btn .control-text {
+        display: none;
+    }
+    .hero-control-btn {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border-radius: 50%;
+    }
+    .hero-control-btn i {
+        font-size: 13px;
+    }
+    .hero-youtube-btn .fa-youtube-play {
+        font-size: 15px;
+        width: 15px;
+    }
+}
+
+/* Banner Slider (Legacy / Fallback styles) */
+#banner .container {position:relative; margin:0 auto; height: auto;}
+#banner .container [class^="col-"]{position: inherit;}
+#banner ul {margin:0 auto; padding: 0; list-style: none; height: 100%; overflow: visible;}
+#banner ul li {width: 100%; height: auto; left:0; margin-bottom:0; background-color: transparent;}
+#banner ul li.new-banner-slide a {display: block; width: 100%; text-decoration: none;}
+#banner ul li.new-banner-slide img {width: 100%; height: auto; display: block; margin: 0 auto;}
+#banner .bx-wrapper .bx-viewport {background: transparent; border: none; box-shadow: none;}
+
+/* Legacy banner styles kept for hidden slides reference */
+#banner ul li.banner-bg01{background:url(../images/banner-bg01.jpg) no-repeat center top / cover; }
+#banner ul li.banner-bg02{background:url(../images/banner-bg02.jpg) no-repeat center top / cover; }
+#banner ul li.banner-bg03{background:url(../images/banner-bg03.jpg) no-repeat center top / cover; }
+#banner ul li.banner-bg05{background:url(../images/banner-bg05.jpg) no-repeat center top / cover; }
+#banner ul li.banner-bg06{background:url(../images/banner-bg06.jpg) no-repeat center top / cover; }
+#banner ul li.banner-bg07{background:url(../images/banner-bg07.jpg) no-repeat center top / cover; }
+#banner .banner-large {opacity:0; left:0; top:25px;  position:absolute; width:60%;  z-index:11;}
+#banner .banner-large.full{width:100%;}
+#banner .banner-txt {opacity:0; left:auto; right:0; width: 40%; top:25vh;  z-index:12; position:absolute;}
+#banner .banner-txt.full{width:100%; top:30px; left: 0; text-align: center;}  
+#banner .banner-txt.large-txt{top: 33vh;}
+#banner .banner-txt p {font-size: 264%; font-weight: 300; color: #fff; margin: 0; line-height: normal; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0,0,0,0.95);}
+#banner .banner-txt p b {font-weight: 700;}
+#banner .banner-txt p span {font-weight: 300; font-size: 81%;}
+#banner .banner-txt .btn {background-color: #4a545c; margin-top: 20px; color: #fff; padding: 6px 12px 8px; border: none; border-radius: 2px;}
+#banner .banner-txt .btn:hover {background-color: #0267B1;}
+#banner .banner-large.right {left:auto; right:0;}
+#banner .banner-txt.right {left:0;}
+
+#banner .bx-wrapper .bx-pager {display: none;}
+#banner .bx-wrapper .bx-controls-direction a {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 120px;
+    z-index: 99;
+    outline: 0;
+    text-indent: -9999px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+#banner .bx-wrapper .bx-prev {left: 0;}
+#banner .bx-wrapper .bx-next {right: 0;}
+#banner .bx-wrapper .bx-controls-auto{ text-indent:-9999px;}
+
+/* the company */
+#the-company {padding: 40px 0;}
+#the-company h2 {margin: 0 0 50px;}
+#the-company p {font-size: 114%; line-height: 21px; color: #4a4a4a; margin-bottom: 20px;}
+
+/* custom css */
+.banner-machine-blend {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 6%, rgba(0,0,0,1) 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 6%, rgba(0,0,0,1) 94%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    border-radius: 6px;
+}
+
+/* Infrastructure Unit Photos - larger display */
+.gallery-unit { margin-bottom: 32px; }
+.gallery-unit .gallery {
+    height: auto !important;
+    overflow: visible !important;
+    max-height: none !important;
+    border-radius: 6px;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.18);
+}
+.gallery-unit .gallery img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: none !important;
+    display: block;
+}
+.gallery-unit .gallery:hover > img {
+    transform: scale(1.03) !important;
+}
+.gallery-unit .gallery span.zoom {
+    bottom: 0 !important;
+    height: 100% !important;
+}

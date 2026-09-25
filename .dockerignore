@@ -1,0 +1,9 @@
+.git
+.gitignore
+.dockerignore
+.htaccess.phpupgrader.*
+scratch/
+*.bat
+lead_submissions.log
+old/
+Dockerfile

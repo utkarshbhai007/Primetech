@@ -1,0 +1,98 @@
+DirectoryIndex index.php index.html
+RewriteEngine on
+
+# ==============================================================================
+# GZIP / DEFLATE COMPRESSION (Improves site speed by 70-80% for text assets)
+# ==============================================================================
+<IfModule mod_deflate.c>
+    # Compress all HTML, CSS, JavaScript, Text, XML, and SVG
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/x-font-otf
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ==============================================================================
+# BROWSER CACHING / EXPIRES HEADERS (Instant page load for returning visitors)
+# ==============================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # CSS & JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fonts
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+    ExpiresByType application/x-font-ttf "access plus 1 year"
+    ExpiresByType application/x-font-opentype "access plus 1 year"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+
+    # Documents
+    ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Cache-Control headers for static assets
+    <FilesMatch "\.(ico|jpe?g|png|gif|swf|css|js|woff2?|ttf|svg|pdf)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# Local Rewrite Rules
+RewriteRule ^captcha/([^/]+) generatecaptcha.php?pg=$1 [NC]
+RewriteRule ^the-company/about-us/ page-about-us.php [NC]
+RewriteRule ^the-company/why-primetech/ page-why-primetech.php [NC]
+RewriteRule ^the-company/quality-achievements/ page-quality-achievements.php [NC]
+
+RewriteRule ^products/mixer/high-speed-mixer/ page-high-speed-mixer.php [NC]
+RewriteRule ^products/mixer/cooler-mixer/ page-cooler-mixer.php [NC]
+
+RewriteRule ^products/high-speed-heater-cooler-mixer/ page-high-speed-heater-cooler-mixer.php [NC]
+RewriteRule ^products/high-speed-mixer/ page-high-speed-mixer.php [NC]
+RewriteRule ^products/gyro-vibrating-screen/ page-gyro-vibrating-screen.php [NC]
+RewriteRule ^products/lab-mixer/ page-lab-mixer.php [NC]
+RewriteRule ^products/horizontal-cooler/ page-horizontal-cooler.php [NC]
+RewriteRule ^products/rotary-air-lock-valve/ page-rotary-air-lock-valve.php [NC]
+RewriteRule ^products/screw-conveyor/ page-screw-conveyor.php [NC]
+RewriteRule ^products/pulverizer/ page-pulverizer.php [NC]
+RewriteRule ^products/granulators/ page-granulator.php [NC]
+RewriteRule ^products/shredder/ page-shredder.php [NC]
+RewriteRule ^products/spiral-conveyor/ page-spiral-conveyor.php [NC]
+RewriteRule ^products/mixing-plant-automation/ page-mixing-plant-automation.php [NC]
+RewriteRule ^products/ page-products.php [NC]
+
+RewriteRule ^infrastructure/ page-infrastructure.php [NC]
+RewriteRule ^enquiry/ page-enquiry.php [NC]
+RewriteRule ^contact/ page-contact.php [NC]
+RewriteRule ^downloads/ page-downloads.php [NC]
