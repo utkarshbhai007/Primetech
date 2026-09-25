@@ -1,4 +1,5 @@
 <?php
+$hideGrowthPartners = true;
 include('./includes/include.inc.php');
 ?>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ include('./includes/include.inc.php');
                             <i class="fa fa-pause" id="heroPlayPauseIcon" aria-hidden="true"></i>
                             <span class="control-text" id="heroPlayPauseText">Pause</span>
                         </button>
-                        <a href="https://www.youtube.com/watch?v=SqMaqQw2iak&feature=youtu.be" target="_blank" rel="noopener noreferrer" id="heroYoutubeBtn" class="hero-control-btn hero-youtube-btn" aria-label="Watch Video on YouTube" title="Watch on YouTube" onmousedown="event.stopPropagation();" onmouseup="event.stopPropagation();" onclick="event.stopPropagation(); window.open(this.href,'_blank'); return false;">
+                        <a href="https://youtu.be/2RQzuG75apU?si=3rizSBQv6of2XK1X" target="_blank" rel="noopener noreferrer" id="heroYoutubeBtn" class="hero-control-btn hero-youtube-btn" aria-label="Watch Video on YouTube" title="Watch on YouTube" onmousedown="event.stopPropagation();" onmouseup="event.stopPropagation();" onclick="event.stopPropagation(); window.open(this.href,'_blank'); return false;">
                             <i class="fa fa-youtube-play" id="heroYoutubeIcon" aria-hidden="true"></i>
                             <span class="control-text">YouTube</span>
                         </a>
@@ -48,7 +49,7 @@ include('./includes/include.inc.php');
                     if (e) {
                         if (e.stopPropagation) e.stopPropagation();
                     }
-                    window.open('https://www.youtube.com/watch?v=SqMaqQw2iak&feature=youtu.be', '_blank');
+                    window.open('https://youtu.be/2RQzuG75apU?si=3rizSBQv6of2XK1X', '_blank');
                     return false;
                 }
 
@@ -250,7 +251,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixer-thumb1.png" alt="High Speed Heater Cooler Mixer" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="High Speed Heater Cooler Mixer" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">High Speed Heater Cooler Mixer</h3>
@@ -263,7 +264,7 @@ include('./includes/include.inc.php');
                             </div>
                         </div>
 
-                        <!-- 2. High Speed Mixer -->
+                        <!-- 2. High Speed Mixer (No file in folder, kept as is) -->
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/high-speed-mixer/" class="product-card-link">
@@ -286,7 +287,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/mixer-horizontal-cooler-thumb-homepage.png" alt="Cooler Mixer" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" alt="Cooler Mixer" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">Cooler Mixer</h3>
@@ -304,7 +305,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/lab-mixer/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-thumb.png" alt="Laboratory Mixer" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-new.png" alt="Laboratory Mixer" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">Laboratory Mixer</h3>
@@ -322,7 +323,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/pulverizer.png" alt="High Speed Pulverizer" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="High Speed Pulverizer" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">High Speed Pulverizer</h3>
@@ -340,7 +341,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/shredder/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/shredder-thumb.png" alt="Heavy Duty Shredder" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/shredder-new.png" alt="Heavy Duty Shredder" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">Heavy Duty Shredder</h3>
@@ -358,7 +359,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/granulators/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/granulator.png" alt="Plastic Granulator" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/granulator-new.png" alt="Plastic Granulator" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">Plastic Granulator</h3>
@@ -376,7 +377,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/spiral-vacume-conveyor-thumb.png" alt="Flexible Spiral Conveyor" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Flexible Spiral Conveyor" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">Flexible Spiral Conveyor</h3>
@@ -394,7 +395,7 @@ include('./includes/include.inc.php');
                             <div class="product-grid-card">
                                 <a href="<?php echo $GLBHost; ?>products/screw-conveyor/" class="product-card-link">
                                     <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/screw-conveyor-thumb.png" alt="Screw Conveyor" class="img-responsive">
+                                        <img src="<?php echo $GLBHost; ?>images/products/screw-conveyor-new.png" alt="Screw Conveyor" class="img-responsive">
                                     </div>
                                     <div class="product-info-box">
                                         <h3 class="product-name">Screw Conveyor</h3>

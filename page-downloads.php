@@ -80,7 +80,7 @@ include('./includes/include.inc.php');
                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                             <div class="product-info">
                                 <h2 class="title text-small mt0"><span>Horizontal </span> Cooler</h2>
-                                <a href="javascript:;" class="download-btn btn-trigger-brochure" data-brochure-key="horizontal-cooler" data-brochure-title="Horizontal Cooler (Corporate Brochure)" data-brochure-file="<?php echo $GLBHost; ?>pdf/corporate.pdf"><span class="icon"><i class="sprite dwn"></i></span>Download Brochure</a>
+                                <a href="javascript:;" class="download-btn btn-trigger-brochure" data-brochure-key="horizontal-cooler" data-brochure-title="Horizontal Cooler" data-brochure-file="<?php echo $GLBHost; ?>pdf/horizontal-cooler.pdf"><span class="icon"><i class="sprite dwn"></i></span>Download Brochure</a>
                             </div>
                         </div>
                     </div>
@@ -242,10 +242,18 @@ include('./includes/include.inc.php');
                     function triggerDirectDownload(fileUrl) {
                         var a = document.createElement('a');
                         a.href = fileUrl;
+                        var filename = fileUrl.split('/').pop().split('?')[0];
+                        if (filename) {
+                            a.setAttribute('download', decodeURIComponent(filename));
+                        }
                         a.target = '_blank';
                         document.body.appendChild(a);
                         a.click();
-                        document.body.removeChild(a);
+                        setTimeout(function () {
+                            if (a.parentNode) {
+                                a.parentNode.removeChild(a);
+                            }
+                        }, 200);
                     }
 
                     function openLeadModal(key, title, file) {

@@ -1,3 +1,4 @@
+<?php if (empty($hideGrowthPartners)): ?>
 <section id="our-partner">
     <div class="container">
         <h2 class="title"><span>Our</span> Growth Partners</h2>
@@ -70,6 +71,7 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <section id="get-in-touch">
     <div class="container">
