@@ -22,7 +22,7 @@ $brochureFile = isset($_POST['lead_file']) ? trim($_POST['lead_file']) : '';
 $errors = [];
 if (empty($name) || strlen($name) < 2) {
     $errors[] = 'Please provide your full name.';
-}
+}   
 if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = 'Please provide a valid email address.';
 }
