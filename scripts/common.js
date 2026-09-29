@@ -99,14 +99,16 @@ $(document).ready(function () {
 
     $.fn.handleResize();
 
-    $('#our-partner .slider').owlCarousel({
-        lazyLoad: true, loop: true, dots: false, margin: 20, nav: true, navText: "", autoplay: 500, autoplaySpeed: 1000,
-        responsive: {
-            0: {items: 2, slideBy: 2},
-            600: {items: 3, slideBy: 3},
-            1000: {items: 4, slideBy: 4}
-        }
-    });
+    if ($('#our-partner .slider').length) {
+        $('#our-partner .slider').owlCarousel({
+            lazyLoad: true, loop: true, dots: false, margin: 20, nav: true, navText: "", autoplay: 500, autoplaySpeed: 1000,
+            responsive: {
+                0: {items: 2, slideBy: 2},
+                600: {items: 3, slideBy: 3},
+                1000: {items: 4, slideBy: 4}
+            }
+        });
+    }
 
     if ($(window).width() < 768) {
 

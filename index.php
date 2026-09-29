@@ -1,5 +1,4 @@
 <?php
-$hideGrowthPartners = true;
 include('./includes/include.inc.php');
 ?>
 <!DOCTYPE html>

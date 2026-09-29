@@ -364,7 +364,7 @@ header.fixed #logo{width: 160px;}
 #our-partner .owl-dots .owl-dot.active span, #our-partner .owl-dots .owl-dot:hover span{background: #ad171e;}
 
 /* our partner range */
-#our-partner {padding: 15px 0 30px;}
+#our-partner {display: none !important; padding: 15px 0 30px;}
 #our-partner * {transition: all 0.3s ease 0s;}
 #our-partner .item {background-color: #fff; position: relative; text-align:center; height:120px; display: block; margin: 25px auto; border: 1px solid #666666;}
 #our-partner .item img {position: absolute; left: 0; top: 0; right: 0; bottom: 0; max-width: 80%; width: auto; margin: auto;}

@@ -13,7 +13,7 @@ include('./includes/include.inc.php');
     </head>
 
     <body>
-        <div onMouseDown="return false">    
+        <div onMouseDown="return false">  
         <div id="mobile-menu"></div>
 
         <div id="wrapper">
