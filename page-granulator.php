@@ -45,8 +45,7 @@ include('./includes/include.inc.php');
                             <div id="tabs-outer">
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
-                                    <li><a data-toggle="tab" href="#advantages-features">Advantages and Features</a></li>
-                                    <li><a data-toggle="tab" href="#product-range-tab">Product Range</a></li>
+                                    <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -131,7 +130,7 @@ include('./includes/include.inc.php');
                                     </div>    
                                 </div>
 
-                                <div id="advantages-features" class="tab-pane fade">
+                                <div id="performance-features" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                             <ul class="list">
@@ -153,45 +152,6 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="product-range-tab" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Model</th>
-                                                            <th>Motor (kw)</th>
-                                                            <th>Output Capacity (kg/hr)</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>PG-14</td>
-                                                            <td>7.5-11</td>
-                                                            <td>100-150</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PG-16</td>
-                                                            <td>3.7-7.5</td>
-                                                            <td>50-100</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PG-20</td>
-                                                            <td>18-22</td>
-                                                            <td>200-300</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PG-24</td>
-                                                            <td>30-37</td>
-                                                            <td>300-500</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>                                            
-                                            </div>                                            
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

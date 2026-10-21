@@ -47,7 +47,6 @@ include('./includes/include.inc.php');
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
                                     <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
-                                    <li><a data-toggle="tab" href="#product-range-tab">Product Range</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -137,36 +136,6 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="product-range-tab" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Model</th>
-                                                            <th>Motor (kw)</th>
-                                                            <th>Output Capacity (kg/hr)</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>PS-70</td>
-                                                            <td>18</td>
-                                                            <td>120-150</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PS-130</td>
-                                                            <td>45</td>
-                                                            <td>250-300</td>
-                                                        </tr>
-                                                        
-                                                    </tbody>
-                                                </table>                                            
-                                            </div>                                            
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

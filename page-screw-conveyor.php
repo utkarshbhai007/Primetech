@@ -46,8 +46,7 @@ include('./includes/include.inc.php');
                             <div id="tabs-outer">
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
-                                    <li><a data-toggle="tab" href="#features">Salient Features</a></li>
-                                    <li><a data-toggle="tab" href="#specifications">Specifications</a></li>
+                                    <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -100,7 +99,7 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="features" class="tab-pane fade">
+                                <div id="performance-features" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                             <ul class="list">
@@ -122,73 +121,6 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="specifications" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Sr. No.</th>
-                                                            <th>Model</th>
-                                                            <th>PSC 46</th>
-                                                            <th>PSC 49</th>
-                                                            <th>PSC 412</th>
-                                                            <th>PSC 66</th>
-                                                            <th>PSC 69</th>
-                                                            <th>PSC 612</th>
-                                                            <th>PSC 86</th>
-                                                            <th>PSC 89</th>
-                                                            <th>PSC 812</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Motor</td>
-                                                            <td>3 Hp</td>
-                                                            <td>5 Hp</td>
-                                                            <td>7.5 Hp</td>
-                                                            <td>3 Hp</td>
-                                                            <td>5 Hp</td>
-                                                            <td>7.5 Hp</td>
-                                                            <td>5 Hp</td>
-                                                            <td>7.5 Hp</td>
-                                                            <td>10 Hp</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Size</td>
-                                                            <td>4"</td>
-                                                            <td>4"</td>
-                                                            <td>4"</td>
-                                                            <td>6"</td>
-                                                            <td>6"</td>
-                                                            <td>6"</td>
-                                                            <td>8"</td>
-                                                            <td>8"</td>
-                                                            <td>8"</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Length</td>
-                                                            <td>6m</td>
-                                                            <td>9m</td>
-                                                            <td>12m</td>
-                                                            <td>6m</td>
-                                                            <td>9m</td>
-                                                            <td>12m</td>
-                                                            <td>6m</td>
-                                                            <td>9m</td>
-                                                            <td>12m</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <p><small>Also available in customised lengths.</small></p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

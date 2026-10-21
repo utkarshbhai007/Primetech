@@ -45,7 +45,7 @@ include('./includes/include.inc.php');
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
                             <div class="product-block">
-                                <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/"><img src="<?php echo $GLBHost; ?>images/products/mixer-horizontal-cooler-thumb-homepage.png" alt="" class="img-responsive"><span class="caption"><em>High Speed Heater Cooler Mixer</em></span></a>
+                                <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/"><img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixer-thumb.png" alt="" class="img-responsive"><span class="caption"><em>High Speed Heater Cooler Mixer</em></span></a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
@@ -96,6 +96,11 @@ include('./includes/include.inc.php');
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="product-block">
+                                <a href="<?php echo $GLBHost; ?>products/gyro-vibrating-screen/"><img src="<?php echo $GLBHost; ?>images/products/gyro-vibrating-sieve-thumb.png" alt="" class="img-responsive"><span class="caption"><em>Gyro Vibrating Screen</em></span></a>
+                            </div>
+                        </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="product-block">
                                 <a href="<?php echo $GLBHost; ?>products/mixing-plant-automation/"><img src="<?php echo $GLBHost; ?>images/products/plant-thumb.png" alt="" class="img-responsive"><span class="caption"><em>Mixing Plant Automation</em></span></a>

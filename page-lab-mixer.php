@@ -47,9 +47,7 @@ include('./includes/include.inc.php');
                             <div id="tabs-outer">
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
-                                    <li><a data-toggle="tab" href="#features">Salient Features</a></li>
-                                    <li><a data-toggle="tab" href="#application">Applications</a></li>
-                                    <li><a data-toggle="tab" href="#specifications">Specifications</a></li>
+                                    <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +107,7 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="features" class="tab-pane fade">
+                                <div id="performance-features" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                             <ul class="list">
@@ -131,58 +129,6 @@ include('./includes/include.inc.php');
                                                 <li>The control panel consists of programmable controls for optimum adaptability to the process requirements.</li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
-                                <div id="specifications" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Mixer Vessel Volume</th>
-                                                            <th>Batch Capacity</th>
-                                                            <th>Mixing Tool </th>
-                                                            <th>Motor</th>
-                                                            <th>Tool Speed</th>
-                                                            <th>MoC. of Material Contact Parts</th>
-                                                            <th>MoC. of Support Structure</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>15 Litres</td>
-                                                            <td>3 kgs. to 5 Kgs.</td>
-                                                            <td>3 Tier or 4 Tier</td>
-                                                            <td>5 Hp (3-Ø 415V/50Hz, Tefc) </td>
-                                                            <td>900 rpm (Variable by Ac Vfd)</td>
-                                                            <td>SS 316 Mirror Finish</td>
-                                                            <td>SS 304 Matt Finish</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div id="application" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                            <ul class="list">
-                                                <li>PVC pipes and fittings industry</li>
-                                                <li>PVC film, profile industry</li>
-                                                <li>Polymers research laboratory</li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                            <ul class="list">
-                                                <li>Laboratories for plastic and polymer science institutes</li>
-                                                <li>Masterbatch industry.</li>
-                                                <li>R & D departments of polymer industry.</li>
-                                            </ul>
-                                        </div>    
                                     </div>
                                 </div>
 

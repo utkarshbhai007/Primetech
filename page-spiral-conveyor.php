@@ -46,7 +46,7 @@ include('./includes/include.inc.php');
                             <div id="tabs-outer">
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
-                                    <li><a data-toggle="tab" href="#specifications">Specifications</a></li>
+                                    <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="specifications" class="tab-pane fade">
+                                <div id="performance-features" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="table-responsive">

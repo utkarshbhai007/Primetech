@@ -46,9 +46,7 @@ include('./includes/include.inc.php');
                             <div id="tabs-outer">
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
-                                    <li><a data-toggle="tab" href="#features">Features</a></li>
-                                    <li><a data-toggle="tab" href="#specifications">Specifications</a></li>
-                                    <li><a data-toggle="tab" href="#application">Application</a></li>
+                                    <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +92,7 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="features" class="tab-pane fade">
+                                <div id="performance-features" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                             <ul class="list">
@@ -113,70 +111,6 @@ include('./includes/include.inc.php');
                                                 <li>MATERIAL OF CONSTRUCTION: Mild Steel / Stainless Steel</li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div id="specifications" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Sr. No.</th>
-                                                            <th>Model</th>
-                                                            <th>PGVS 30</th>
-                                                            <th>PGVS 39</th>
-                                                            <th>PGVS 48</th>
-                                                            <th>PGVS 60</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Motor</td>
-                                                            <td>0.75 hp</td>
-                                                            <td>1.0 hp</td>
-                                                            <td>1.5 hp</td>
-                                                            <td>2.0 hp</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Screen Size</td>
-                                                            <td>30"</td>
-                                                            <td>39"</td>
-                                                            <td>48"</td>
-                                                            <td>60"</td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="application" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                            <ul class="list">
-                                                <li>Plastics and Polymers</li>
-                                                <li>Food and Flour Industry</li>
-                                                <li>Minerals and Metals</li>
-                                                <li>Pharmaceuticals and Herbals</li>
-                                                <li>Spices Industry</li>
-                                                <li>Refractories and Abrasives</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                            <ul class="list">
-                                                <li>Ceramic Industry</li>
-                                                <li>Starch and Glucose Industry</li>
-                                                <li>Dairy Industry</li>
-                                                <li>Pesticides and Insecticides Industry</li>
-                                                <li>Soap and Detergent Industry</li>
-                                            </ul>
-                                        </div>    
                                     </div>
                                 </div>
 

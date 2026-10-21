@@ -55,10 +55,10 @@
                                     <ul>
                                         <li><a href="<?php echo $GLBHost; ?>products/spiral-conveyor/">Spiral Conveyor</a></li>
                                         <li><a href="<?php echo $GLBHost; ?>products/screw-conveyor/">Screw Conveyor</a></li>
-                                        <li><a href="<?php echo $GLBHost; ?>products/mixing-plant-automation/">Mixing  Plant Automation</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo $GLBHost; ?>products/gyro-vibrating-screen/">Gyro Vibrating Screen</a></li>
+                                <li><a href="<?php echo $GLBHost; ?>products/mixing-plant-automation/">Mixing Plant Automation</a></li>
                             </ul>
                         </li>
                         <li id="t-infrastructure"><a href="<?php echo $GLBHost; ?>infrastructure/">Infrastructure</a></li>

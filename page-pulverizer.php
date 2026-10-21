@@ -47,7 +47,6 @@ include('./includes/include.inc.php');
                                 <ul id="tabs" class="nav nav-tabs nav-justified">
                                     <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
                                     <li><a data-toggle="tab" href="#performance-features">Performance Features</a></li>
-                                    <li><a data-toggle="tab" href="#product-range-tab">Product Range</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -176,72 +175,6 @@ include('./includes/include.inc.php');
                                     </div>
                                 </div>
 
-                                <div id="product-range-tab" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6">
-                                            <h3 class="mt0">Output Range</h3>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Model</th>
-                                                            <th>Motor Capacity (kw)</th>
-                                                            <th>Output Capacity</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>PP300</td>
-                                                            <td>15</td>
-                                                            <td>120-200</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PP400</td>
-                                                            <td>30</td>
-                                                            <td>200-300</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PP600</td>
-                                                            <td>55</td>
-                                                            <td>400-600</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>                                            
-                                            </div>                                            
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <h3 class="mt0">Output Range / Masterbatch</h3>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Model</th>
-                                                            <th>Motor Capacity (kw)</th>
-                                                            <th>Output Capacity</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>PP100</td>
-                                                            <td>15</td>
-                                                            <td>100-125</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PP200</td>
-                                                            <td>22</td>
-                                                            <td>150-200</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>PP300</td>
-                                                            <td>37</td>
-                                                            <td>350-400</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>                                            
-                                            </div>                                            
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
