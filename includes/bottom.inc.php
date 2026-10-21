@@ -25,17 +25,9 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="block">
-                    <div class="icon"><i class="sprite web"></i></div>
-                    <h3 class="title">Website</h3>
-                    <p><a href="http://www.primetechmixer.com">www.primetechmixer.com</a></p>
+                <div class="footer-map-wrap">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1544.469076003627!2d72.64516811309103!3d22.972783960275645!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa70a8008496edb51!2sPrimetech+Industries!5e0!3m2!1sen!2sus!4v1516262954578" width="100%" height="190" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1544.469076003627!2d72.64516811309103!3d22.972783960275645!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa70a8008496edb51!2sPrimetech+Industries!5e0!3m2!1sen!2sus!4v1516262954578"  width="100%" height="340"></iframe>
             </div>
         </div>
     </div>

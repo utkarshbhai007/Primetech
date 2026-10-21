@@ -394,7 +394,29 @@ header.fixed #logo{width: 160px;}
 #get-in-touch .mail {background-position: -151px 0; width: 17px; height: 14px;}
 #get-in-touch .web {background-position: -176px 0; width: 20px; height: 20px;}
 #get-in-touch #map {height: 340px; margin-top: 50px;}
-#get-in-touch iframe{ margin-top: 50px; border:none;}
+#get-in-touch iframe {border: none;}
+
+/* Small Square Map in Footer */
+#get-in-touch .footer-map-wrap {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #1a1a1a;
+}
+#get-in-touch .footer-map-wrap iframe {
+    margin-top: 0 !important;
+    display: block;
+    width: 100%;
+    height: 190px;
+    border: none;
+}
+@media (max-width: 991px) {
+    #get-in-touch .footer-map-wrap {
+        margin-top: 25px;
+    }
+}
 
 footer {padding: 35px 0; color: #3d3d3d;}
 footer ul {margin: 0; padding: 0; list-style: none;}
