@@ -68,9 +68,12 @@ $(document).ready(function () {
 
     $('#mobile-menu ul li.submenu-one>a').prepend('<span class="submenu"></span>');
     $('#mobile-menu ul li.submenu-one>a').click(function (e) {
-        $(this).parent().children().eq(1).slideToggle(500);
-        $(this).parent().toggleClass('changebg');
-        return false;
+        var href = $(this).attr('href');
+        if ($(e.target).hasClass('submenu') || !href || href === '#' || href === 'javascript:;') {
+            $(this).parent().children().eq(1).slideToggle(500);
+            $(this).parent().toggleClass('changebg');
+            return false;
+        }
     });
 
     $('#mobile-menu ul li ul li.submenu-two>a').prepend('<span class="submenu"></span>');

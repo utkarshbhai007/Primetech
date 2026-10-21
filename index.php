@@ -134,7 +134,7 @@ include('./includes/include.inc.php');
 
             <section id="the-company">
                 <div class="container">
-                    <h2 class="title"><span>The </span>Company</h2>
+                    <h2 class="title"><span>About </span>Us</h2>
                     <div class="row">
                         <div class="col-xs-12">
                             <p>PRIMETECH, an ISO 9001:2015 company laid its foundation in 1991 with a strong vision of becoming a world class leader by delivering the ultimate quality  products around the globe.</p>
