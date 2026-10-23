@@ -63,6 +63,29 @@ ul.list li:before{content: ""; height:10px; width:10px; display: block; backgrou
 .flag-outer {position: relative; margin-bottom: 30px; border: 1px solid #ddd;}
 .flag-outer .flag-name{position: relative; display: block; left:0; bottom:0;  right: 0; padding:10px 5px;text-align: center; font-weight: 700; font-size:80%;  border-top: 1px solid #ddd; }
 
+/* Our Exports World Map */
+.exports-map-wrapper {
+    position: relative;
+    margin: 15px 0 45px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.exports-map-wrapper:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+.exports-map-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
 #other-activities ul,#major-activities ul{margin:0 0 15px; padding: 0 25px;}
 
 .contact-page .block {position: relative; padding-left: 55px;}
