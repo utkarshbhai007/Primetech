@@ -40,10 +40,9 @@
                                 <li class="submenu-two"><a href="#">Mixers</a>
                                     <ul>
                                         <li><a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/">High Speed Heater Cooler Mixer</a></li>
-                                        <li><a href="<?php echo $GLBHost; ?>products/mixer/high-speed-mixer/">High Speed Mixer</a></li>
-                                        <li><a href="<?php echo $GLBHost; ?>products/mixer/cooler-mixer/">Cooler Mixer</a></li>
-                                        <li><a href="<?php echo $GLBHost; ?>products/lab-mixer/">Lab Mixer</a></li>
                                         <li><a href="<?php echo $GLBHost; ?>products/horizontal-cooler/">Horizontal Cooler</a></li>
+                                        <li><a href="<?php echo $GLBHost; ?>products/mixer/high-speed-mixer/">High Speed Mixer</a></li>
+                                        <li><a href="<?php echo $GLBHost; ?>products/lab-mixer/">Lab Mixer</a></li>
                                     </ul>
                                 </li>
                                 <li class="submenu-two"><a href="#">Size Reduction</a>
