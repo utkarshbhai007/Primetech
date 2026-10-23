@@ -238,293 +238,169 @@ include('./includes/include.inc.php');
                 </div>
             </section>
 
-            <!-- Styles for Product Range Interactive Category Showcase -->
+            <!-- Styles for Product Range 3-Box Category Showcase (Exact Sketch Layout) -->
             <style>
-                .product-range-showcase {
-                    display: flex;
-                    gap: 32px;
-                    align-items: flex-start;
-                    justify-content: center;
+                .product-category-triad {
                     margin-top: 25px;
                 }
-                .category-sidebar {
-                    flex: 0 0 340px;
-                    width: 340px;
-                    max-width: 340px;
+                .category-triad-card {
+                    background: #ffffff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 14px;
+                    overflow: hidden;
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+                    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
                     display: flex;
-                    flex-direction: column;
-                    gap: 16px;
+                    flex-direction: row;
+                    min-height: 380px;
+                    margin-bottom: 30px;
                 }
-                .category-box-item {
-                    background: #282a2d;
-                    border: 1px solid #3d4046;
-                    border-radius: 12px;
-                    padding: 18px 20px;
-                    display: flex;
-                    align-items: center;
-                    gap: 16px;
-                    cursor: pointer;
-                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-                    transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
-                    position: relative;
-                    user-select: none;
-                }
-                .category-box-item:hover,
-                .category-box-item.active {
-                    background: #ad171e;
+                .category-triad-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 16px 36px rgba(173, 23, 30, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
                     border-color: #ad171e;
-                    transform: translateX(4px);
-                    box-shadow: 0 10px 24px rgba(173, 23, 30, 0.25);
                 }
-                .cat-box-media {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 10px;
-                    background: #ffffff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 6px;
-                    flex-shrink: 0;
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                }
-                .cat-box-media img {
-                    max-width: 100%;
-                    max-height: 100%;
-                    object-fit: contain;
-                }
-                .cat-box-content {
-                    flex: 1;
-                    min-width: 0;
-                }
-                .cat-box-title {
-                    font-size: 19px;
-                    font-weight: 700;
-                    color: #ffffff;
-                    margin: 0 0 4px 0;
-                    line-height: 1.25;
-                    font-family: 'Titillium Web', sans-serif;
-                }
-                .cat-box-count {
-                    display: inline-block;
-                    font-size: 12px;
-                    font-weight: 600;
-                    color: rgba(255, 255, 255, 0.7);
-                    text-transform: uppercase;
-                    letter-spacing: 0.6px;
-                }
-                .category-box-item.active .cat-box-count,
-                .category-box-item:hover .cat-box-count {
-                    color: rgba(255, 255, 255, 0.95);
-                }
-                .cat-box-arrow {
-                    font-size: 20px;
-                    color: rgba(255, 255, 255, 0.55);
-                    transition: transform 0.25s ease, color 0.25s ease;
-                    flex-shrink: 0;
-                }
-                .category-box-item:hover .cat-box-arrow,
-                .category-box-item.active .cat-box-arrow {
-                    color: #ffffff;
-                    transform: translateX(4px);
-                }
-                @media (min-width: 992px) {
-                    .category-box-item.active::after {
-                        content: '';
-                        position: absolute;
-                        right: -10px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        width: 0;
-                        height: 0;
-                        border-top: 10px solid transparent;
-                        border-bottom: 10px solid transparent;
-                        border-left: 10px solid #ad171e;
-                        z-index: 5;
-                    }
-                }
-                .products-square-panel {
-                    flex: 1 1 820px;
-                    max-width: 860px;
-                    background: #ffffff;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 16px;
-                    padding: 24px;
-                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-                }
-                .category-products-pane {
-                    display: none;
-                }
-                .category-products-pane.active {
-                    display: block;
-                    animation: fadeInProductSquare 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-                }
-                @keyframes fadeInProductSquare {
-                    from {
-                        opacity: 0;
-                        transform: translateY(8px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                /* Square grids inside panel */
-                .products-square-grid {
-                    display: grid;
-                    gap: 20px;
-                }
-                .products-square-grid.grid-2x2 {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-                .products-square-grid.grid-3-square {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-                .products-square-panel .product-grid-card {
-                    background: #ffffff;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-                    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+                /* Left side of box: Category Presentation */
+                .triad-left {
+                    width: 44%;
+                    background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+                    border-right: 1px solid #e2e8f0;
+                    padding: 24px 16px;
                     display: flex;
                     flex-direction: column;
-                    height: 100%;
-                }
-                .products-square-panel .product-card-link {
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                    text-decoration: none !important;
-                    color: inherit;
-                }
-                .products-square-panel .product-img-box {
-                    background: #f8fafc;
-                    border-bottom: 1px solid #edf2f7;
-                    height: 200px;
-                    display: flex;
                     align-items: center;
-                    justify-content: center;
-                    padding: 16px;
+                    justify-content: space-between;
+                    text-align: center;
                     position: relative;
-                    overflow: hidden;
-                    transition: background-color 0.3s ease;
                 }
-                .products-square-panel .product-img-box img {
-                    max-height: 165px;
-                    max-width: 90%;
-                    width: auto;
-                    height: auto;
-                    object-fit: contain;
-                    margin: 0 auto;
-                    display: block;
-                    transition: transform 0.4s ease;
-                    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.07));
+                .triad-left-header {
+                    width: 100%;
                 }
-                .products-square-panel .product-info-box {
-                    padding: 14px 16px 14px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    flex-grow: 1;
-                    background: #ffffff;
-                }
-                .products-square-panel .product-name {
-                    font-size: 16px;
-                    font-weight: 600;
+                .triad-cat-title {
+                    font-size: 22px;
+                    font-weight: 700;
                     color: #1a202c;
-                    margin: 0 0 8px 0;
-                    line-height: 1.35;
-                    min-height: 44px;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
+                    margin: 0 0 6px 0;
                     font-family: 'Titillium Web', sans-serif;
-                    transition: color 0.3s ease;
+                    line-height: 1.2;
                 }
-                .products-square-panel .product-action {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding-top: 10px;
-                    border-top: 1px solid #edf2f7;
-                    font-size: 12px;
-                    font-weight: 600;
+                .triad-badge {
+                    display: inline-block;
+                    font-size: 11px;
+                    font-weight: 700;
                     color: #ad171e;
+                    background: rgba(173, 23, 30, 0.08);
+                    border: 1px solid rgba(173, 23, 30, 0.2);
+                    padding: 3px 10px;
+                    border-radius: 12px;
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                 }
-                .products-square-panel .product-action i {
-                    font-size: 12px;
-                    transition: transform 0.3s ease;
-                    color: #ad171e;
+                .triad-media {
+                    width: 100%;
+                    height: 180px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px;
+                    position: relative;
                 }
-                .products-square-panel .product-grid-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 14px 28px rgba(173, 23, 30, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
-                    border-color: #ad171e;
+                .triad-media img {
+                    max-height: 160px;
+                    max-width: 100%;
+                    object-fit: contain;
+                    transition: transform 0.35s ease, opacity 0.25s ease;
+                    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
                 }
-                .products-square-panel .product-grid-card:hover .product-img-box {
-                    background-color: #ffffff;
-                }
-                .products-square-panel .product-grid-card:hover .product-img-box img {
+                .category-triad-card:hover .triad-media img {
                     transform: scale(1.06);
                 }
-                .products-square-panel .product-grid-card:hover .product-name {
+                .triad-cat-link {
+                    font-size: 12px;
+                    font-weight: 700;
                     color: #ad171e;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    text-decoration: none !important;
                 }
-                .products-square-panel .product-grid-card:hover .product-action i {
+                /* Right side of box: Products stack */
+                .triad-right {
+                    width: 56%;
+                    padding: 20px 16px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 10px;
+                    background: #ffffff;
+                }
+                .triad-prod-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    padding: 12px 14px;
+                    background: #f8fafc;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    color: #2d3748;
+                    text-decoration: none !important;
+                    font-size: 13px;
+                    font-weight: 600;
+                    line-height: 1.3;
+                    font-family: 'Titillium Web', sans-serif;
+                    transition: all 0.25s ease;
+                    position: relative;
+                }
+                .triad-prod-item .prod-text {
+                    flex: 1;
+                    min-width: 0;
+                    color: inherit;
+                }
+                .triad-prod-item .prod-arrow {
+                    font-size: 14px;
+                    color: #ad171e;
+                    transition: transform 0.25s ease, color 0.25s ease;
+                    flex-shrink: 0;
+                }
+                .triad-prod-item:hover {
+                    background: #ad171e;
+                    color: #ffffff !important;
+                    border-color: #ad171e;
                     transform: translateX(4px);
+                    box-shadow: 0 4px 14px rgba(173, 23, 30, 0.22);
+                }
+                .triad-prod-item:hover .prod-text {
+                    color: #ffffff !important;
+                }
+                .triad-prod-item:hover .prod-arrow {
+                    color: #ffffff;
+                    transform: translateX(3px);
+                }
+                @media (max-width: 1199px) {
+                    .triad-cat-title {
+                        font-size: 20px;
+                    }
+                    .triad-prod-item {
+                        padding: 10px 12px;
+                        font-size: 12px;
+                    }
                 }
                 @media (max-width: 991px) {
-                    .product-range-showcase {
-                        flex-direction: column;
-                        align-items: stretch;
-                        gap: 20px;
-                    }
-                    .category-sidebar {
-                        flex: none;
-                        width: 100%;
-                        max-width: 100%;
-                        flex-direction: row;
-                        gap: 12px;
-                    }
-                    .category-box-item {
-                        flex: 1;
-                        padding: 12px 14px;
-                        gap: 10px;
-                    }
-                    .cat-box-media {
-                        width: 44px;
-                        height: 44px;
-                        padding: 4px;
-                    }
-                    .cat-box-title {
-                        font-size: 15px;
-                    }
-                    .cat-box-count {
-                        font-size: 11px;
-                    }
-                    .cat-box-arrow {
-                        display: none;
-                    }
-                    .products-square-panel {
-                        max-width: 100%;
-                        padding: 18px;
+                    .category-triad-card {
+                        min-height: auto;
                     }
                 }
-                @media (max-width: 767px) {
-                    .category-sidebar {
+                @media (max-width: 480px) {
+                    .category-triad-card {
                         flex-direction: column;
-                        gap: 10px;
                     }
-                    .cat-box-arrow {
-                        display: block;
+                    .triad-left {
+                        width: 100%;
+                        border-right: none;
+                        border-bottom: 1px solid #e2e8f0;
                     }
-                    .products-square-grid.grid-2x2,
-                    .products-square-grid.grid-3-square {
-                        grid-template-columns: 1fr;
+                    .triad-right {
+                        width: 100%;
                     }
                 }
             </style>
@@ -535,221 +411,99 @@ include('./includes/include.inc.php');
                     <p class="subtitle text-center" style="font-size: 16px; color: #666; margin: -10px auto 35px; max-width: 750px;">
                         Engineering excellence in high-speed industrial mixing, size reduction solutions, and automated bulk conveying systems.
                     </p>
-                    <!-- Interactive Category Showcase -->
-                    <div class="product-range-showcase">
-                        <!-- Left Side: 3 Separate Category Boxes -->
-                        <div class="category-sidebar">
-                            <!-- Box 1: Mixers -->
-                            <div class="category-box-item active" data-target="#cat-mixers">
-                                <div class="cat-box-media">
-                                    <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixers">
-                                </div>
-                                <div class="cat-box-content">
-                                    <h3 class="cat-box-title">Mixers</h3>
-                                    <span class="cat-box-count">4 Products</span>
-                                </div>
-                                <i class="fa fa-angle-right cat-box-arrow" aria-hidden="true"></i>
-                            </div>
 
-                            <!-- Box 2: Size Reduction -->
-                            <div class="category-box-item" data-target="#cat-size-reduction">
-                                <div class="cat-box-media">
-                                    <img src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction">
+                    <!-- 3-Box Category Triad (Mixers, Size Reduction, Conveying & Automation) -->
+                    <div class="row product-category-triad">
+                        <!-- Box 1: Mixers -->
+                        <div class="col-xs-12 col-md-4">
+                            <div class="category-triad-card" id="triad-mixers">
+                                <div class="triad-left">
+                                    <div class="triad-left-header">
+                                        <h3 class="triad-cat-title">Mixers</h3>
+                                        <span class="triad-badge">4 Machines</span>
+                                    </div>
+                                    <div class="triad-media">
+                                        <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixers" class="img-responsive">
+                                    </div>
+                                    <a href="<?php echo $GLBHost; ?>products/" class="triad-cat-link">Explore Mixers <i class="fa fa-angle-right"></i></a>
                                 </div>
-                                <div class="cat-box-content">
-                                    <h3 class="cat-box-title">Size Reduction</h3>
-                                    <span class="cat-box-count">3 Products</span>
+                                <div class="triad-right">
+                                    <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-target-img="#mixers-preview-img">
+                                        <span class="prod-text">High Speed Heater Cooler Mixer</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" data-target-img="#mixers-preview-img">
+                                        <span class="prod-text">Horizontal Cooler</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/high-speed-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/high-speed-mixer-thumb.png" data-target-img="#mixers-preview-img">
+                                        <span class="prod-text">High Speed Mixer</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/lab-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/laboratory-mixer-new.png" data-target-img="#mixers-preview-img">
+                                        <span class="prod-text">Laboratory Mixer</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
                                 </div>
-                                <i class="fa fa-angle-right cat-box-arrow" aria-hidden="true"></i>
-                            </div>
-
-                            <!-- Box 3: Conveying and Automation -->
-                            <div class="category-box-item" data-target="#cat-conveying">
-                                <div class="cat-box-media">
-                                    <img src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation">
-                                </div>
-                                <div class="cat-box-content">
-                                    <h3 class="cat-box-title">Conveying &amp; Automation</h3>
-                                    <span class="cat-box-count">3 Products</span>
-                                </div>
-                                <i class="fa fa-angle-right cat-box-arrow" aria-hidden="true"></i>
                             </div>
                         </div>
 
-                        <!-- Right Side: Products in Square Box -->
-                        <div class="products-square-panel">
-                            <!-- Category 1: Mixers (2x2 Square Grid) -->
-                            <div class="category-products-pane active" id="cat-mixers">
-                                <div class="products-square-grid grid-2x2">
-                                    <!-- 1. High Speed Heater Cooler Mixer -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="High Speed Heater Cooler Mixer" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">High Speed Heater Cooler Mixer</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
+                        <!-- Box 2: Size Reduction -->
+                        <div class="col-xs-12 col-md-4">
+                            <div class="category-triad-card" id="triad-size-reduction">
+                                <div class="triad-left">
+                                    <div class="triad-left-header">
+                                        <h3 class="triad-cat-title">Size Reduction</h3>
+                                        <span class="triad-badge">3 Machines</span>
                                     </div>
-
-                                    <!-- 2. Horizontal Cooler -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" alt="Horizontal Cooler" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Horizontal Cooler</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
+                                    <div class="triad-media">
+                                        <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
                                     </div>
-
-                                    <!-- 3. High Speed Mixer -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/high-speed-mixer/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/high-speed-mixer-thumb.png" alt="High Speed Mixer" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">High Speed Mixer</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- 4. Laboratory Mixer -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/lab-mixer/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-new.png" alt="Laboratory Mixer" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Laboratory Mixer</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    <a href="<?php echo $GLBHost; ?>products/" class="triad-cat-link">Explore Machines <i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="triad-right">
+                                    <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-target-img="#size-preview-img">
+                                        <span class="prod-text">High Speed Pulverizer</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/granulators/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/granulator-new.png" data-target-img="#size-preview-img">
+                                        <span class="prod-text">Plastic Granulators</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/shredder/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/shredder-new.png" data-target-img="#size-preview-img">
+                                        <span class="prod-text">Heavy Duty Shredder</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Category 2: Size Reduction -->
-                            <div class="category-products-pane" id="cat-size-reduction">
-                                <div class="products-square-grid grid-3-square">
-                                    <!-- 1. High Speed Pulverizer -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="High Speed Pulverizer" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">High Speed Pulverizer</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
+                        <!-- Box 3: Conveying and Automation -->
+                        <div class="col-xs-12 col-md-4">
+                            <div class="category-triad-card" id="triad-conveying">
+                                <div class="triad-left">
+                                    <div class="triad-left-header">
+                                        <h3 class="triad-cat-title">Conveying &amp; Auto</h3>
+                                        <span class="triad-badge">3 Machines</span>
                                     </div>
-
-                                    <!-- 2. Plastic Granulator -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/granulators/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/granulator-new.png" alt="Plastic Granulator" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Plastic Granulator</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
+                                    <div class="triad-media">
+                                        <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
                                     </div>
-
-                                    <!-- 3. Heavy Duty Shredder -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/shredder/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/shredder-new.png" alt="Heavy Duty Shredder" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Heavy Duty Shredder</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    <a href="<?php echo $GLBHost; ?>products/" class="triad-cat-link">Explore Systems <i class="fa fa-angle-right"></i></a>
                                 </div>
-                            </div>
-
-                            <!-- Category 3: Conveying and Automation -->
-                            <div class="category-products-pane" id="cat-conveying">
-                                <div class="products-square-grid grid-3-square">
-                                    <!-- 1. Flexible Spiral Conveyor -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Flexible Spiral Conveyor" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Flexible Spiral Conveyor</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- 2. Screw Conveyor -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/screw-conveyor/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/screw-conveyor-new.png" alt="Screw Conveyor" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Screw Conveyor</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <!-- 3. Rotary Airlock Valve -->
-                                    <div class="product-grid-card">
-                                        <a href="<?php echo $GLBHost; ?>products/rotary-air-lock-valve/" class="product-card-link">
-                                            <div class="product-img-box">
-                                                <img src="<?php echo $GLBHost; ?>images/products/rotary-airlock-valve-thumb.png" alt="Rotary Airlock Valve" class="img-responsive">
-                                            </div>
-                                            <div class="product-info-box">
-                                                <h3 class="product-name">Rotary Airlock Valve</h3>
-                                                <div class="product-action">
-                                                    <span>Explore Product</span>
-                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <div class="triad-right">
+                                    <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-target-img="#conveying-preview-img">
+                                        <span class="prod-text">Flexible Spiral Conveyor</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/screw-conveyor/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/screw-conveyor-new.png" data-target-img="#conveying-preview-img">
+                                        <span class="prod-text">Screw Conveyor</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="<?php echo $GLBHost; ?>products/rotary-air-lock-valve/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/rotary-airlock-valve-thumb.png" data-target-img="#conveying-preview-img">
+                                        <span class="prod-text">Rotary Airlock Valve</span>
+                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -798,16 +552,13 @@ include('./includes/include.inc.php');
                         autoplaySpeed: 1000
                     });
 
-                    // Interactive Category Showcase: hover or click switches products pane
-                    $('.category-box-item').on('mouseenter click', function (e) {
-                        var targetId = $(this).data('target');
-                        if (!targetId) return;
-
-                        $('.category-box-item').removeClass('active');
-                        $(this).addClass('active');
-
-                        $('.category-products-pane').removeClass('active');
-                        $(targetId).addClass('active');
+                    // Interactive dynamic machine preview image swap on product hover
+                    $('.triad-prod-item').on('mouseenter', function () {
+                        var preview = $(this).data('preview');
+                        var targetImg = $(this).data('target-img');
+                        if (preview && targetImg) {
+                            $(targetImg).attr('src', preview);
+                        }
                     });
                 });
             </script>
