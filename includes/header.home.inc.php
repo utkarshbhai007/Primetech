@@ -81,7 +81,7 @@
 <link href="<?php echo $GLBHost; ?>styles/jquery.bxslider.css" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/owl.carousel.css" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/countimator.wheel.css" rel="stylesheet">
-<link href="<?php echo $GLBHost; ?>styles/common.css" rel="stylesheet">
+<link href="<?php echo $GLBHost; ?>styles/common.css?v=2.1" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/home.css" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/responsive.css" rel="stylesheet">
 

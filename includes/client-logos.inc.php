@@ -85,24 +85,16 @@ $sliderLogos = [
                 <?php endforeach; ?>
             </div>
         </div>
-    </div>
 
-    <!-- Loop Slider of Remaining Valued Clients Under Logo Wall -->
-    <div class="client-slider-wrapper">
-        <div class="client-marquee">
-            <div class="client-marquee-track">
+        <!-- Infinite Loop Slider of Remaining 36 Valued Clients -->
+        <div class="client-slider-container">
+            <div class="owl-carousel client-owl-carousel">
                 <?php foreach ($sliderLogos as $client): ?>
-                    <div class="client-slider-card">
-                        <div class="client-card-inner">
-                            <img src="<?php echo $GLBHost . htmlspecialchars($client['src']); ?>" alt="<?php echo htmlspecialchars($client['name']); ?>" class="img-responsive" title="<?php echo htmlspecialchars($client['name']); ?>">
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <!-- Duplicate for continuous infinite marquee loop -->
-                <?php foreach ($sliderLogos as $client): ?>
-                    <div class="client-slider-card" aria-hidden="true">
-                        <div class="client-card-inner">
-                            <img src="<?php echo $GLBHost . htmlspecialchars($client['src']); ?>" alt="<?php echo htmlspecialchars($client['name']); ?>" class="img-responsive" title="<?php echo htmlspecialchars($client['name']); ?>">
+                    <div class="item">
+                        <div class="client-slider-card">
+                            <div class="client-card-inner">
+                                <img src="<?php echo $GLBHost . htmlspecialchars($client['src']); ?>" alt="<?php echo htmlspecialchars($client['name']); ?>" class="img-responsive" title="<?php echo htmlspecialchars($client['name']); ?>">
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -110,3 +102,96 @@ $sliderLogos = [
         </div>
     </div>
 </section>
+
+<style>
+/* Scoped styles to ensure instant correct rendering regardless of browser cache */
+.client-slider-container {
+    margin-top: 35px;
+    position: relative;
+    padding: 0;
+}
+.client-owl-carousel .item {
+    padding: 4px 2px;
+}
+.client-slider-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 14px !important;
+    height: 105px !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 14px 18px !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+.client-slider-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #ad171e !important;
+    box-shadow: 0 12px 24px rgba(173, 23, 30, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+.client-slider-card .client-card-inner {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.client-slider-card img {
+    max-width: 86% !important;
+    max-height: 56px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    filter: grayscale(15%) contrast(102%) !important;
+    transition: all 0.3s ease !important;
+    margin: auto !important;
+    display: block !important;
+}
+.client-slider-card:hover img {
+    filter: grayscale(0%) contrast(100%) !important;
+    transform: scale(1.08) !important;
+}
+
+/* Fallback while Owl loads to keep horizontal layout */
+.client-owl-carousel:not(.owl-loaded) {
+    display: flex !important;
+    overflow: hidden !important;
+    gap: 18px !important;
+    flex-wrap: nowrap !important;
+}
+.client-owl-carousel:not(.owl-loaded) .item {
+    flex: 0 0 175px !important;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+    function initClientSlider() {
+        if (typeof $.fn.owlCarousel === 'function') {
+            $('.client-owl-carousel').owlCarousel({
+                loop: true,
+                margin: 18,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplaySpeed: 700,
+                autoplayHoverPause: true,
+                smartSpeed: 700,
+                responsive: {
+                    0: { items: 2, margin: 10 },
+                    480: { items: 3, margin: 12 },
+                    768: { items: 4, margin: 14 },
+                    992: { items: 5, margin: 16 },
+                    1200: { items: 6, margin: 18 }
+                }
+            });
+        }
+    }
+    initClientSlider();
+});
+</script>
