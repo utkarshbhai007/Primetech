@@ -242,90 +242,124 @@ include('./includes/include.inc.php');
             <style>
                 .product-range-showcase {
                     display: flex;
-                    gap: 30px;
-                    align-items: stretch;
-                    margin-top: 15px;
+                    gap: 32px;
+                    align-items: flex-start;
+                    justify-content: center;
+                    margin-top: 25px;
                 }
                 .category-sidebar {
-                    flex: 0 0 290px;
-                    width: 290px;
-                    max-width: 290px;
-                }
-                .category-menu-box {
-                    background: #2b2b2b;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-                    border: 1px solid #3d3d3d;
-                    height: 100%;
+                    flex: 0 0 340px;
+                    width: 340px;
+                    max-width: 340px;
                     display: flex;
                     flex-direction: column;
+                    gap: 16px;
                 }
-                .category-item {
+                .category-box-item {
+                    background: #282a2d;
+                    border: 1px solid #3d4046;
+                    border-radius: 12px;
+                    padding: 18px 20px;
                     display: flex;
                     align-items: center;
-                    justify-content: space-between;
-                    padding: 24px 22px;
-                    color: #ffffff;
-                    font-size: 17px;
-                    font-weight: 600;
-                    font-family: 'Titillium Web', sans-serif;
+                    gap: 16px;
                     cursor: pointer;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-                    transition: all 0.25s ease;
-                    user-select: none;
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+                    transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
                     position: relative;
+                    user-select: none;
                 }
-                .category-item:last-child {
-                    border-bottom: none;
+                .category-box-item:hover,
+                .category-box-item.active {
+                    background: #ad171e;
+                    border-color: #ad171e;
+                    transform: translateX(4px);
+                    box-shadow: 0 10px 24px rgba(173, 23, 30, 0.25);
                 }
-                .category-item .cat-arrow {
-                    font-size: 18px;
+                .cat-box-media {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 10px;
+                    background: #ffffff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 6px;
+                    flex-shrink: 0;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                .cat-box-media img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+                .cat-box-content {
+                    flex: 1;
+                    min-width: 0;
+                }
+                .cat-box-title {
+                    font-size: 19px;
+                    font-weight: 700;
+                    color: #ffffff;
+                    margin: 0 0 4px 0;
+                    line-height: 1.25;
+                    font-family: 'Titillium Web', sans-serif;
+                }
+                .cat-box-count {
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: rgba(255, 255, 255, 0.7);
+                    text-transform: uppercase;
+                    letter-spacing: 0.6px;
+                }
+                .category-box-item.active .cat-box-count,
+                .category-box-item:hover .cat-box-count {
+                    color: rgba(255, 255, 255, 0.95);
+                }
+                .cat-box-arrow {
+                    font-size: 20px;
                     color: rgba(255, 255, 255, 0.55);
                     transition: transform 0.25s ease, color 0.25s ease;
+                    flex-shrink: 0;
                 }
-                .category-item:hover,
-                .category-item.active {
-                    background: #ad171e;
-                    color: #ffffff;
-                }
-                .category-item:hover .cat-arrow,
-                .category-item.active .cat-arrow {
+                .category-box-item:hover .cat-box-arrow,
+                .category-box-item.active .cat-box-arrow {
                     color: #ffffff;
                     transform: translateX(4px);
                 }
                 @media (min-width: 992px) {
-                    .category-item.active::after {
+                    .category-box-item.active::after {
                         content: '';
                         position: absolute;
-                        right: -8px;
+                        right: -10px;
                         top: 50%;
                         transform: translateY(-50%);
                         width: 0;
                         height: 0;
-                        border-top: 8px solid transparent;
-                        border-bottom: 8px solid transparent;
-                        border-left: 8px solid #ad171e;
+                        border-top: 10px solid transparent;
+                        border-bottom: 10px solid transparent;
+                        border-left: 10px solid #ad171e;
                         z-index: 5;
                     }
                 }
-                .products-display-panel {
-                    flex: 1 1 auto;
-                    min-width: 0;
+                .products-square-panel {
+                    flex: 1 1 820px;
+                    max-width: 860px;
                     background: #ffffff;
                     border: 1px solid #e2e8f0;
-                    border-radius: 12px;
+                    border-radius: 16px;
                     padding: 24px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
                 }
                 .category-products-pane {
                     display: none;
                 }
                 .category-products-pane.active {
                     display: block;
-                    animation: fadeInProductPane 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+                    animation: fadeInProductSquare 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
                 }
-                @keyframes fadeInProductPane {
+                @keyframes fadeInProductSquare {
                     from {
                         opacity: 0;
                         transform: translateY(8px);
@@ -335,20 +369,21 @@ include('./includes/include.inc.php');
                         transform: translateY(0);
                     }
                 }
-                .products-subgrid {
+                /* Square grids inside panel */
+                .products-square-grid {
                     display: grid;
                     gap: 20px;
                 }
-                .products-subgrid.grid-4 {
-                    grid-template-columns: repeat(4, 1fr);
+                .products-square-grid.grid-2x2 {
+                    grid-template-columns: repeat(2, 1fr);
                 }
-                .products-subgrid.grid-3 {
+                .products-square-grid.grid-3-square {
                     grid-template-columns: repeat(3, 1fr);
                 }
-                .product-range-showcase .product-grid-card {
+                .products-square-panel .product-grid-card {
                     background: #ffffff;
                     border: 1px solid #e2e8f0;
-                    border-radius: 10px;
+                    border-radius: 12px;
                     overflow: hidden;
                     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
                     transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -356,26 +391,26 @@ include('./includes/include.inc.php');
                     flex-direction: column;
                     height: 100%;
                 }
-                .product-range-showcase .product-card-link {
+                .products-square-panel .product-card-link {
                     display: flex;
                     flex-direction: column;
                     height: 100%;
                     text-decoration: none !important;
                     color: inherit;
                 }
-                .product-range-showcase .product-img-box {
+                .products-square-panel .product-img-box {
                     background: #f8fafc;
                     border-bottom: 1px solid #edf2f7;
                     height: 200px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 14px;
+                    padding: 16px;
                     position: relative;
                     overflow: hidden;
                     transition: background-color 0.3s ease;
                 }
-                .product-range-showcase .product-img-box img {
+                .products-square-panel .product-img-box img {
                     max-height: 165px;
                     max-width: 90%;
                     width: auto;
@@ -386,7 +421,7 @@ include('./includes/include.inc.php');
                     transition: transform 0.4s ease;
                     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.07));
                 }
-                .product-range-showcase .product-info-box {
+                .products-square-panel .product-info-box {
                     padding: 14px 16px 14px;
                     display: flex;
                     flex-direction: column;
@@ -394,11 +429,11 @@ include('./includes/include.inc.php');
                     flex-grow: 1;
                     background: #ffffff;
                 }
-                .product-range-showcase .product-name {
+                .products-square-panel .product-name {
                     font-size: 16px;
                     font-weight: 600;
                     color: #1a202c;
-                    margin: 0 0 10px 0;
+                    margin: 0 0 8px 0;
                     line-height: 1.35;
                     min-height: 44px;
                     display: -webkit-box;
@@ -408,7 +443,7 @@ include('./includes/include.inc.php');
                     font-family: 'Titillium Web', sans-serif;
                     transition: color 0.3s ease;
                 }
-                .product-range-showcase .product-action {
+                .products-square-panel .product-action {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
@@ -420,81 +455,75 @@ include('./includes/include.inc.php');
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                 }
-                .product-range-showcase .product-action i {
+                .products-square-panel .product-action i {
                     font-size: 12px;
                     transition: transform 0.3s ease;
                     color: #ad171e;
                 }
-                .product-range-showcase .product-grid-card:hover {
+                .products-square-panel .product-grid-card:hover {
                     transform: translateY(-5px);
                     box-shadow: 0 14px 28px rgba(173, 23, 30, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
                     border-color: #ad171e;
                 }
-                .product-range-showcase .product-grid-card:hover .product-img-box {
+                .products-square-panel .product-grid-card:hover .product-img-box {
                     background-color: #ffffff;
                 }
-                .product-range-showcase .product-grid-card:hover .product-img-box img {
+                .products-square-panel .product-grid-card:hover .product-img-box img {
                     transform: scale(1.06);
                 }
-                .product-range-showcase .product-grid-card:hover .product-name {
+                .products-square-panel .product-grid-card:hover .product-name {
                     color: #ad171e;
                 }
-                .product-range-showcase .product-grid-card:hover .product-action i {
+                .products-square-panel .product-grid-card:hover .product-action i {
                     transform: translateX(4px);
-                }
-                @media (max-width: 1199px) {
-                    .products-subgrid.grid-4 {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
                 }
                 @media (max-width: 991px) {
                     .product-range-showcase {
                         flex-direction: column;
+                        align-items: stretch;
                         gap: 20px;
                     }
                     .category-sidebar {
                         flex: none;
                         width: 100%;
                         max-width: 100%;
-                    }
-                    .category-menu-box {
                         flex-direction: row;
-                        border-radius: 8px;
+                        gap: 12px;
                     }
-                    .category-item {
+                    .category-box-item {
                         flex: 1;
-                        text-align: center;
-                        justify-content: center;
-                        padding: 14px 8px;
+                        padding: 12px 14px;
+                        gap: 10px;
+                    }
+                    .cat-box-media {
+                        width: 44px;
+                        height: 44px;
+                        padding: 4px;
+                    }
+                    .cat-box-title {
                         font-size: 15px;
-                        border-bottom: none;
-                        border-right: 1px solid rgba(255, 255, 255, 0.14);
                     }
-                    .category-item:last-child {
-                        border-right: none;
+                    .cat-box-count {
+                        font-size: 11px;
                     }
-                    .category-item .cat-arrow {
+                    .cat-box-arrow {
                         display: none;
                     }
-                    .products-display-panel {
-                        padding: 16px;
+                    .products-square-panel {
+                        max-width: 100%;
+                        padding: 18px;
                     }
                 }
                 @media (max-width: 767px) {
-                    .category-menu-box {
+                    .category-sidebar {
                         flex-direction: column;
+                        gap: 10px;
                     }
-                    .category-item {
-                        border-right: none;
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-                        padding: 14px 18px;
-                        justify-content: space-between;
+                    .cat-box-arrow {
+                        display: block;
                     }
-                    .category-item .cat-arrow {
-                        display: inline-block;
-                    }
-                    .products-subgrid.grid-4,
-                    .products-subgrid.grid-3 {
+                    .products-square-grid.grid-2x2,
+                    .products-square-grid.grid-3-square {
                         grid-template-columns: 1fr;
                     }
                 }
@@ -508,29 +537,50 @@ include('./includes/include.inc.php');
                     </p>
                     <!-- Interactive Category Showcase -->
                     <div class="product-range-showcase">
-                        <!-- Left Side: Category Menu Box -->
+                        <!-- Left Side: 3 Separate Category Boxes -->
                         <div class="category-sidebar">
-                            <div class="category-menu-box">
-                                <div class="category-item active" data-target="#cat-mixers">
-                                    <span class="cat-title">Mixers</span>
-                                    <i class="fa fa-angle-right cat-arrow" aria-hidden="true"></i>
+                            <!-- Box 1: Mixers -->
+                            <div class="category-box-item active" data-target="#cat-mixers">
+                                <div class="cat-box-media">
+                                    <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixers">
                                 </div>
-                                <div class="category-item" data-target="#cat-size-reduction">
-                                    <span class="cat-title">Size Reduction</span>
-                                    <i class="fa fa-angle-right cat-arrow" aria-hidden="true"></i>
+                                <div class="cat-box-content">
+                                    <h3 class="cat-box-title">Mixers</h3>
+                                    <span class="cat-box-count">4 Products</span>
                                 </div>
-                                <div class="category-item" data-target="#cat-conveying">
-                                    <span class="cat-title">Conveying and Automation</span>
-                                    <i class="fa fa-angle-right cat-arrow" aria-hidden="true"></i>
+                                <i class="fa fa-angle-right cat-box-arrow" aria-hidden="true"></i>
+                            </div>
+
+                            <!-- Box 2: Size Reduction -->
+                            <div class="category-box-item" data-target="#cat-size-reduction">
+                                <div class="cat-box-media">
+                                    <img src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction">
                                 </div>
+                                <div class="cat-box-content">
+                                    <h3 class="cat-box-title">Size Reduction</h3>
+                                    <span class="cat-box-count">3 Products</span>
+                                </div>
+                                <i class="fa fa-angle-right cat-box-arrow" aria-hidden="true"></i>
+                            </div>
+
+                            <!-- Box 3: Conveying and Automation -->
+                            <div class="category-box-item" data-target="#cat-conveying">
+                                <div class="cat-box-media">
+                                    <img src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation">
+                                </div>
+                                <div class="cat-box-content">
+                                    <h3 class="cat-box-title">Conveying &amp; Automation</h3>
+                                    <span class="cat-box-count">3 Products</span>
+                                </div>
+                                <i class="fa fa-angle-right cat-box-arrow" aria-hidden="true"></i>
                             </div>
                         </div>
 
-                        <!-- Right Side: Products Display Box -->
-                        <div class="products-display-panel">
-                            <!-- Category 1: Mixers -->
+                        <!-- Right Side: Products in Square Box -->
+                        <div class="products-square-panel">
+                            <!-- Category 1: Mixers (2x2 Square Grid) -->
                             <div class="category-products-pane active" id="cat-mixers">
-                                <div class="products-subgrid grid-4">
+                                <div class="products-square-grid grid-2x2">
                                     <!-- 1. High Speed Heater Cooler Mixer -->
                                     <div class="product-grid-card">
                                         <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="product-card-link">
@@ -599,7 +649,7 @@ include('./includes/include.inc.php');
 
                             <!-- Category 2: Size Reduction -->
                             <div class="category-products-pane" id="cat-size-reduction">
-                                <div class="products-subgrid grid-3">
+                                <div class="products-square-grid grid-3-square">
                                     <!-- 1. High Speed Pulverizer -->
                                     <div class="product-grid-card">
                                         <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="product-card-link">
@@ -652,7 +702,7 @@ include('./includes/include.inc.php');
 
                             <!-- Category 3: Conveying and Automation -->
                             <div class="category-products-pane" id="cat-conveying">
-                                <div class="products-subgrid grid-3">
+                                <div class="products-square-grid grid-3-square">
                                     <!-- 1. Flexible Spiral Conveyor -->
                                     <div class="product-grid-card">
                                         <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="product-card-link">
@@ -749,11 +799,11 @@ include('./includes/include.inc.php');
                     });
 
                     // Interactive Category Showcase: hover or click switches products pane
-                    $('.category-item').on('mouseenter click', function (e) {
+                    $('.category-box-item').on('mouseenter click', function (e) {
                         var targetId = $(this).data('target');
                         if (!targetId) return;
 
-                        $('.category-item').removeClass('active');
+                        $('.category-box-item').removeClass('active');
                         $(this).addClass('active');
 
                         $('.category-products-pane').removeClass('active');
