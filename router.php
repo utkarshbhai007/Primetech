@@ -22,10 +22,11 @@ if (preg_match('#^captcha/([^/]+)$#i', $path, $matches)) {
 // Rewrite rules from .htaccess
 $routes = [
     'the-company/about-us' => 'page-about-us.php',
-    'the-company/why-primetech' => 'page-why-primetech.php',
-    'the-company/quality-achievements' => 'page-quality-achievements.php',
+    'the-company/why-primetech' => 'page-about-us.php',
+    'the-company/quality-achievements' => 'page-about-us.php',
     'about-us' => 'page-about-us.php',
-    'why-primetech' => 'page-why-primetech.php',
+    'why-primetech' => 'page-about-us.php',
+    'quality-achievements' => 'page-about-us.php',
     'products/mixer/high-speed-mixer' => 'page-high-speed-mixer.php',
     'products/mixer/cooler-mixer' => 'page-cooler-mixer.php',
     'products/high-speed-heater-cooler-mixer' => 'page-high-speed-heater-cooler-mixer.php',

@@ -72,10 +72,11 @@ RewriteEngine on
 # Local Rewrite Rules
 RewriteRule ^captcha/([^/]+) generatecaptcha.php?pg=$1 [NC]
 RewriteRule ^the-company/about-us/ page-about-us.php [NC]
-RewriteRule ^the-company/why-primetech/ page-why-primetech.php [NC]
-RewriteRule ^the-company/quality-achievements/ page-quality-achievements.php [NC]
+RewriteRule ^the-company/why-primetech/ page-about-us.php [NC]
+RewriteRule ^the-company/quality-achievements/ page-about-us.php [NC]
 RewriteRule ^about-us/ page-about-us.php [NC]
-RewriteRule ^why-primetech/ page-why-primetech.php [NC]
+RewriteRule ^why-primetech/ page-about-us.php [NC]
+RewriteRule ^quality-achievements/ page-about-us.php [NC]
 
 RewriteRule ^products/mixer/high-speed-mixer/ page-high-speed-mixer.php [NC]
 RewriteRule ^products/mixer/cooler-mixer/ page-cooler-mixer.php [NC]
