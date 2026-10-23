@@ -132,19 +132,54 @@ include('./includes/include.inc.php');
                 margin: 0;
             }
 
+            /* Grid Equal Height System */
+            .equal-height-grid {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+            .equal-height-grid > [class*='col-'] {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                margin-bottom: 30px;
+            }
+            .equal-height-grid .product-card-modern {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1 1 auto;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                height: 100%;
+                margin-bottom: 0;
+            }
+
             /* Product Card Modern Design */
             .product-card-modern {
                 background: #ffffff;
                 border: 1px solid #e2e8f0;
                 border-radius: 16px;
-                padding: 20px;
-                margin-bottom: 30px;
+                padding: 22px 20px 20px;
                 box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
                 transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: calc(100% - 30px);
                 position: relative;
             }
             .product-card-modern:hover {
@@ -153,37 +188,80 @@ include('./includes/include.inc.php');
                 border-color: rgba(173, 23, 30, 0.35);
             }
             
-            /* Card Image Wrapper */
+            /* Card Image Wrapper - Bigger, Crisp, Visible Machine Photos */
             .prod-card-media {
                 width: 100%;
-                height: 220px;
+                height: 260px;
                 background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
                 border-radius: 12px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
                 align-items: center;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
                 justify-content: center;
-                padding: 16px;
+                padding: 10px;
                 margin-bottom: 18px;
                 overflow: hidden;
                 position: relative;
             }
+            .col-md-4 .prod-card-media,
+            .col-md-6 .prod-card-media {
+                height: 280px;
+            }
+            .prod-card-media a {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+            }
             .prod-card-media img {
-                max-height: 185px;
-                max-width: 90%;
+                max-height: 235px;
+                max-width: 95%;
                 width: auto;
                 height: auto;
                 object-fit: contain;
                 transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-                filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
+                filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.10));
+            }
+            .col-md-4 .prod-card-media img,
+            .col-md-6 .prod-card-media img {
+                max-height: 255px;
             }
             .product-card-modern:hover .prod-card-media img {
-                transform: scale(1.06);
+                transform: scale(1.08);
             }
 
-            /* Card Content */
+            /* Card Content - Aligned Heights */
             .prod-card-info {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
                 flex: 1;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
                 flex-direction: column;
             }
             .prod-badge {
@@ -194,11 +272,11 @@ include('./includes/include.inc.php');
                 color: #ad171e;
                 background: rgba(173, 23, 30, 0.08);
                 border: 1px solid rgba(173, 23, 30, 0.18);
-                padding: 3px 10px;
+                padding: 4px 11px;
                 border-radius: 10px;
                 text-transform: uppercase;
                 letter-spacing: 0.4px;
-                margin-bottom: 10px;
+                margin-bottom: 12px;
             }
             .prod-card-title {
                 font-size: 18px;
@@ -207,7 +285,15 @@ include('./includes/include.inc.php');
                 margin: 0 0 10px;
                 font-family: 'Titillium Web', sans-serif;
                 line-height: 1.3;
-                min-height: 48px;
+                min-height: 52px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: start;
+                -webkit-align-items: flex-start;
+                -ms-flex-align: start;
+                align-items: flex-start;
                 transition: color 0.25s ease;
             }
             .product-card-modern:hover .prod-card-title {
@@ -215,19 +301,31 @@ include('./includes/include.inc.php');
             }
             .prod-card-desc {
                 font-size: 13.5px;
-                line-height: 1.55;
+                line-height: 1.6;
                 color: #4a5568;
-                margin: 0 0 20px;
-                min-height: 42px;
+                margin: 0 0 22px;
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
                 flex: 1;
             }
 
-            /* Card Action Button */
+            /* Card Action Button - Locked to Bottom */
             .prod-card-btn {
+                margin-top: auto;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
                 align-items: center;
+                -webkit-box-pack: justify;
+                -webkit-justify-content: space-between;
+                -ms-flex-pack: justify;
                 justify-content: space-between;
-                padding: 11px 16px;
+                padding: 12px 18px;
                 background: #f8fafc;
                 border: 1px solid #e2e8f0;
                 border-radius: 10px;
@@ -352,7 +450,7 @@ include('./includes/include.inc.php');
                             <h3>Industrial Mixers</h3>
                             <p>High-speed compounding, rapid thermal cooling, homogenization, and laboratory testing mixers.</p>
                         </div>
-                        <div class="row">
+                        <div class="row equal-height-grid">
                             <!-- Mixer 1: High Speed Heater Cooler Mixer -->
                             <div class="col-xs-12 col-sm-6 col-md-3">
                                 <div class="product-card-modern">
@@ -452,7 +550,7 @@ include('./includes/include.inc.php');
                             <h3>Size Reduction Equipment</h3>
                             <p>Ultrafine pulverizing, scrap granulating, and high-torque shredding machinery.</p>
                         </div>
-                        <div class="row">
+                        <div class="row equal-height-grid">
                             <!-- Size Reduction 1: Pulverizer -->
                             <div class="col-xs-12 col-sm-6 col-md-4">
                                 <div class="product-card-modern">
@@ -531,7 +629,7 @@ include('./includes/include.inc.php');
                             <p>Automated bulk powder transfer, dust-free conveying, precision screening, and complete turnkey mixing plant automation.</p>
                         </div>
                         
-                        <div class="row">
+                        <div class="row equal-height-grid">
                             <!-- Conveying 1: Flexible Spiral Conveyor -->
                             <div class="col-xs-12 col-sm-6 col-md-4">
                                 <div class="product-card-modern">
@@ -599,7 +697,7 @@ include('./includes/include.inc.php');
                             </div>
 
                             <!-- Special Product 4: Gyro Vibrating Screen -->
-                            <div class="col-xs-12 col-sm-6 col-md-6 card-highlight-wrap">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="product-card-modern special-feature">
                                     <div class="prod-card-media">
                                         <a href="<?php echo $GLBHost; ?>products/gyro-vibrating-screen/">
@@ -621,7 +719,7 @@ include('./includes/include.inc.php');
                             </div>
 
                             <!-- Special Product 5: Mixing Plant Automation -->
-                            <div class="col-xs-12 col-sm-6 col-md-6 card-highlight-wrap">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="product-card-modern special-feature">
                                     <div class="prod-card-media">
                                         <a href="<?php echo $GLBHost; ?>products/mixing-plant-automation/">
