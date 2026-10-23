@@ -238,172 +238,469 @@ include('./includes/include.inc.php');
                 </div>
             </section>
 
+            <!-- Styles for Product Range Interactive Category Showcase -->
+            <style>
+                .product-range-showcase {
+                    display: flex;
+                    gap: 30px;
+                    align-items: stretch;
+                    margin-top: 15px;
+                }
+                .category-sidebar {
+                    flex: 0 0 290px;
+                    width: 290px;
+                    max-width: 290px;
+                }
+                .category-menu-box {
+                    background: #2b2b2b;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+                    border: 1px solid #3d3d3d;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .category-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 24px 22px;
+                    color: #ffffff;
+                    font-size: 17px;
+                    font-weight: 600;
+                    font-family: 'Titillium Web', sans-serif;
+                    cursor: pointer;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+                    transition: all 0.25s ease;
+                    user-select: none;
+                    position: relative;
+                }
+                .category-item:last-child {
+                    border-bottom: none;
+                }
+                .category-item .cat-arrow {
+                    font-size: 18px;
+                    color: rgba(255, 255, 255, 0.55);
+                    transition: transform 0.25s ease, color 0.25s ease;
+                }
+                .category-item:hover,
+                .category-item.active {
+                    background: #ad171e;
+                    color: #ffffff;
+                }
+                .category-item:hover .cat-arrow,
+                .category-item.active .cat-arrow {
+                    color: #ffffff;
+                    transform: translateX(4px);
+                }
+                @media (min-width: 992px) {
+                    .category-item.active::after {
+                        content: '';
+                        position: absolute;
+                        right: -8px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid transparent;
+                        border-bottom: 8px solid transparent;
+                        border-left: 8px solid #ad171e;
+                        z-index: 5;
+                    }
+                }
+                .products-display-panel {
+                    flex: 1 1 auto;
+                    min-width: 0;
+                    background: #ffffff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 12px;
+                    padding: 24px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+                }
+                .category-products-pane {
+                    display: none;
+                }
+                .category-products-pane.active {
+                    display: block;
+                    animation: fadeInProductPane 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+                }
+                @keyframes fadeInProductPane {
+                    from {
+                        opacity: 0;
+                        transform: translateY(8px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                .products-subgrid {
+                    display: grid;
+                    gap: 20px;
+                }
+                .products-subgrid.grid-4 {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+                .products-subgrid.grid-3 {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+                .product-range-showcase .product-grid-card {
+                    background: #ffffff;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+                    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                }
+                .product-range-showcase .product-card-link {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    text-decoration: none !important;
+                    color: inherit;
+                }
+                .product-range-showcase .product-img-box {
+                    background: #f8fafc;
+                    border-bottom: 1px solid #edf2f7;
+                    height: 200px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 14px;
+                    position: relative;
+                    overflow: hidden;
+                    transition: background-color 0.3s ease;
+                }
+                .product-range-showcase .product-img-box img {
+                    max-height: 165px;
+                    max-width: 90%;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    margin: 0 auto;
+                    display: block;
+                    transition: transform 0.4s ease;
+                    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.07));
+                }
+                .product-range-showcase .product-info-box {
+                    padding: 14px 16px 14px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    flex-grow: 1;
+                    background: #ffffff;
+                }
+                .product-range-showcase .product-name {
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #1a202c;
+                    margin: 0 0 10px 0;
+                    line-height: 1.35;
+                    min-height: 44px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-family: 'Titillium Web', sans-serif;
+                    transition: color 0.3s ease;
+                }
+                .product-range-showcase .product-action {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-top: 10px;
+                    border-top: 1px solid #edf2f7;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #ad171e;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                .product-range-showcase .product-action i {
+                    font-size: 12px;
+                    transition: transform 0.3s ease;
+                    color: #ad171e;
+                }
+                .product-range-showcase .product-grid-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 14px 28px rgba(173, 23, 30, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+                    border-color: #ad171e;
+                }
+                .product-range-showcase .product-grid-card:hover .product-img-box {
+                    background-color: #ffffff;
+                }
+                .product-range-showcase .product-grid-card:hover .product-img-box img {
+                    transform: scale(1.06);
+                }
+                .product-range-showcase .product-grid-card:hover .product-name {
+                    color: #ad171e;
+                }
+                .product-range-showcase .product-grid-card:hover .product-action i {
+                    transform: translateX(4px);
+                }
+                @media (max-width: 1199px) {
+                    .products-subgrid.grid-4 {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+                @media (max-width: 991px) {
+                    .product-range-showcase {
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                    .category-sidebar {
+                        flex: none;
+                        width: 100%;
+                        max-width: 100%;
+                    }
+                    .category-menu-box {
+                        flex-direction: row;
+                        border-radius: 8px;
+                    }
+                    .category-item {
+                        flex: 1;
+                        text-align: center;
+                        justify-content: center;
+                        padding: 14px 8px;
+                        font-size: 15px;
+                        border-bottom: none;
+                        border-right: 1px solid rgba(255, 255, 255, 0.14);
+                    }
+                    .category-item:last-child {
+                        border-right: none;
+                    }
+                    .category-item .cat-arrow {
+                        display: none;
+                    }
+                    .products-display-panel {
+                        padding: 16px;
+                    }
+                }
+                @media (max-width: 767px) {
+                    .category-menu-box {
+                        flex-direction: column;
+                    }
+                    .category-item {
+                        border-right: none;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+                        padding: 14px 18px;
+                        justify-content: space-between;
+                    }
+                    .category-item .cat-arrow {
+                        display: inline-block;
+                    }
+                    .products-subgrid.grid-4,
+                    .products-subgrid.grid-3 {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+
             <section id="product-range">
                 <div class="container">
                     <h2 class="title"><span>Product </span>Range</h2>
                     <p class="subtitle text-center" style="font-size: 16px; color: #666; margin: -10px auto 35px; max-width: 750px;">
                         Engineering excellence in high-speed industrial mixing, size reduction solutions, and automated bulk conveying systems.
                     </p>
-                    <div class="row product-grid-row">
-                        <!-- 1. High Speed Heater Cooler Mixer -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="High Speed Heater Cooler Mixer" class="img-responsive">
-                                    </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">High Speed Heater Cooler Mixer</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
+                    <!-- Interactive Category Showcase -->
+                    <div class="product-range-showcase">
+                        <!-- Left Side: Category Menu Box -->
+                        <div class="category-sidebar">
+                            <div class="category-menu-box">
+                                <div class="category-item active" data-target="#cat-mixers">
+                                    <span class="cat-title">Mixers</span>
+                                    <i class="fa fa-angle-right cat-arrow" aria-hidden="true"></i>
+                                </div>
+                                <div class="category-item" data-target="#cat-size-reduction">
+                                    <span class="cat-title">Size Reduction</span>
+                                    <i class="fa fa-angle-right cat-arrow" aria-hidden="true"></i>
+                                </div>
+                                <div class="category-item" data-target="#cat-conveying">
+                                    <span class="cat-title">Conveying and Automation</span>
+                                    <i class="fa fa-angle-right cat-arrow" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- 2. High Speed Mixer (No file in folder, kept as is) -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/high-speed-mixer/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/high-speed-mixer-thumb.png" alt="High Speed Mixer" class="img-responsive">
+                        <!-- Right Side: Products Display Box -->
+                        <div class="products-display-panel">
+                            <!-- Category 1: Mixers -->
+                            <div class="category-products-pane active" id="cat-mixers">
+                                <div class="products-subgrid grid-4">
+                                    <!-- 1. High Speed Heater Cooler Mixer -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="High Speed Heater Cooler Mixer" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">High Speed Heater Cooler Mixer</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">High Speed Mixer</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- 3. Cooler Mixer -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" alt="Cooler Mixer" class="img-responsive">
+                                    <!-- 2. Horizontal Cooler -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" alt="Horizontal Cooler" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Horizontal Cooler</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">Cooler Mixer</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- 4. Laboratory Mixer -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/lab-mixer/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-new.png" alt="Laboratory Mixer" class="img-responsive">
+                                    <!-- 3. High Speed Mixer -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/high-speed-mixer/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/high-speed-mixer-thumb.png" alt="High Speed Mixer" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">High Speed Mixer</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">Laboratory Mixer</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- 5. Pulverizer -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="High Speed Pulverizer" class="img-responsive">
+                                    <!-- 4. Laboratory Mixer -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/lab-mixer/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-new.png" alt="Laboratory Mixer" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Laboratory Mixer</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">High Speed Pulverizer</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 6. Heavy Duty Shredder -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/shredder/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/shredder-new.png" alt="Heavy Duty Shredder" class="img-responsive">
+                            <!-- Category 2: Size Reduction -->
+                            <div class="category-products-pane" id="cat-size-reduction">
+                                <div class="products-subgrid grid-3">
+                                    <!-- 1. High Speed Pulverizer -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="High Speed Pulverizer" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">High Speed Pulverizer</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">Heavy Duty Shredder</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
+
+                                    <!-- 2. Plastic Granulator -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/granulators/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/granulator-new.png" alt="Plastic Granulator" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Plastic Granulator</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+
+                                    <!-- 3. Heavy Duty Shredder -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/shredder/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/shredder-new.png" alt="Heavy Duty Shredder" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Heavy Duty Shredder</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 7. Granulator -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/granulators/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/granulator-new.png" alt="Plastic Granulator" class="img-responsive">
+                            <!-- Category 3: Conveying and Automation -->
+                            <div class="category-products-pane" id="cat-conveying">
+                                <div class="products-subgrid grid-3">
+                                    <!-- 1. Flexible Spiral Conveyor -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Flexible Spiral Conveyor" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Flexible Spiral Conveyor</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">Plastic Granulator</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- 8. Flexible Spiral Conveyor -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Flexible Spiral Conveyor" class="img-responsive">
+                                    <!-- 2. Screw Conveyor -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/screw-conveyor/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/screw-conveyor-new.png" alt="Screw Conveyor" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Screw Conveyor</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">Flexible Spiral Conveyor</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- 9. Screw Conveyor -->
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="product-grid-card">
-                                <a href="<?php echo $GLBHost; ?>products/screw-conveyor/" class="product-card-link">
-                                    <div class="product-img-box">
-                                        <img src="<?php echo $GLBHost; ?>images/products/screw-conveyor-new.png" alt="Screw Conveyor" class="img-responsive">
+                                    <!-- 3. Rotary Airlock Valve -->
+                                    <div class="product-grid-card">
+                                        <a href="<?php echo $GLBHost; ?>products/rotary-air-lock-valve/" class="product-card-link">
+                                            <div class="product-img-box">
+                                                <img src="<?php echo $GLBHost; ?>images/products/rotary-airlock-valve-thumb.png" alt="Rotary Airlock Valve" class="img-responsive">
+                                            </div>
+                                            <div class="product-info-box">
+                                                <h3 class="product-name">Rotary Airlock Valve</h3>
+                                                <div class="product-action">
+                                                    <span>Explore Product</span>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="product-info-box">
-                                        <h3 class="product-name">Screw Conveyor</h3>
-                                        <div class="product-action">
-                                            <span>Explore Product</span>
-                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -449,6 +746,18 @@ include('./includes/include.inc.php');
                         autoplay: true,
                         autoplayTimeout: 6000,
                         autoplaySpeed: 1000
+                    });
+
+                    // Interactive Category Showcase: hover or click switches products pane
+                    $('.category-item').on('mouseenter click', function (e) {
+                        var targetId = $(this).data('target');
+                        if (!targetId) return;
+
+                        $('.category-item').removeClass('active');
+                        $(this).addClass('active');
+
+                        $('.category-products-pane').removeClass('active');
+                        $(targetId).addClass('active');
                     });
                 });
             </script>
