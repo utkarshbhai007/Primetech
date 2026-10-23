@@ -1417,17 +1417,17 @@ header #top #top-right li a .icon {
     transition: all 0.3s ease;
 }
 .triad-cat-title {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
     color: #1a202c;
-    margin: 0 0 6px 0;
+    margin: 0;
     font-family: 'Titillium Web', sans-serif;
-    line-height: 1.2;
+    line-height: 1.25;
     transition: font-size 0.35s ease;
 }
 .category-triad-card:hover .triad-cat-title,
 .category-triad-card.active-box .triad-cat-title {
-    font-size: 20px;
+    font-size: 18px;
 }
 .triad-badge {
     display: inline-block;

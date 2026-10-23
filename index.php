@@ -289,17 +289,17 @@ include('./includes/include.inc.php');
                     transition: all 0.3s ease;
                 }
                 .triad-cat-title {
-                    font-size: 26px;
+                    font-size: 24px;
                     font-weight: 700;
                     color: #1a202c;
-                    margin: 0 0 6px 0;
+                    margin: 0;
                     font-family: 'Titillium Web', sans-serif;
-                    line-height: 1.2;
+                    line-height: 1.25;
                     transition: font-size 0.35s ease;
                 }
                 .category-triad-card:hover .triad-cat-title,
                 .category-triad-card.active-box .triad-cat-title {
-                    font-size: 20px;
+                    font-size: 18px;
                 }
                 .triad-badge {
                     display: inline-block;
@@ -492,7 +492,6 @@ include('./includes/include.inc.php');
                                 <div class="triad-left">
                                     <div class="triad-left-header">
                                         <h3 class="triad-cat-title">Mixers</h3>
-                                        <span class="triad-badge">4 Machines</span>
                                     </div>
                                     <div class="triad-media">
                                         <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixers" class="img-responsive">
@@ -526,7 +525,6 @@ include('./includes/include.inc.php');
                                 <div class="triad-left">
                                     <div class="triad-left-header">
                                         <h3 class="triad-cat-title">Size Reduction</h3>
-                                        <span class="triad-badge">3 Machines</span>
                                     </div>
                                     <div class="triad-media">
                                         <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
@@ -555,8 +553,7 @@ include('./includes/include.inc.php');
                             <div class="category-triad-card" id="triad-conveying">
                                 <div class="triad-left">
                                     <div class="triad-left-header">
-                                        <h3 class="triad-cat-title">Conveying &amp; Auto</h3>
-                                        <span class="triad-badge">3 Machines</span>
+                                        <h3 class="triad-cat-title">Conveying &amp; Automation</h3>
                                     </div>
                                     <div class="triad-media">
                                         <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
