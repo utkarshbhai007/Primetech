@@ -238,7 +238,7 @@ include('./includes/include.inc.php');
                 </div>
             </section>
 
-            <!-- Styles for Product Range 3-Box Category Showcase (Exact Sketch Layout) -->
+            <!-- Styles for Product Range 3-Box Category Showcase (Hover-Reveal Animation) -->
             <style>
                 .product-category-triad {
                     margin-top: 25px;
@@ -246,43 +246,60 @@ include('./includes/include.inc.php');
                 .category-triad-card {
                     background: #ffffff;
                     border: 1px solid #e2e8f0;
-                    border-radius: 14px;
+                    border-radius: 16px;
                     overflow: hidden;
                     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-                    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
                     display: flex;
                     flex-direction: row;
-                    min-height: 380px;
+                    height: 420px;
                     margin-bottom: 30px;
+                    position: relative;
+                    cursor: pointer;
                 }
-                .category-triad-card:hover {
+                .category-triad-card:hover,
+                .category-triad-card.active-box {
                     transform: translateY(-6px);
-                    box-shadow: 0 16px 36px rgba(173, 23, 30, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 18px 40px rgba(173, 23, 30, 0.14), 0 4px 12px rgba(0, 0, 0, 0.05);
                     border-color: #ad171e;
                 }
-                /* Left side of box: Category Presentation */
+                /* Left side of box: Category Presentation (Full box initially, slides to 44% on hover) */
                 .triad-left {
-                    width: 44%;
+                    width: 100%;
                     background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
-                    border-right: 1px solid #e2e8f0;
-                    padding: 24px 16px;
+                    padding: 24px 20px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-between;
                     text-align: center;
                     position: relative;
+                    border-right: 1px solid transparent;
+                    transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease, padding 0.4s ease;
+                    flex-shrink: 0;
+                }
+                .category-triad-card:hover .triad-left,
+                .category-triad-card.active-box .triad-left {
+                    width: 44%;
+                    border-right-color: #e2e8f0;
+                    padding: 20px 14px;
                 }
                 .triad-left-header {
                     width: 100%;
+                    transition: all 0.3s ease;
                 }
                 .triad-cat-title {
-                    font-size: 22px;
+                    font-size: 26px;
                     font-weight: 700;
                     color: #1a202c;
                     margin: 0 0 6px 0;
                     font-family: 'Titillium Web', sans-serif;
                     line-height: 1.2;
+                    transition: font-size 0.35s ease;
+                }
+                .category-triad-card:hover .triad-cat-title,
+                .category-triad-card.active-box .triad-cat-title {
+                    font-size: 20px;
                 }
                 .triad-badge {
                     display: inline-block;
@@ -291,47 +308,84 @@ include('./includes/include.inc.php');
                     color: #ad171e;
                     background: rgba(173, 23, 30, 0.08);
                     border: 1px solid rgba(173, 23, 30, 0.2);
-                    padding: 3px 10px;
+                    padding: 3px 12px;
                     border-radius: 12px;
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                 }
                 .triad-media {
                     width: 100%;
-                    height: 180px;
+                    height: 220px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     padding: 10px;
                     position: relative;
+                    transition: height 0.4s ease;
+                }
+                .category-triad-card:hover .triad-media,
+                .category-triad-card.active-box .triad-media {
+                    height: 180px;
                 }
                 .triad-media img {
-                    max-height: 160px;
-                    max-width: 100%;
+                    max-height: 190px;
+                    max-width: 90%;
+                    width: auto;
+                    height: auto;
                     object-fit: contain;
-                    transition: transform 0.35s ease, opacity 0.25s ease;
-                    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
+                    transition: transform 0.4s ease, max-height 0.4s ease, opacity 0.25s ease;
+                    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.08));
                 }
-                .category-triad-card:hover .triad-media img {
-                    transform: scale(1.06);
+                .category-triad-card:hover .triad-media img,
+                .category-triad-card.active-box .triad-media img {
+                    max-height: 160px;
+                    transform: scale(1.05);
                 }
-                .triad-cat-link {
-                    font-size: 12px;
+                .triad-hover-prompt {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 13px;
                     font-weight: 700;
                     color: #ad171e;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    text-decoration: none !important;
+                    background: #ffffff;
+                    border: 1px solid rgba(173, 23, 30, 0.25);
+                    padding: 8px 18px;
+                    border-radius: 20px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                    transition: all 0.3s ease;
+                    letter-spacing: 0.3px;
                 }
-                /* Right side of box: Products stack */
+                .category-triad-card:hover .triad-hover-prompt,
+                .category-triad-card.active-box .triad-hover-prompt {
+                    font-size: 11px;
+                    padding: 5px 10px;
+                    opacity: 0.9;
+                }
+
+                /* Right side of box: Products stack (Slides out smoothly when hovered) */
                 .triad-right {
-                    width: 56%;
-                    padding: 20px 16px;
+                    width: 0%;
+                    opacity: 0;
+                    overflow: hidden;
+                    padding: 20px 0;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     gap: 10px;
                     background: #ffffff;
+                    pointer-events: none;
+                    transform: translateX(25px);
+                    transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease, transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), padding 0.4s ease;
+                }
+                .category-triad-card:hover .triad-right,
+                .category-triad-card.active-box .triad-right {
+                    width: 56%;
+                    opacity: 1;
+                    overflow: visible;
+                    padding: 20px 16px;
+                    pointer-events: auto;
+                    transform: translateX(0);
                 }
                 .triad-prod-item {
                     display: flex;
@@ -350,11 +404,17 @@ include('./includes/include.inc.php');
                     font-family: 'Titillium Web', sans-serif;
                     transition: all 0.25s ease;
                     position: relative;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 .triad-prod-item .prod-text {
                     flex: 1;
                     min-width: 0;
                     color: inherit;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
                 .triad-prod-item .prod-arrow {
                     font-size: 14px;
@@ -377,8 +437,15 @@ include('./includes/include.inc.php');
                     transform: translateX(3px);
                 }
                 @media (max-width: 1199px) {
+                    .category-triad-card {
+                        height: 400px;
+                    }
                     .triad-cat-title {
-                        font-size: 20px;
+                        font-size: 22px;
+                    }
+                    .category-triad-card:hover .triad-cat-title,
+                    .category-triad-card.active-box .triad-cat-title {
+                        font-size: 18px;
                     }
                     .triad-prod-item {
                         padding: 10px 12px;
@@ -387,7 +454,8 @@ include('./includes/include.inc.php');
                 }
                 @media (max-width: 991px) {
                     .category-triad-card {
-                        min-height: auto;
+                        height: auto;
+                        min-height: 360px;
                     }
                 }
                 @media (max-width: 480px) {
@@ -395,12 +463,16 @@ include('./includes/include.inc.php');
                         flex-direction: column;
                     }
                     .triad-left {
-                        width: 100%;
-                        border-right: none;
+                        width: 100% !important;
+                        border-right: none !important;
                         border-bottom: 1px solid #e2e8f0;
                     }
                     .triad-right {
-                        width: 100%;
+                        width: 100% !important;
+                        padding: 16px !important;
+                        opacity: 1 !important;
+                        transform: none !important;
+                        pointer-events: auto !important;
                     }
                 }
             </style>
@@ -412,7 +484,7 @@ include('./includes/include.inc.php');
                         Engineering excellence in high-speed industrial mixing, size reduction solutions, and automated bulk conveying systems.
                     </p>
 
-                    <!-- 3-Box Category Triad (Mixers, Size Reduction, Conveying & Automation) -->
+                    <!-- 3-Box Category Triad (Hover to Reveal Products) -->
                     <div class="row product-category-triad">
                         <!-- Box 1: Mixers -->
                         <div class="col-xs-12 col-md-4">
@@ -425,7 +497,7 @@ include('./includes/include.inc.php');
                                     <div class="triad-media">
                                         <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixers" class="img-responsive">
                                     </div>
-                                    <a href="<?php echo $GLBHost; ?>products/" class="triad-cat-link">Explore Mixers <i class="fa fa-angle-right"></i></a>
+                                    <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
                                 <div class="triad-right">
                                     <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-target-img="#mixers-preview-img">
@@ -459,7 +531,7 @@ include('./includes/include.inc.php');
                                     <div class="triad-media">
                                         <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
                                     </div>
-                                    <a href="<?php echo $GLBHost; ?>products/" class="triad-cat-link">Explore Machines <i class="fa fa-angle-right"></i></a>
+                                    <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
                                 <div class="triad-right">
                                     <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-target-img="#size-preview-img">
@@ -489,7 +561,7 @@ include('./includes/include.inc.php');
                                     <div class="triad-media">
                                         <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
                                     </div>
-                                    <a href="<?php echo $GLBHost; ?>products/" class="triad-cat-link">Explore Systems <i class="fa fa-angle-right"></i></a>
+                                    <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
                                 <div class="triad-right">
                                     <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-target-img="#conveying-preview-img">
