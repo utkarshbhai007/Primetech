@@ -4,7 +4,7 @@ include('./includes/include.inc.php');
 <!DOCTYPE html>
 <html>
     <head>
-        <title>About Us | Primetech Industries</title>
+        <title>About Us | The Company | Primetech Industries</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="robots" content="index,follow">
@@ -31,6 +31,7 @@ include('./includes/include.inc.php');
                             <div id="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li><a href="<?php echo $GLBHost; ?>">Home</a></li>
+                                    <li><a href="javascript:;">The Company</a></li>
                                     <li class="active">About Us</li>
                                 </ul>
                             </div>

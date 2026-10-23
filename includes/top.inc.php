@@ -29,8 +29,9 @@
                 <nav id="main-menu" class="clearfix">
                     <ul class="nav navbar-nav">
                         <li id="t-home"><a href="<?php echo $GLBHost; ?>">Home</a></li>
-                        <li id="t-company" class="submenu-one"><a href="<?php echo $GLBHost; ?>the-company/about-us/">About Us &nbsp;<i class="fa fa-caret-down"></i></a>
+                        <li id="t-company" class="submenu-one"><a href="javascript:;">The Company &nbsp;<i class="fa fa-caret-down"></i></a>
                             <ul>
+                                <li><a href="<?php echo $GLBHost; ?>the-company/about-us/">About Us</a></li>
                                 <li><a href="<?php echo $GLBHost; ?>the-company/why-primetech/">Why Primetech</a></li>
                             </ul>
                         </li>

@@ -39,7 +39,7 @@
             <div class="col-xs-12 col-sm-12 col-md-7 col-md-push-5 text-right">
                 <ul>
                     <li id="f-home"><a href="<?php echo $GLBHost; ?>">Home</a></li>
-                    <li id="f-company"><a href="<?php echo $GLBHost; ?>the-company/about-us/">About Us</a></li>
+                    <li id="f-company"><a href="<?php echo $GLBHost; ?>the-company/about-us/">The Company</a></li>
                     <li id="f-products"><a href="<?php echo $GLBHost; ?>products/">Products</a></li>
                     <li id="f-infrastructure"><a href="<?php echo $GLBHost; ?>infrastructure/">Infrastructure</a></li>
                     <li id="f-enquiry"><a href="<?php echo $GLBHost; ?>enquiry/">Enquiry</a></li>
