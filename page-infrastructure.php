@@ -44,7 +44,6 @@ include('./includes/include.inc.php');
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">
-                            <p>This is the basic source - <br>The capacity of people, their skill, their way of approach towards the job, the way of thinking, the way of designing the components and products.</p>
                             <p>The <span class="text-brown">equipments</span> from <span class="text-brown">PRIMETECH</span> present strong technological aspects derived from the ideas of thinking minds able who are able to work towards a common aim.  The success of any single project is also expressed in the satisfaction of all those people who have contributed to it.</p>
                             <p><span class="text-brown">PRIMETECH INDUSTRIES have three well-equipped manufacturing units</span></p>
                             <p>Factories of 1,00,000 sq. ft. are located in prime industrial area of Vatva, Ahmedabad. Entire infrastructure is well equipped with modern and sophisticated machineries and also heavy duty E.O.T. cranes to carry out big jobs. The company is well connected with Express way, National highway and approach roads.</p>
