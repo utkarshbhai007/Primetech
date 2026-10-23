@@ -46,17 +46,20 @@
                                         <li><a href="<?php echo $GLBHost; ?>products/horizontal-cooler/">Horizontal Cooler</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="<?php echo $GLBHost; ?>products/pulverizer/">Pulverizers</a></li>
-                                <li><a href="<?php echo $GLBHost; ?>products/granulators/">Granulators</a></li>
-                                <li><a href="<?php echo $GLBHost; ?>products/shredder/">Shredder</a></li>
-                                <li class="submenu-two"><a href="#">Material Conveying and Automation</a>
+                                <li class="submenu-two"><a href="#">Size Reduction</a>
+                                    <ul>
+                                        <li><a href="<?php echo $GLBHost; ?>products/pulverizer/">Pulverizers</a></li>
+                                        <li><a href="<?php echo $GLBHost; ?>products/granulators/">Granulators</a></li>
+                                        <li><a href="<?php echo $GLBHost; ?>products/shredder/">Shredder</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu-two"><a href="#">Conveying and Automation</a>
                                     <ul>
                                         <li><a href="<?php echo $GLBHost; ?>products/spiral-conveyor/">Spiral Conveyor</a></li>
                                         <li><a href="<?php echo $GLBHost; ?>products/screw-conveyor/">Screw Conveyor</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo $GLBHost; ?>products/gyro-vibrating-screen/">Gyro Vibrating Screen</a></li>
-                                <li><a href="<?php echo $GLBHost; ?>products/mixing-plant-automation/">Mixing Plant Automation</a></li>
                             </ul>
                         </li>
                         <li id="t-infrastructure"><a href="<?php echo $GLBHost; ?>infrastructure/">Infrastructure</a></li>
