@@ -17,9 +17,6 @@ include('./page-enquiry-data.php');
         <script>
             $(document).ready(function () {
                 $("#main-menu #t-enquiry, #f-enquiry").addClass('active');
-                $('.refresh').click(function () {
-                    $('#' + $(this).attr('data-parent')).attr('src', $('#' + $(this).attr('data-parent')).attr('src') + '/' + new Date().getTime());
-                });
                 $('#cmbCountry,#cmbProductsInterest,#cmbMobile').select2();
 
                 $("#btnReset").bind("click", function () {
@@ -319,12 +316,6 @@ include('./page-enquiry-data.php');
                                                     </div>
 
 
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="txtFax">Fax</label>
-                                                    <input type="text" class="form-control" id="txtFax" name="txtFax" value="<?php echo $vFax; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -630,20 +621,7 @@ include('./page-enquiry-data.php');
                                                 </div>
                                             </div>
                                         </div>    
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group has-captcha required">                                    
-                                                    <label for="txtCaptcha">Enter Captcha</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control error" id="txtCaptcha" name="txtCaptcha">
-                                                        <div class="input-group-addon">
-                                                            <img alt="Captcha" src="<?php echo $GLBHost; ?>captcha/enquiry" id="imgCaptcha">
-                                                            <span class="refresh" data-parent="imgCaptcha"><i class="fa fa-refresh fa-lg"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <div class="btn-wrap">

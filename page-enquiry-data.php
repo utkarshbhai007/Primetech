@@ -54,7 +54,6 @@ function isValidData() {
     $objDataValidator->addValidator("txtEmail", DataValidator::CONTROL_TEXTBOX, "EMAIL", DataValidator::DATATYPE_EMAIL, false, 6, 100);
     $objDataValidator->addValidator("cmbMobile", DataValidator::CONTROL_COMBOBOX, "MOBILE CODE", DataValidator::DATATYPE_STRING, false, 1, 4);
     $objDataValidator->addValidator("txtMobile", DataValidator::CONTROL_TEXTBOX, "PHONE / MOBILE", DataValidator::DATATYPE_STRING, false, 7, 12);
-    $objDataValidator->addValidator("txtFax", DataValidator::CONTROL_TEXTBOX, "FAX", DataValidator::DATATYPE_STRING, true, 8, 20);
     $objDataValidator->addValidator("txtCity", DataValidator::CONTROL_TEXTBOX, "CITY", DataValidator::DATATYPE_STRING, false, 1, 20);
     $objDataValidator->addValidator("txtPincode", DataValidator::CONTROL_TEXTBOX, "PINCODE", DataValidator::DATATYPE_STRING, true, 2, 20);
     //$objDataValidator->addValidator("txtState", DataValidator::CONTROL_TEXTBOX, "STATE", DataValidator::DATATYPE_STRING, true, 3, 20);
@@ -74,11 +73,6 @@ function isValidData() {
         foreach ($vValidators as $objValidator) {
             $vErrorJS .= $objValidator->getErrorJavaScript();
         }
-    }
-
-    if ($vCaptcha != $_SESSION['enquiry_captcha']) {
-        $vIsError = true;
-        $vErrorJS .= "$('#txtCaptcha').addClass('error').attr('data-error', 'Invalid Captcha');";
     }
 
     $objDataValidator = null;
