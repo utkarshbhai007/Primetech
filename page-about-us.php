@@ -33,6 +33,12 @@ include('./includes/include.inc.php');
             }
             .about-pillars {
                 margin: 30px 0 45px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .about-pillars > [class*="col-"] {
+                display: flex;
+                flex-direction: column;
             }
             .about-pillar-card {
                 background: #ffffff;
@@ -40,36 +46,58 @@ include('./includes/include.inc.php');
                 border-radius: 12px;
                 overflow: hidden;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
                 margin-bottom: 25px;
                 height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
             }
             .about-pillar-card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                box-shadow: 0 12px 28px rgba(173, 23, 30, 0.12);
+                border-color: #ad171e;
             }
-            .about-pillar-card img {
-                width: 100%;
-                height: 180px;
-                object-fit: cover;
-                transition: transform 0.4s ease;
+            .pillar-icon-header {
+                background: linear-gradient(135deg, #fdf8f8 0%, #f7ebeb 100%);
+                border-bottom: 1px solid #f1dede;
+                padding: 30px 20px 24px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            .about-pillar-card:hover img {
-                transform: scale(1.04);
+            .pillar-icon-circle {
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                background: #ad171e;
+                color: #ffffff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 32px;
+                box-shadow: 0 6px 18px rgba(173, 23, 30, 0.25);
+                transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+            .about-pillar-card:hover .pillar-icon-circle {
+                transform: scale(1.1);
+                background: #8b0f15;
             }
             .about-pillar-card .pillar-body {
-                padding: 20px 18px;
+                padding: 24px 22px 26px;
+                flex-grow: 1;
             }
             .about-pillar-card .pillar-body h4 {
-                font-size: 20px;
+                font-size: 21px;
                 font-weight: 700;
                 color: #ad171e;
-                margin: 0 0 10px;
+                margin: 0 0 12px;
                 font-family: 'Titillium Web', sans-serif;
             }
             .about-pillar-card .pillar-body p {
                 font-size: 14px;
-                line-height: 1.6;
+                line-height: 1.65;
                 color: #4a5568;
                 margin: 0;
             }
@@ -320,8 +348,10 @@ include('./includes/include.inc.php');
                     <div class="row about-pillars">
                         <div class="col-xs-12 col-sm-4 col-md-4">
                             <div class="about-pillar-card">
-                                <div class="overflow-hidden">
-                                    <img src="<?php echo $GLBHost; ?>images/philosophy.jpg" alt="Primetech Philosophy" class="img-responsive center-block">
+                                <div class="pillar-icon-header">
+                                    <div class="pillar-icon-circle">
+                                        <i class="fa fa-lightbulb-o"></i>
+                                    </div>
                                 </div>
                                 <div class="pillar-body">
                                     <h4>Philosophy</h4>
@@ -331,8 +361,10 @@ include('./includes/include.inc.php');
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4">
                             <div class="about-pillar-card">
-                                <div class="overflow-hidden">
-                                    <img src="<?php echo $GLBHost; ?>images/vision.jpg" alt="Primetech Vision" class="img-responsive center-block">
+                                <div class="pillar-icon-header">
+                                    <div class="pillar-icon-circle">
+                                        <i class="fa fa-eye"></i>
+                                    </div>
                                 </div>
                                 <div class="pillar-body">
                                     <h4>Vision</h4>
@@ -342,8 +374,10 @@ include('./includes/include.inc.php');
                         </div>
                         <div class="col-xs-12 col-sm-4 col-md-4">
                             <div class="about-pillar-card">
-                                <div class="overflow-hidden">
-                                    <img src="<?php echo $GLBHost; ?>images/mission.jpg" alt="Primetech Mission" class="img-responsive center-block">
+                                <div class="pillar-icon-header">
+                                    <div class="pillar-icon-circle">
+                                        <i class="fa fa-bullseye"></i>
+                                    </div>
                                 </div>
                                 <div class="pillar-body">
                                     <h4>The Mission</h4>
