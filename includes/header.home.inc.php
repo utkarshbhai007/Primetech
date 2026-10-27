@@ -82,7 +82,7 @@
 <link href="<?php echo $GLBHost; ?>styles/owl.carousel.css" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/countimator.wheel.css" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/common.css?v=2.6" rel="stylesheet">
-<link href="<?php echo $GLBHost; ?>styles/home.css" rel="stylesheet">
+<link href="<?php echo $GLBHost; ?>styles/home.css?v=2.7" rel="stylesheet">
 <link href="<?php echo $GLBHost; ?>styles/responsive.css" rel="stylesheet">
 
 <script src="<?php echo $GLBHost; ?>scripts/jquery.min.js"></script>

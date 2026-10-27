@@ -21,116 +21,30 @@ include('./includes/include.inc.php');
 
             <?php include('./includes/top.inc.php'); ?>
 
-            <section id="banner" class="hero-video-section">
-                <div class="hero-video-container">
-                    <video id="heroVideo" class="hero-video-element" autoplay loop muted playsinline preload="auto" onclick="heroTogglePlay(event);" style="cursor: pointer;">
-                        <source src="<?php echo $GLBHost; ?>hero-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    
-                    <div class="hero-video-overlay"></div>
-
-                    <!-- Right Down Controls: Play/Pause & YouTube Link -->
-                    <div class="hero-video-controls" id="heroVideoControls" onmousedown="event.stopPropagation();" onmouseup="event.stopPropagation();">
-                        <button type="button" id="heroPlayPauseBtn" class="hero-control-btn" aria-label="Pause Video" title="Pause / Play Video" onclick="heroTogglePlay(event);" onmousedown="event.stopPropagation();" onmouseup="event.stopPropagation();">
-                            <i class="fa fa-pause" id="heroPlayPauseIcon" aria-hidden="true"></i>
-                            <span class="control-text" id="heroPlayPauseText">Pause</span>
-                        </button>
-                        <a href="https://youtu.be/2RQzuG75apU?si=3rizSBQv6of2XK1X" target="_blank" rel="noopener noreferrer" id="heroYoutubeBtn" class="hero-control-btn hero-youtube-btn" aria-label="Watch Video on YouTube" title="Watch on YouTube" onmousedown="event.stopPropagation();" onmouseup="event.stopPropagation();" onclick="event.stopPropagation(); window.open(this.href,'_blank'); return false;">
-                            <i class="fa fa-youtube-play" id="heroYoutubeIcon" aria-hidden="true"></i>
-                            <span class="control-text">YouTube</span>
+            <section id="banner" class="hero-slider-section">
+                <div id="hero-slider" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" title="High Speed Heater Cooler Mixer - Where Precision Meets Performance">
+                            <img src="<?php echo $GLBHost; ?>images/1st%20image%20to%20take%20.jpg" alt="High Speed Heater Cooler Mixer - Where Precision Meets Performance" class="img-responsive center-block">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="<?php echo $GLBHost; ?>products/pulverizer/" title="Pulverizer - The Finer The Grind, The Higher The Value">
+                            <img src="<?php echo $GLBHost; ?>images/2nd%20image%20.jpg" alt="Pulverizer - The Finer The Grind, The Higher The Value" class="img-responsive center-block">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="<?php echo $GLBHost; ?>products/shredder/" title="Single Shaft Shredder - Strength That Never Backs Down">
+                            <img src="<?php echo $GLBHost; ?>images/3rd%20image%20to%20take%20.jpg" alt="Single Shaft Shredder - Strength That Never Backs Down" class="img-responsive center-block">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="<?php echo $GLBHost; ?>products/granulators/" title="Granulators - Turning Waste Into Value">
+                            <img src="<?php echo $GLBHost; ?>images/4th%20image%20to%20take%20this%20.jpg" alt="Granulators - Turning Waste Into Value" class="img-responsive center-block">
                         </a>
                     </div>
                 </div>
             </section>
-            <script>
-                function openHeroYoutube(e) {
-                    if (e) {
-                        if (e.stopPropagation) e.stopPropagation();
-                    }
-                    window.open('https://youtu.be/2RQzuG75apU?si=3rizSBQv6of2XK1X', '_blank');
-                    return false;
-                }
-
-                function setHeroPlayUI(isPlaying) {
-                    var icon = document.getElementById('heroPlayPauseIcon');
-                    var text = document.getElementById('heroPlayPauseText');
-                    var btn = document.getElementById('heroPlayPauseBtn');
-                    if (icon) icon.className = isPlaying ? 'fa fa-pause' : 'fa fa-play';
-                    if (text) text.innerText = isPlaying ? 'Pause' : 'Play';
-                    if (btn) btn.setAttribute('aria-label', isPlaying ? 'Pause Video' : 'Play Video');
-                }
-
-                function heroTogglePlay(e) {
-                    if (e) {
-                        if (e.preventDefault) e.preventDefault();
-                        if (e.stopPropagation) e.stopPropagation();
-                    }
-                    var v = document.getElementById('heroVideo');
-                    if (!v) return false;
-                    if (v.paused) {
-                        var p = v.play();
-                        if (p !== undefined) {
-                            p.catch(function () {});
-                        }
-                        setHeroPlayUI(true);
-                    } else {
-                        v.pause();
-                        setHeroPlayUI(false);
-                    }
-                    return false;
-                }
-
-                document.addEventListener('DOMContentLoaded', function () {
-                    var v = document.getElementById('heroVideo');
-                    if (v) {
-                        v.addEventListener('play', function () { setHeroPlayUI(true); });
-                        v.addEventListener('pause', function () { setHeroPlayUI(false); });
-                        var p = v.play();
-                        if (p !== undefined) {
-                            p.then(function () {
-                                setHeroPlayUI(true);
-                            }).catch(function () {
-                                setHeroPlayUI(false);
-                            });
-                        }
-                    }
-
-                    var ytBtn = document.getElementById('heroYoutubeBtn');
-                    if (ytBtn) {
-                        ytBtn.addEventListener('click', function (e) {
-                            return openHeroYoutube(e);
-                        });
-                    }
-                });
-            </script>
-
-            <?php /* BANNER SLIDERS (KEPT FOR REFERENCE):
-            <section id="banner-slider-backup" style="display:none;">
-                <ul class="slides clearfix">
-                    <li class="new-banner-slide">
-                        <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" title="Where Precision Meets Performance">
-                            <img src="<?php echo $GLBHost; ?>images/Artboard 3 copy 8@3x.jpg" alt="Where Precision Meets Performance - Primetech Industries" class="img-responsive center-block">
-                        </a>
-                    </li>
-                    <li class="new-banner-slide">
-                        <a href="<?php echo $GLBHost; ?>products/pulverizer/" title="The Finer The Grind, The Higher The Value">
-                            <img src="<?php echo $GLBHost; ?>images/Artboard 3 copy 9@3x.jpg" alt="The Finer The Grind, The Higher The Value - Primetech Industries" class="img-responsive center-block">
-                        </a>
-                    </li>
-                    <li class="new-banner-slide">
-                        <a href="<?php echo $GLBHost; ?>products/shredder/" title="Strength That Never Backs Down">
-                            <img src="<?php echo $GLBHost; ?>images/Artboard 3 copy 10@3x.jpg" alt="Strength That Never Backs Down - Primetech Industries" class="img-responsive center-block">
-                        </a>
-                    </li>
-                    <li class="new-banner-slide">
-                        <a href="<?php echo $GLBHost; ?>products/granulators/" title="Turning Waste Into Value">
-                            <img src="<?php echo $GLBHost; ?>images/Artboard 3 copy 11@3x.jpg" alt="Turning Waste Into Value - Primetech Industries" class="img-responsive center-block">
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            */ ?>
 
             <section id="the-company">
                 <div class="container">
@@ -599,27 +513,21 @@ include('./includes/include.inc.php');
                 $(document).ready(function () {
                     $("#main-menu #t-home, #f-home").addClass('active');
 
-                    $('#banner .slides').bxSlider({
-                        mode: 'fade',
-                        pager: false,
-                        controls: true,
-                        pause: 6000,
-                        auto: true,
-                        autoControls: false,
-                        adaptiveHeight: true,
-                        touchEnabled: true
-                    });
-                    
-                    $('#mob-banner .slider').owlCarousel({
-                        items: 1,
-                        loop: true,
-                        dots: false,
-                        margin: 0,
-                        nav: false,
-                        autoplay: true,
-                        autoplayTimeout: 6000,
-                        autoplaySpeed: 1000
-                    });
+                    var $heroSlider = $('#hero-slider');
+                    if ($heroSlider.length && typeof $.fn.owlCarousel === 'function') {
+                        $heroSlider.owlCarousel({
+                            items: 1,
+                            loop: true,
+                            margin: 0,
+                            autoplay: true,
+                            autoplayTimeout: 5000,
+                            autoplayHoverPause: true,
+                            smartSpeed: 800,
+                            dots: true,
+                            nav: true,
+                            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+                        });
+                    }
 
                     // Interactive dynamic machine preview image swap on product hover
                     $('.triad-prod-item').on('mouseenter', function () {
