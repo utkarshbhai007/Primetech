@@ -68,19 +68,12 @@ include('./includes/include.inc.php');
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-6 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
                                     <div class="block">
                                         <div class="icon"><i class="sprite mail"></i></div>
                                         <h3 class="title">Email</h3>
-                                        <p><a href="mailto:siddharth@primetechmixer.com">siddharth@primetechmixer.com</a> <a href="mailto:naren@primetechmixer.com">naren@primetechmixer.com</a> </p>
+                                        <p><a href="mailto:siddharth@primetechmixer.com">siddharth@primetechmixer.com</a>, <a href="mailto:naren@primetechmixer.com">naren@primetechmixer.com</a></p>
                                     </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-12 col-md-6">
-                                    <div class="block">
-                                        <div class="icon"><i class="sprite web"></i></div>
-                                        <h3 class="title">Website</h3>
-                                        <p><a href="http://www.primetechmixer.com">www.primetechmixer.com</a></p>
-                                    </div> 
                                 </div>
                             </div>
                         </div>
