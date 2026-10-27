@@ -14,6 +14,121 @@ include('./page-enquiry-data.php');
         <?php include('./includes/header.inner.inc.php'); ?>
         <script src="<?php echo $GLBHost; ?>scripts/form.js"></script>
         <script src="<?php echo $GLBHost; ?>scripts/select2.js"></script>
+        <style>
+            /* Ensure fixed header does not overlap page title on load */
+            #wrapper {
+                padding-top: 175px !important;
+            }
+            @media (max-width: 991px) {
+                #wrapper {
+                    padding-top: 140px !important;
+                }
+            }
+            @media (max-width: 767px) {
+                #wrapper {
+                    padding-top: 80px !important;
+                }
+            }
+            /* Modern Enquiry Form Card Styling */
+            .inquiry-card {
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 35px 35px 25px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+                margin-top: 10px;
+                margin-bottom: 30px;
+            }
+            .inquiry-intro-text {
+                font-size: 15px;
+                color: #4a5568;
+                margin-bottom: 25px;
+                line-height: 1.6;
+            }
+            .inquiry .form-group {
+                margin-bottom: 22px;
+            }
+            .inquiry .form-group label {
+                font-size: 13px;
+                font-weight: 600;
+                color: #2d3748;
+                margin-bottom: 7px;
+                display: inline-block;
+            }
+            .inquiry .form-control {
+                height: 44px;
+                font-size: 14px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                box-shadow: none;
+                transition: all 0.2s ease;
+            }
+            .inquiry .form-control:focus {
+                border-color: #ad171e;
+                box-shadow: 0 0 0 3px rgba(173, 23, 30, 0.12);
+            }
+            .inquiry textarea.form-control {
+                height: auto;
+                min-height: 110px;
+            }
+            .inquiry .select2-container .select2-choice {
+                height: 44px;
+                line-height: 44px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                background: #fff;
+            }
+            .inquiry .select2-container-multi .select2-choices {
+                min-height: 44px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                padding: 4px 6px;
+            }
+            .inquiry .btn-wrap {
+                margin-top: 10px;
+                padding-top: 20px;
+                border-top: 1px solid #f1f5f9;
+            }
+            .inquiry .btn-submit {
+                background: #ad171e;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 12px 32px;
+                border-radius: 6px;
+                border: none;
+                transition: all 0.25s ease;
+            }
+            .inquiry .btn-submit:hover {
+                background: #871015;
+                color: #fff;
+                box-shadow: 0 4px 14px rgba(173, 23, 30, 0.35);
+                transform: translateY(-1px);
+            }
+            .inquiry .btn-reset {
+                background: #f1f5f9;
+                color: #475569;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 12px 26px;
+                border-radius: 6px;
+                border: 1px solid #cbd5e1;
+                transition: all 0.25s ease;
+            }
+            .inquiry .btn-reset:hover {
+                background: #e2e8f0;
+                color: #1e293b;
+            }
+            @media (max-width: 767px) {
+                .inquiry-card {
+                    padding: 22px 18px 18px;
+                }
+            }
+        </style>
         <script>
             $(document).ready(function () {
                 $("#main-menu #t-enquiry, #f-enquiry").addClass('active');
@@ -22,7 +137,16 @@ include('./page-enquiry-data.php');
                 $("#btnReset").bind("click", function () {
                     $('#cmbCountry,#cmbProductsInterest').val('').trigger("change");
                 });
+                
+                if (typeof $.fn.header === 'function') {
+                    $.fn.header();
+                }
+            });
 
+            $(window).on('load resize', function() {
+                if (typeof $.fn.header === 'function') {
+                    $.fn.header();
+                }
             });
         </script>
     </head>
@@ -59,7 +183,7 @@ include('./page-enquiry-data.php');
                     <div class="row">
                         <div class="col-xs-12">
 
-                            <div class="inquiry">
+                            <div class="inquiry inquiry-card">
 
                                 <?php if ($vIsPostBack && !$vIsError) { ?>                    
                                     <div id="message">
@@ -70,7 +194,7 @@ include('./page-enquiry-data.php');
                                 <?php } else { ?>                                    
                                     <?php if ($vIsError) { ?><div id="message"><div class="error"><?php echo nl2br($vErrorDesc); ?></div></div><?php } ?>                                    
 
-                                    <p>For enquiry regarding our product(s), please fill the form below.</p>
+                                    <p class="inquiry-intro-text">For enquiry regarding our product(s), please fill the form below.</p>
 
                                     <form name="frmEnquiry" id="frmEnquiry" method="post" role="form">
                                         <div class="row">
@@ -83,7 +207,7 @@ include('./page-enquiry-data.php');
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group required">
                                                     <label for="txtEmail">Email</label>
-                                                    <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="<?php echo $vEmail; ?>"े>
+                                                    <input type="email" class="form-control" id="txtEmail" name="txtEmail" value="<?php echo $vEmail; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -314,22 +438,12 @@ include('./page-enquiry-data.php');
                                                             <input type="text" class="form-control" id="txtMobile" name="txtMobile" value="<?php echo $vMobile; ?>">
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group required">
                                                     <label for="txtCity">City</label>
                                                     <input type="text" class="form-control" id="txtCity" name="txtCity" value="<?php echo $vCity; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="txtPincode">Pincode</label>
-                                                    <input type="text" class="form-control" id="txtPurchase" name="txtPincode" value="<?php echo $vPincode; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -340,6 +454,14 @@ include('./page-enquiry-data.php');
                                                     <input type="text" class="form-control" id="txtState" name="txtState" value="<?php echo $vState; ?>">
                                                 </div>
                                             </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="txtPincode">Pincode</label>
+                                                    <input type="text" class="form-control" id="txtPurchase" name="txtPincode" value="<?php echo $vPincode; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group required">
                                                     <label for="cmbCountry">Country</label>
@@ -594,8 +716,6 @@ include('./page-enquiry-data.php');
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-xs-12 col-sm-6">
                                                 <div class="form-group required">
                                                     <label for="cmbProductsInterest">Product(s) of Interest</label>
@@ -613,11 +733,13 @@ include('./page-enquiry-data.php');
                                                         <option value="Rotary Air Lock Valve">Rotary Air Lock Valve</option>
                                                     </select>
                                                 </div>
-                                            </div>    
-                                            <div class="col-xs-12 col-sm-6">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
                                                 <div class="form-group required">
                                                     <label for="txtDetails">Details</label>
-                                                    <textarea class="form-control" rows="5" id="txtDetails" name="txtDetails"><?php echo $vDetails; ?></textarea>
+                                                    <textarea class="form-control" rows="4" id="txtDetails" name="txtDetails" placeholder="Please provide details about your machinery requirements, materials, capacity, or any questions..."><?php echo $vDetails; ?></textarea>
                                                 </div>
                                             </div>
                                         </div>    
