@@ -508,7 +508,7 @@ include('./includes/include.inc.php');
                             </div>
                             <p>With an ever-expanding international customer base, Primetech exports high-performance machinery across Asia, the Middle East, Africa, and beyond.</p>
                             <div class="exports-map-wrapper">
-                                <img src="<?php echo $GLBHost; ?>images/our-exports-world-map.jpg" alt="Our Exports - World Map" class="img-responsive center-block">
+                                <img src="<?php echo $GLBHost; ?>images/world-map.jpeg" alt="Our Exports - World Map" class="img-responsive center-block">
                             </div>
                         </div>
                     </div>
