@@ -65,7 +65,7 @@ include('./includes/include.inc.php');
                                     </div>    
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-6 col-lg-6 col-lg-push-6">
-                                            <div class="product-img"><img src="<?php echo $GLBHost; ?>images/products/mixer-horizontal-cooler-thumb-homepage.png" alt="Horizontal Cooler" class="img-responsive center-block"><a href="<?php echo $GLBHost; ?>downloads/?brochure=horizontal-cooler" class="lens-icon">Download Brochure</a></div>
+                                            <div class="product-img"><img src="<?php echo $GLBHost; ?>images/horizontal-cooler.png" alt="Horizontal Cooler" class="img-responsive center-block"><a href="<?php echo $GLBHost; ?>downloads/?brochure=horizontal-cooler" class="lens-icon">Download Brochure</a></div>
                                             <div class="application-slider owl-carousel">
                                                 <div class="item"><img src="<?php echo $GLBHost; ?>images/application/001.jpg" class="img-responsive center-block"></div>
                                                 <div class="item"><img src="<?php echo $GLBHost; ?>images/application/002.jpg" class="img-responsive center-block"></div>

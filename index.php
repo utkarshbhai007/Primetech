@@ -417,7 +417,7 @@ include('./includes/include.inc.php');
                                         <span class="prod-text">High Speed Heater Cooler Mixer</span>
                                         <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
                                     </a>
-                                    <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" data-target-img="#mixers-preview-img">
+                                    <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/horizontal-cooler.png" data-target-img="#mixers-preview-img">
                                         <span class="prod-text">Horizontal Cooler</span>
                                         <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
                                     </a>

@@ -74,7 +74,7 @@ include('./includes/include.inc.php');
                     <div class="row brochure-item-row" id="item-horizontal-cooler">
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="product-pic">
-                                <img src="<?php echo $GLBHost; ?>images/products/mixer-horizontal-cooler-thumb-homepage.png" alt="Horizontal Cooler" class="img-responsive center-block">
+                                <img src="<?php echo $GLBHost; ?>images/horizontal-cooler.png" alt="Horizontal Cooler" class="img-responsive center-block">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">

@@ -478,7 +478,7 @@ include('./includes/include.inc.php');
                                 <div class="product-card-modern">
                                     <div class="prod-card-media">
                                         <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/">
-                                            <img src="<?php echo $GLBHost; ?>images/products/horizontal-cooler-new.png" alt="Horizontal Cooler" class="img-responsive">
+                                            <img src="<?php echo $GLBHost; ?>images/horizontal-cooler.png" alt="Horizontal Cooler" class="img-responsive">
                                         </a>
                                     </div>
                                     <div class="prod-card-info">
