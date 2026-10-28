@@ -4,26 +4,26 @@ $wallLogos = [
     // Line 1
     ['src' => 'images/partners/astral.jpg', 'name' => 'Astral'],
     ['src' => 'images/logoss/primary-logo480x320.png', 'name' => 'BirlaNu / HIL'],
-    ['src' => 'images/partners/caption.jpg', 'name' => 'Captain'],
+    ['src' => 'images/partners/captain.png', 'name' => 'Captain'],
+    ['src' => 'images/logoss/logo-new.png', 'name' => 'CENTURYPLY'],
     ['src' => 'images/partners/duke.jpg', 'name' => 'Duke'],
-    ['src' => 'images/partners/ori-plast.png', 'name' => 'Ori-Plast'],
-    ['src' => 'images/partners/patton.jpg', 'name' => 'Patton'],
+    ['src' => 'images/logoss/logo (1).svg', 'name' => 'GREENPLY'],
 
     // Line 2
-    ['src' => 'images/partners/polycab.jpg', 'name' => 'Polycab'],
-    ['src' => 'images/partners/prince.png', 'name' => 'Prince Piping Systems'],
-    ['src' => 'images/logoss/roca-logo.svg', 'name' => 'ROCA'],
-    ['src' => 'images/partners/sudharkar.jpg', 'name' => 'Sudhakar Pipes & Fittings'],
-    ['src' => 'images/logoss/logo.png', 'name' => 'SUPREME'],
-    ['src' => 'images/logoss/ultratech-cement-logo.png', 'name' => 'ULTRATECH CEMENT'],
-
-    // Line 3
-    ['src' => 'images/logoss/logo-new.png', 'name' => 'CENTURYPLY'],
-    ['src' => 'images/logoss/logo (1).svg', 'name' => 'GREENPLY'],
     ['src' => 'images/logoss/logo.png.webp', 'name' => 'INDOWUD'],
     ['src' => 'images/partners/kkalpana.jpg', 'name' => 'KALPANA'],
     ['src' => 'images/logoss/logo (2).svg', 'name' => 'LAPP'],
+    ['src' => 'images/partners/ori-plast.png', 'name' => 'Ori-Plast'],
+    ['src' => 'images/partners/patton.jpg', 'name' => 'Patton'],
+    ['src' => 'images/partners/polycab.jpg', 'name' => 'Polycab'],
+
+    // Line 3
+    ['src' => 'images/partners/prince.png', 'name' => 'Prince Piping Systems'],
+    ['src' => 'images/logoss/roca-logo.svg', 'name' => 'ROCA'],
     ['src' => 'images/sintex-logo.png', 'name' => 'SINTEX'],
+    ['src' => 'images/partners/sudharkar.jpg', 'name' => 'Sudhakar Pipes & Fittings'],
+    ['src' => 'images/logoss/logo.png', 'name' => 'SUPREME'],
+    ['src' => 'images/logoss/ultratech-cement-logo.png', 'name' => 'ULTRATECH CEMENT'],
 ];
 
 // 36 Remaining Valued Clients in Loop Slider (Alphabetical Order A-Z)

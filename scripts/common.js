@@ -12,15 +12,40 @@ $.fn.handleResize = function ()
 
 $(function () {
     var header = $("header");
-    var headerHeight = $('header').outerHeight();
-    $(window).scroll(function () {
-        var scroll = $(window).scrollTop();
+    var lastScrollTop = 0;
+    var delta = 6;
+    var topThreshold = 40;
 
-        if (scroll >= headerHeight) {
+    $(window).scroll(function () {
+        var currentScroll = $(window).scrollTop();
+
+        // If drawer is open, don't auto-toggle header
+        if ($("#stickySideDrawer").hasClass("open")) {
+            lastScrollTop = currentScroll;
+            return;
+        }
+
+        if (currentScroll < 0) {
+            currentScroll = 0;
+        }
+
+        // Ignore micro scroll differences to avoid jitter
+        if (Math.abs(lastScrollTop - currentScroll) <= delta) {
+            return;
+        }
+
+        if (currentScroll <= topThreshold) {
+            // At the top of the page: show natural full header
+            header.removeClass("fixed");
+        } else if (currentScroll > lastScrollTop && currentScroll > 90) {
+            // Scrolling DOWN: collapse into slim sticky navbar (Logo + Menu ☰)
             header.addClass("fixed");
-        } else {
+        } else if (currentScroll < lastScrollTop) {
+            // Scrolling UP anywhere on the page: immediately restore full navbar with all options!
             header.removeClass("fixed");
         }
+
+        lastScrollTop = currentScroll;
     });
 });
 
@@ -43,27 +68,12 @@ $(document).ready(function () {
 
     //mobile menu script
     //$("body").attr('id', 'page');
-    $("#main-menu > ul, #pro-menu ul").clone().appendTo("#mobile-menu");
-    $("#mobile-menu-icon").click(function () {
-        if ($(this).hasClass("active"))
-        {
-            $(this).removeClass("active");
-            $("#wrapper").animate({"left": "0"}, 500);
-        } else
-        {
-            $(this).addClass("active");
-            $("#wrapper").animate({"left": "-250px"}, 500);
-
-        }
-
-        if ($("#mobile-menu").hasClass("active")) {
-            $("#mobile-menu").removeClass("active");
-            $("#mobile-menu").animate({"right": "-250px"}, 500);
-        } else
-        {
-            $("#mobile-menu").addClass("active");
-            $("#mobile-menu").animate({"right": "0"}, 500);
-        }
+    // Mobile menu trigger using modern offcanvas drawer
+    $("#mobile-menu-icon").click(function (e) {
+        e.preventDefault();
+        $("#stickySideDrawer").addClass("open");
+        $("#stickyMenuBackdrop").addClass("open");
+        $("body").addClass("drawer-opened");
     });
 
     $('#mobile-menu ul li.submenu-one>a').prepend('<span class="submenu"></span>');
@@ -121,6 +131,39 @@ $(document).ready(function () {
             advanced: {autoExpandHorizontalScroll: true}
         });
     }
+
+    // Sticky navigation drawer open / close
+    $("#stickyMenuBtn").on("click", function (e) {
+        e.preventDefault();
+        $("#stickySideDrawer").addClass("open");
+        $("#stickyMenuBackdrop").addClass("open");
+        $("body").addClass("drawer-opened");
+    });
+
+    $("#drawerCloseBtn, #stickyMenuBackdrop").on("click", function (e) {
+        e.preventDefault();
+        $("#stickySideDrawer").removeClass("open");
+        $("#stickyMenuBackdrop").removeClass("open");
+        $("body").removeClass("drawer-opened");
+    });
+
+    // Accordion toggle inside drawer
+    $(".drawer-dropdown-toggle").on("click", function (e) {
+        e.preventDefault();
+        $(this).toggleClass("active");
+        $(this).next(".drawer-submenu").slideToggle(250);
+    });
+
+    // Close on Escape key
+    $(document).on("keydown", function (e) {
+        if (e.key === "Escape" || e.keyCode === 27) {
+            if ($("#stickySideDrawer").hasClass("open")) {
+                $("#stickySideDrawer").removeClass("open");
+                $("#stickyMenuBackdrop").removeClass("open");
+                $("body").removeClass("drawer-opened");
+            }
+        }
+    });
 
 });
 

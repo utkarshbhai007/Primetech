@@ -47,7 +47,7 @@ include('./includes/include.inc.php');
                             <h2 class="title mt0"><span>Primetech</span> Industries</h2>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-md-push-8">
-                            <img src="<?php echo $GLBHost; ?>images/the-company-pic.jpg" alt="" class="img-responsive center-block">
+                            <img src="<?php echo $GLBHost; ?>images/the-company-pic.jpg?v=2" alt="Primetech Industries - Unit 1 Facility" class="img-responsive center-block" style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 col-md-pull-4">
                             <div class="row">

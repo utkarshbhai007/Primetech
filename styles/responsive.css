@@ -26,9 +26,9 @@
     #main-menu {display: none;}
     #mobile-menu ul li a i.fa{display: none;}
     
-    header #top,header.fixed #top {padding: 10px 0;}
-    header #logo,header.fixed #logo {width: 140px;}
-    header #top #top-right,header.fixed #top #top-right {margin:34px 35px 0 0;}
+    header #top {padding: 10px 0;}
+    header #logo {width: 140px;}
+    header #top #top-right {margin:34px 35px 0 0;}
     header #top #top-right li {margin-left: 5px; display: inline-block; vertical-align: top; width: 34px; height: 34px;}
     header #top #top-right li a {display: block; padding: 0;}
     header #top #top-right li a .icon {position: inherit; width: 34px; height: 34px;}
@@ -64,9 +64,10 @@
     #main-menu {display: none;}
     #mobile-menu ul li a i.fa{display: none;}
     
-    header #top,header.fixed #top {padding: 10px 0;}
-    header #logo,header.fixed #logo {width: 104px;}
-    header #top #top-right,header.fixed #top #top-right {margin:17px 35px 0 0;}
+    header #top {padding: 10px 0;}
+    header #logo {width: 120px;}
+    header .tagline {display: none !important;}
+    header #top #top-right {margin:17px 35px 0 0;}
     header #top #top-right li {margin-left: 5px; display: inline-block; vertical-align: top; width: 34px; height: 34px;}
     header #top #top-right li a {display: block; padding: 0;}
     header #top #top-right li a .icon {position: inherit; width: 34px; height: 34px;}

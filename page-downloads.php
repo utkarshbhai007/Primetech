@@ -89,13 +89,13 @@ include('./includes/include.inc.php');
                     <div class="row brochure-item-row" id="item-laboratory-mixer">
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="product-pic">
-                                <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-thumb.png" alt="LAB Mixer" class="img-responsive center-block">
+                                <img src="<?php echo $GLBHost; ?>images/products/laboratory-mixer-thumb.png" alt="Lab Mixer" class="img-responsive center-block">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                             <div class="product-info">
-                                <h2 class="title text-small mt0"><span>LAB   </span>Mixer</h2>
-                                <a href="javascript:;" class="download-btn btn-trigger-brochure" data-brochure-key="laboratory-mixer" data-brochure-title="LAB Mixer" data-brochure-file="<?php echo $GLBHost; ?>pdf/laboratory-mixer.pdf"><span class="icon"><i class="sprite dwn"></i></span>Download Brochure</a>
+                                <h2 class="title text-small mt0"><span>Lab </span>Mixer</h2>
+                                <a href="javascript:;" class="download-btn btn-trigger-brochure" data-brochure-key="laboratory-mixer" data-brochure-title="Lab Mixer" data-brochure-file="<?php echo $GLBHost; ?>pdf/laboratory-mixer.pdf"><span class="icon"><i class="sprite dwn"></i></span>Download Brochure</a>
                             </div>
                         </div>
                     </div>
@@ -179,7 +179,7 @@ include('./includes/include.inc.php');
                     <div class="row brochure-item-row" id="item-granulator">
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="product-pic">
-                                <img src="<?php echo $GLBHost; ?>images/products/granulator-thumb.png" alt="Granulator Size Reduction & Reutilization" class="img-responsive center-block">
+                                <img src="<?php echo $GLBHost; ?>images/products/granulator-thumb.png?v=2" alt="Granulator Size Reduction & Reutilization" class="img-responsive center-block">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -194,7 +194,7 @@ include('./includes/include.inc.php');
                     <div class="row brochure-item-row" id="item-shredder">
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="product-pic">
-                                <img src="<?php echo $GLBHost; ?>images/products/shredder-thumb.png" alt="Heavy Duty Shredder" class="img-responsive center-block">
+                                <img src="<?php echo $GLBHost; ?>images/products/shredder-thumb.png?v=2" alt="Heavy Duty Shredder" class="img-responsive center-block">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">

@@ -105,29 +105,9 @@ include('./includes/include.inc.php');
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="block-outer">
                                 <div class="block">
-                                    <div class="number">250</div> <span class="sep"></span> 
-                                    <div class="number">6000</div>
-                                    <p>kg/hr</p>
-                                    <p>Capacity Offered in Mixing Plant</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
                                     <div class="number">3500</div> <span class="plus"></span>
                                     <p>Mixing Plant</p>
                                     <p>Installations Worldwide</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">100</div> <span class="sep"></span> 
-                                    <div class="number">1000</div>
-                                    <p>kg/hr</p>
-                                    <p>Capacity Offered in Size Reduction System</p>
                                 </div>
                             </div>
                         </div>
@@ -408,7 +388,7 @@ include('./includes/include.inc.php');
                                         <h3 class="triad-cat-title">Mixing Solutions</h3>
                                     </div>
                                     <div class="triad-media">
-                                        <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixing Solutions" class="img-responsive">
+                                        <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixing Solutions" class="img-responsive">
                                     </div>
                                     <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
@@ -441,7 +421,7 @@ include('./includes/include.inc.php');
                                         <h3 class="triad-cat-title">Size Reduction</h3>
                                     </div>
                                     <div class="triad-media">
-                                        <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
+                                        <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
                                     </div>
                                     <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
@@ -470,7 +450,7 @@ include('./includes/include.inc.php');
                                         <h3 class="triad-cat-title">Conveying and Automation</h3>
                                     </div>
                                     <div class="triad-media">
-                                        <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
+                                        <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
                                     </div>
                                     <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
@@ -529,12 +509,45 @@ include('./includes/include.inc.php');
                         });
                     }
 
-                    // Interactive dynamic machine preview image swap on product hover
+                    // Interactive dynamic machine preview image swap on product hover & reset on leave
+                    var previewResetTimer = null;
+
                     $('.triad-prod-item').on('mouseenter', function () {
+                        clearTimeout(previewResetTimer);
                         var preview = $(this).data('preview');
                         var targetImg = $(this).data('target-img');
                         if (preview && targetImg) {
-                            $(targetImg).attr('src', preview);
+                            var $img = $(targetImg);
+                            if (!$img.attr('data-default-src')) {
+                                $img.attr('data-default-src', $img.attr('src'));
+                            }
+                            $img.attr('src', preview);
+                        }
+                    }).on('mouseleave', function () {
+                        var targetImg = $(this).data('target-img');
+                        if (targetImg) {
+                            var $img = $(targetImg);
+                            var defaultSrc = $img.attr('data-default-src');
+                            if (defaultSrc) {
+                                clearTimeout(previewResetTimer);
+                                previewResetTimer = setTimeout(function () {
+                                    // If mouse is not hovering another product in this category card, restore default
+                                    if (!$img.closest('.category-triad-card').find('.triad-prod-item:hover').length) {
+                                        $img.attr('src', defaultSrc);
+                                    }
+                                }, 70);
+                            }
+                        }
+                    });
+
+                    // Ensure immediate reversion when mouse leaves the products column or entire category box
+                    $('.triad-right, .category-triad-card').on('mouseleave', function () {
+                        clearTimeout(previewResetTimer);
+                        var $card = $(this).closest('.category-triad-card');
+                        var $img = $card.find('.triad-media img');
+                        var defaultSrc = $img.attr('data-default-src');
+                        if (defaultSrc) {
+                            $img.attr('src', defaultSrc);
                         }
                     });
                 });

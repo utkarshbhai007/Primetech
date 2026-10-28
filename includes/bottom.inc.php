@@ -96,17 +96,10 @@
         </a>
     </div>
 
-    <!-- Direct WhatsApp Quick Chat Button (Always Visible) -->
-    <a href="https://api.whatsapp.com/send?phone=919081000746&text=Hello%20Primetech%20Industries,%20I%20am%20interested%20in%20your%20machinery%20products." target="_blank" rel="noopener noreferrer" class="floating-direct-btn direct-whatsapp-btn" id="floatingDirectWhatsapp" title="Chat on WhatsApp (+91 90810 00746)" aria-label="Chat on WhatsApp">
-        <span class="floating-label">Chat on WhatsApp</span>
-        <span class="pulse-ring whatsapp-pulse"></span>
-        <i class="fa fa-whatsapp"></i>
-    </a>
-
-    <!-- Toggle Trigger Button -->
+    <!-- Toggle Trigger Button (WhatsApp Styled, Preserves Toggle Functionality) -->
     <button type="button" class="floating-toggle-btn" id="floatingToggleBtn" aria-label="Contact & Social Options" title="Quick Contact & Social">
         <span class="pulse-ring"></span>
-        <i class="fa fa-phone icon-open"></i>
+        <i class="fa fa-whatsapp icon-open"></i>
         <i class="fa fa-times icon-close"></i>
     </button>
 </div>

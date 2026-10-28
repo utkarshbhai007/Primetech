@@ -71,23 +71,65 @@ include('./page-enquiry-data.php');
                 height: auto;
                 min-height: 110px;
             }
+            .inquiry .select2-container {
+                width: 100% !important;
+            }
+            .inquiry .select2-container--default .select2-selection--single,
             .inquiry .select2-container .select2-choice {
                 height: 44px;
                 line-height: 44px;
-                border: 1px solid #cbd5e1;
-                border-radius: 6px;
+                border: 1px solid #cbd5e1 !important;
+                border-radius: 6px !important;
                 background: #fff;
+                padding: 6px 12px;
+                box-shadow: none;
+                transition: all 0.2s ease;
             }
+            .inquiry .select2-container--default .select2-selection--single .select2-selection__rendered {
+                line-height: 30px;
+                padding-left: 0;
+                color: #2d3748;
+                font-size: 14px;
+            }
+            .inquiry .select2-container--default .select2-selection--single .select2-selection__arrow {
+                height: 42px;
+                right: 10px;
+            }
+            .inquiry .select2-container--default .select2-selection--multiple,
             .inquiry .select2-container-multi .select2-choices {
                 min-height: 44px;
+                border: 1px solid #cbd5e1 !important;
+                border-radius: 6px !important;
+                padding: 4px 8px;
+                background: #fff;
+                box-shadow: none;
+                transition: all 0.2s ease;
+            }
+            .inquiry .select2-container--default .select2-selection--multiple .select2-selection__choice {
+                background: #f1f5f9;
                 border: 1px solid #cbd5e1;
-                border-radius: 6px;
-                padding: 4px 6px;
+                border-radius: 4px;
+                padding: 2px 8px;
+                margin-top: 4px;
+                color: #1e293b;
+                font-size: 13px;
+            }
+            .inquiry .select2-container--default.select2-container--focus .select2-selection--single,
+            .inquiry .select2-container--default.select2-container--focus .select2-selection--multiple,
+            .inquiry .select2-container--default.select2-container--open .select2-selection--single,
+            .inquiry .select2-container--default.select2-container--open .select2-selection--multiple {
+                border-color: #ad171e !important;
+                box-shadow: 0 0 0 3px rgba(173, 23, 30, 0.12) !important;
             }
             .inquiry .btn-wrap {
                 margin-top: 10px;
                 padding-top: 20px;
                 border-top: 1px solid #f1f5f9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                text-align: center;
             }
             .inquiry .btn-submit {
                 background: #ad171e;
@@ -746,8 +788,8 @@ include('./page-enquiry-data.php');
 
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <div class="btn-wrap">
-                                                    <button type="submit" class="btn btn-submit">Submit</button>&nbsp;&nbsp;
+                                                <div class="btn-wrap text-center">
+                                                    <button type="submit" class="btn btn-submit">Submit</button>
                                                     <input type="reset" class="btn btn-reset" value="Clear" id="btnReset">
                                                 </div>
                                             </div>
