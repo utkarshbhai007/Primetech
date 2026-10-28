@@ -23,7 +23,7 @@ $wallLogos = [
     ['src' => 'images/logoss/logo.png.webp', 'name' => 'INDOWUD'],
     ['src' => 'images/partners/kkalpana.jpg', 'name' => 'KALPANA'],
     ['src' => 'images/logoss/logo (2).svg', 'name' => 'LAPP'],
-    ['src' => 'images/partners/sintex.jpg', 'name' => 'SINTEX'],
+    ['src' => 'images/sintex-logo.png', 'name' => 'SINTEX'],
 ];
 
 // 36 Remaining Valued Clients in Loop Slider (Alphabetical Order A-Z)
