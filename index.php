@@ -64,68 +64,153 @@ include('./includes/include.inc.php');
 
             <section id="foot-print">
                 <div class="container">
-                    <h2 class="title"><span>Company</span> Foot Print</h2>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">36</div>
-                                    <p>Years of</p>
-                                    <p>Manufacturing Experience</p>
+                    <div class="bento-header-wrap">
+                        <h2 class="title"><span>Company</span> Foot Print</h2>
+                        <p class="bento-subtitle">Over three decades of engineering precision, world-class manufacturing infrastructure, and trusted installations across the globe.</p>
+                    </div>
+
+                    <div class="bento-footprint-grid">
+                        <!-- CARD 1: HERO / HERITAGE (Span 7) -->
+                        <div class="bento-card bento-hero bento-span-7">
+                            <svg class="bento-watermark" viewBox="0 0 100 100" fill="currentColor">
+                                <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="4" fill="none" stroke-dasharray="6 4"/>
+                                <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="3" fill="none"/>
+                                <path d="M50 10 L50 22 M50 78 L50 90 M10 50 L22 50 M78 50 L90 50 M22 22 L30 30 M70 70 L78 78 M22 78 L30 70 M70 30 L78 22" stroke="currentColor" stroke-width="4"/>
+                            </svg>
+                            <div class="bento-card-inner">
+                                <div class="bento-badge bento-badge-hero">
+                                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                                    <span>Since 1991 &bull; 36 Years Legacy</span>
+                                </div>
+                                <div class="bento-num-wrap">
+                                    <span class="bento-num" data-target="36">36</span>
+                                    <span class="bento-unit">+</span>
+                                </div>
+                                <h3 class="bento-title">Years of Manufacturing Experience</h3>
+                                <p class="bento-desc">Pioneering world-class plastic processing machinery, custom turnkey mixing plants, and high-precision size reduction systems with ISO 9001:2015 certified quality.</p>
+                                <div class="bento-pills bento-hero-pills">
+                                    <span class="bento-pill-item">ISO 9001:2015</span>
+                                    <span class="bento-pill-item">In-House R&amp;D</span>
+                                    <span class="bento-pill-item">Turn-Key Projects</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">03</div>
-                                    <p>Manufacturing Units</p>
-                                    <p>in India</p>
+
+                        <!-- CARD 2: UNITS IN INDIA (Span 5) -->
+                        <div class="bento-card bento-card-light bento-span-5">
+                            <div class="bento-card-top">
+                                <div class="bento-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M6 20V10l6-4v6l6-4v12M6 14h.01M6 17h.01M10 14h.01M10 17h.01M14 14h.01M14 17h.01M18 14h.01M18 17h.01"/></svg>
+                                </div>
+                                <span class="bento-tag">Infrastructure</span>
+                            </div>
+                            <div class="bento-card-body">
+                                <div class="bento-num-wrap">
+                                    <span class="bento-num" data-target="3">03</span>
+                                </div>
+                                <h3 class="bento-title">Manufacturing Units in India</h3>
+                                <p class="bento-desc">Advanced production facilities equipped with heavy CNC machining, precision fabrication, dynamic balancing, and rigorous quality inspection bays.</p>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3: TOTAL AREA (Span 4) -->
+                        <div class="bento-card bento-card-light bento-span-4">
+                            <div class="bento-card-top">
+                                <div class="bento-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9M9 3v6M15 9v12"/></svg>
+                                </div>
+                                <span class="bento-tag">Floor Area</span>
+                            </div>
+                            <div class="bento-card-body">
+                                <div class="bento-num-wrap">
+                                    <span class="bento-num" data-target="100000" data-format="indian">1,00,000</span>
+                                    <span class="bento-unit bento-unit-sm">Sq. Ft.</span>
+                                </div>
+                                <h3 class="bento-title">Total Area for Manufacturing</h3>
+                                <p class="bento-desc">Expansive facility footprint purpose-built for heavy machinery assembly, high-volume production, and comprehensive testing.</p>
+                            </div>
+                        </div>
+
+                        <!-- CARD 5: MIXING PLANT (Span 8) -->
+                        <div class="bento-card bento-card-featured bento-span-8">
+                            <div class="bento-featured-content">
+                                <div class="bento-featured-left">
+                                    <div class="bento-badge">
+                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                                        <span>Global Benchmark</span>
+                                    </div>
+                                    <div class="bento-num-wrap">
+                                        <span class="bento-num" data-target="3500">3500</span>
+                                        <span class="bento-unit">+</span>
+                                    </div>
+                                    <h3 class="bento-title">Mixing Plant Installations Worldwide</h3>
+                                </div>
+                                <div class="bento-featured-right">
+                                    <p class="bento-desc">Our flagship high-speed mixing, cooling, and automated compounding systems power top PVC pipes, profiles, cables, masterbatches, and polymer compounding processors across the globe.</p>
+                                    <div class="bento-pills">
+                                        <span class="bento-pill-item">High-Speed Heaters</span>
+                                        <span class="bento-pill-item">Cooling Mixers</span>
+                                        <span class="bento-pill-item">Automated Feeding</span>
+                                        <span class="bento-pill-item">Compounding</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">1,00,000</div>
-                                    <p>Sq. Ft. Total</p>
-                                    <p>Area for Manufacturing</p>
+
+                        <!-- CARD 4: PRODUCTION CAPACITY (Span 4) -->
+                        <div class="bento-card bento-card-light bento-span-4">
+                            <div class="bento-card-top">
+                                <div class="bento-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                                 </div>
+                                <span class="bento-tag">Capacity</span>
+                            </div>
+                            <div class="bento-card-body">
+                                <div class="bento-num-wrap">
+                                    <span class="bento-num" data-target="400">400</span>
+                                    <span class="bento-unit">+</span>
+                                </div>
+                                <h3 class="bento-title">Equipments Production Capacity</h3>
+                                <p class="bento-sub-badge">Annually</p>
+                                <p class="bento-desc">High production throughput delivering customized machinery promptly without compromising build quality.</p>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">400</div> <span class="plus"></span>
-                                    <p>Equipments Production Capacity</p>
-                                    <p>Annually</p>
+
+                        <!-- CARD 6: PULVERIZING SYSTEM (Span 4) -->
+                        <div class="bento-card bento-card-light bento-span-4">
+                            <div class="bento-card-top">
+                                <div class="bento-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.3 4.3M14.1 14.1l4.3 4.3M5.6 18.4l4.3-4.3M14.1 9.9l4.3-4.3"/></svg>
                                 </div>
+                                <span class="bento-tag">Size Reduction</span>
+                            </div>
+                            <div class="bento-card-body">
+                                <div class="bento-num-wrap">
+                                    <span class="bento-num" data-target="1400">1400</span>
+                                    <span class="bento-unit">+</span>
+                                </div>
+                                <h3 class="bento-title">Pulverizing System Installations</h3>
+                                <p class="bento-sub-badge">Worldwide</p>
+                                <p class="bento-desc">Engineered for fine mesh powdering, high output efficiency, and minimal energy consumption across diverse materials.</p>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">3500</div> <span class="plus"></span>
-                                    <p>Mixing Plant</p>
-                                    <p>Installations Worldwide</p>
+
+                        <!-- CARD 7: COUNTRIES SERVED (Span 4) -->
+                        <div class="bento-card bento-card-accent bento-span-4">
+                            <div class="bento-card-top">
+                                <div class="bento-icon-wrap bento-icon-globe">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                                 </div>
+                                <span class="bento-tag bento-tag-accent">Global Reach</span>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">1400</div> <span class="plus"></span>
-                                    <p>Pulverizing System</p>
-                                    <p>Installations Worldwide</p>
+                            <div class="bento-card-body">
+                                <div class="bento-num-wrap">
+                                    <span class="bento-num" data-target="25">25</span>
+                                    <span class="bento-unit">+</span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="block-outer">
-                                <div class="block">
-                                    <div class="number">25</div>
-                                    <p>Countries Served in Exports</p>
-                                </div>
+                                <h3 class="bento-title">Countries Served in Exports</h3>
+                                <p class="bento-sub-badge">International Markets</p>
+                                <p class="bento-desc">Recognized and trusted by international processors across Asia, Africa, Middle East, Europe &amp; the Americas.</p>
                             </div>
                         </div>
                     </div>
@@ -486,7 +571,72 @@ include('./includes/include.inc.php');
             <script src="<?php echo $GLBHost; ?>scripts/jquery.countup.js"></script>
 
             <script>
-                $('.number').countUp();
+                (function () {
+                    function initBentoCounters() {
+                        var counters = document.querySelectorAll('.bento-num[data-target]');
+                        if (!counters.length) return;
+
+                        if ('IntersectionObserver' in window) {
+                            var observer = new IntersectionObserver(function (entries, obs) {
+                                entries.forEach(function (entry) {
+                                    if (entry.isIntersecting) {
+                                        animateCounter(entry.target);
+                                        obs.unobserve(entry.target);
+                                    }
+                                });
+                            }, { threshold: 0.2 });
+
+                            counters.forEach(function (counter) {
+                                observer.observe(counter);
+                            });
+                        } else {
+                            counters.forEach(animateCounter);
+                        }
+
+                        function animateCounter(el) {
+                            var target = parseInt(el.getAttribute('data-target'), 10);
+                            var isIndian = el.getAttribute('data-format') === 'indian';
+                            var isPadded = target < 10 && target > 0;
+                            var duration = 1600;
+                            var startTime = null;
+
+                            function step(now) {
+                                if (!startTime) startTime = now;
+                                var progress = Math.min((now - startTime) / duration, 1);
+                                var ease = 1 - Math.pow(1 - progress, 3);
+                                var current = Math.floor(ease * target);
+
+                                if (isIndian) {
+                                    el.textContent = current.toLocaleString('en-IN');
+                                } else if (isPadded) {
+                                    el.textContent = (current < 10 ? '0' : '') + current;
+                                } else {
+                                    el.textContent = current.toLocaleString();
+                                }
+
+                                if (progress < 1) {
+                                    window.requestAnimationFrame(step);
+                                } else {
+                                    if (isIndian) {
+                                        el.textContent = target.toLocaleString('en-IN');
+                                    } else if (isPadded) {
+                                        el.textContent = (target < 10 ? '0' : '') + target;
+                                    } else {
+                                        el.textContent = target.toLocaleString();
+                                    }
+                                }
+                            }
+
+                            window.requestAnimationFrame(step);
+                        }
+                    }
+
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', initBentoCounters);
+                    } else {
+                        initBentoCounters();
+                    }
+                })();
             </script>
             <script>
 
