@@ -431,23 +431,23 @@ include('./includes/include.inc.php');
                             <i class="fa fa-th-large"></i> All Products <span class="count-badge">12</span>
                         </button>
                         <button class="prod-filter-btn" data-filter="cat-mixers">
-                            <i class="fa fa-recycle"></i> Industrial Mixers <span class="count-badge">4</span>
+                            <i class="fa fa-recycle"></i> Mixing Solutions <span class="count-badge">4</span>
                         </button>
                         <button class="prod-filter-btn" data-filter="cat-size-reduction">
                             <i class="fa fa-scissors"></i> Size Reduction <span class="count-badge">3</span>
                         </button>
                         <button class="prod-filter-btn" data-filter="cat-conveying-automation">
-                            <i class="fa fa-cogs"></i> Conveying, Automation &amp; Screening <span class="count-badge">5</span>
+                            <i class="fa fa-cogs"></i> Conveying and Automation <span class="count-badge">5</span>
                         </button>
                     </div>
 
                     <!-- ==============================================================
-                         CATEGORY 1: INDUSTRIAL MIXERS (4 MACHINES)
+                         CATEGORY 1: MIXING SOLUTIONS (4 MACHINES)
                          ============================================================== -->
                     <div class="prod-category-section" id="cat-mixers">
                         <div class="prod-category-header">
                             <span class="prod-category-tag">Category 01</span>
-                            <h3>Industrial Mixers</h3>
+                            <h3>Mixing Solutions</h3>
                             <p>High-speed compounding, rapid thermal cooling, homogenization, and laboratory testing mixers.</p>
                         </div>
                         <div class="row equal-height-grid">
@@ -542,12 +542,12 @@ include('./includes/include.inc.php');
                     </div>
 
                     <!-- ==============================================================
-                         CATEGORY 2: SIZE REDUCTION EQUIPMENT (3 MACHINES)
+                         CATEGORY 2: SIZE REDUCTION (3 MACHINES)
                          ============================================================== -->
                     <div class="prod-category-section" id="cat-size-reduction">
                         <div class="prod-category-header">
                             <span class="prod-category-tag">Category 02</span>
-                            <h3>Size Reduction Equipment</h3>
+                            <h3>Size Reduction</h3>
                             <p>Ultrafine pulverizing, scrap granulating, and high-torque shredding machinery.</p>
                         </div>
                         <div class="row equal-height-grid">
@@ -620,12 +620,12 @@ include('./includes/include.inc.php');
                     </div>
 
                     <!-- ==============================================================
-                         CATEGORY 3: CONVEYING, AUTOMATION & SCREENING (5 SYSTEMS)
+                         CATEGORY 3: CONVEYING AND AUTOMATION (5 SYSTEMS)
                          ============================================================== -->
                     <div class="prod-category-section" id="cat-conveying-automation">
                         <div class="prod-category-header">
                             <span class="prod-category-tag">Category 03</span>
-                            <h3>Conveying, Automation &amp; Screening</h3>
+                            <h3>Conveying and Automation</h3>
                             <p>Automated bulk powder transfer, dust-free conveying, precision screening, and complete turnkey mixing plant automation.</p>
                         </div>
                         

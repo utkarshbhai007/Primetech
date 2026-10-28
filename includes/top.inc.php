@@ -33,7 +33,7 @@
 
                         <li id="t-products" class="submenu-one"><a href="<?php echo $GLBHost; ?>products/">Products &nbsp;<i class="fa fa-caret-down"></i></a>
                             <ul>
-                                <li class="submenu-two"><a href="#">Mixers</a>
+                                <li class="submenu-two"><a href="#">Mixing Solutions</a>
                                     <ul>
                                         <li><a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/">High Speed Heater Cooler Mixer</a></li>
                                         <li><a href="<?php echo $GLBHost; ?>products/horizontal-cooler/">Horizontal Cooler</a></li>

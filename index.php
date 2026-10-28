@@ -203,7 +203,7 @@ include('./includes/include.inc.php');
                     transition: all 0.3s ease;
                 }
                 .triad-cat-title {
-                    font-size: 24px;
+                    font-size: 22px;
                     font-weight: 700;
                     color: #1a202c;
                     margin: 0;
@@ -213,7 +213,7 @@ include('./includes/include.inc.php');
                 }
                 .category-triad-card:hover .triad-cat-title,
                 .category-triad-card.active-box .triad-cat-title {
-                    font-size: 18px;
+                    font-size: 17px;
                 }
                 .triad-badge {
                     display: inline-block;
@@ -400,15 +400,15 @@ include('./includes/include.inc.php');
 
                     <!-- 3-Box Category Triad (Hover to Reveal Products) -->
                     <div class="row product-category-triad">
-                        <!-- Box 1: Mixers -->
+                        <!-- Box 1: Mixing Solutions -->
                         <div class="col-xs-12 col-md-4">
                             <div class="category-triad-card" id="triad-mixers">
                                 <div class="triad-left">
                                     <div class="triad-left-header">
-                                        <h3 class="triad-cat-title">Mixers</h3>
+                                        <h3 class="triad-cat-title">Mixing Solutions</h3>
                                     </div>
                                     <div class="triad-media">
-                                        <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixers" class="img-responsive">
+                                        <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixing Solutions" class="img-responsive">
                                     </div>
                                     <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
                                 </div>
@@ -467,7 +467,7 @@ include('./includes/include.inc.php');
                             <div class="category-triad-card" id="triad-conveying">
                                 <div class="triad-left">
                                     <div class="triad-left-header">
-                                        <h3 class="triad-cat-title">Conveying &amp; Automation</h3>
+                                        <h3 class="triad-cat-title">Conveying and Automation</h3>
                                     </div>
                                     <div class="triad-media">
                                         <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
