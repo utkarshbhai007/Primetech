@@ -1471,8 +1471,8 @@ footer ul li.active a {font-weight: 500;}
 #our-partner .owl-nav .owl-next:before{line-height:22px; content: '\f105'; font-family: 'FontAwesome'; font-size: large; transition: all 0.2s; opacity: 1;}
 #our-partner .owl-nav > div:hover{background-color:#780f12;}
 
-#foot-print {position: relative; width: 100%; height: auto; min-height: 500px; background-image: url(../images/subscribe-bg.jpg); background-position: center top; background-repeat: no-repeat; background-size: cover; background-attachment1: fixed;}
-#foot-print:before {content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(255,255,255,0.8); display: block;}
+#foot-print {position: relative; width: 100%; height: auto; min-height: 500px; background-image: url('../images/unit%201%20photo%20for%20the%20infrastructure.png'); background-position: center center; background-repeat: no-repeat; background-size: cover;}
+#foot-print:before {content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(248, 250, 252, 0.90) 100%); display: block;}
 #foot-print{padding: 40px 0 60px; }
 #foot-print .item { margin-top: 0;display: table; width: 100%;}
 #foot-print blockquote{font-size:160%; }
@@ -1846,7 +1846,7 @@ footer ul li.active a {font-weight: 500;}
     width: 100%;
     min-height: auto;
     padding: 70px 0 85px;
-    background-image: url(../images/subscribe-bg.jpg);
+    background-image: url('../images/unit%201%20photo%20for%20the%20infrastructure.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1860,7 +1860,7 @@ footer ul li.active a {font-weight: 500;}
     right: 0;
     top: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(248, 250, 252, 0.94) 0%, rgba(241, 245, 249, 0.97) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(248, 250, 252, 0.90) 100%);
     display: block;
     z-index: 1;
 }
