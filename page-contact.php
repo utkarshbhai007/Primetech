@@ -63,7 +63,7 @@ include('./includes/include.inc.php');
                                     <div class="block">
                                         <div class="icon"><i class="sprite call"></i></div>
                                         <h3 class="title">Phone</h3>
-                                        <b>Mobile:</b> <br><a href="tel:+91-9687000743">+91-9687000743</a><br><a href="tel:+91-9687000757">+91-9687000757</a><br><a href="tel:+91-9081000745">+91-9081000745</a><br><a href="tel:+91-9898515858">+91-9898515858</a><br><a href="tel:+91-9824167062">+91-9824167062</a></p>
+                                        <b>Mobile / Direct:</b><br><a href="tel:+91-9081000745">+91-9081000745</a><br><a href="tel:+91-9687000743">+91-9687000743</a></p>
                                     </div>
                                 </div>
                             </div>

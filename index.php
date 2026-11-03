@@ -231,7 +231,7 @@ include('./includes/include.inc.php');
                     transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
                     display: flex;
                     flex-direction: row;
-                    height: 420px;
+                    height: 450px;
                     margin-bottom: 30px;
                     position: relative;
                     cursor: pointer;
@@ -294,7 +294,7 @@ include('./includes/include.inc.php');
                 }
                 .triad-media {
                     width: 100%;
-                    height: 220px;
+                    height: 270px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -304,11 +304,11 @@ include('./includes/include.inc.php');
                 }
                 .category-triad-card:hover .triad-media,
                 .category-triad-card.active-box .triad-media {
-                    height: 180px;
+                    height: 200px;
                 }
                 .triad-media img {
-                    max-height: 190px;
-                    max-width: 90%;
+                    max-height: 250px;
+                    max-width: 95%;
                     width: auto;
                     height: auto;
                     object-fit: contain;
@@ -317,7 +317,7 @@ include('./includes/include.inc.php');
                 }
                 .category-triad-card:hover .triad-media img,
                 .category-triad-card.active-box .triad-media img {
-                    max-height: 160px;
+                    max-height: 185px;
                     transform: scale(1.05);
                 }
                 .triad-hover-prompt {
@@ -475,7 +475,7 @@ include('./includes/include.inc.php');
                                     <div class="triad-media">
                                         <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixing Solutions" class="img-responsive">
                                     </div>
-                                    <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
+                                    <span class="triad-hover-prompt"><i class="fa fa-cog"></i> View Specifications <i class="fa fa-search"></i></span>
                                 </div>
                                 <div class="triad-right">
                                     <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-target-img="#mixers-preview-img">
@@ -508,7 +508,7 @@ include('./includes/include.inc.php');
                                     <div class="triad-media">
                                         <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
                                     </div>
-                                    <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
+                                    <span class="triad-hover-prompt"><i class="fa fa-cog"></i> View Specifications <i class="fa fa-search"></i></span>
                                 </div>
                                 <div class="triad-right">
                                     <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-target-img="#size-preview-img">
@@ -537,7 +537,7 @@ include('./includes/include.inc.php');
                                     <div class="triad-media">
                                         <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
                                     </div>
-                                    <span class="triad-hover-prompt">View Products <i class="fa fa-angle-right"></i></span>
+                                    <span class="triad-hover-prompt"><i class="fa fa-cog"></i> View Specifications <i class="fa fa-search"></i></span>
                                 </div>
                                 <div class="triad-right">
                                     <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-target-img="#conveying-preview-img">
@@ -650,7 +650,8 @@ include('./includes/include.inc.php');
                             loop: true,
                             margin: 0,
                             autoplay: true,
-                            autoplayTimeout: 5000,
+                            autoplayTimeout: 3800,
+                            autoplaySpeed: 900,
                             autoplayHoverPause: true,
                             smartSpeed: 800,
                             dots: true,

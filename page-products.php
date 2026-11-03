@@ -428,16 +428,16 @@ include('./includes/include.inc.php');
                     <!-- Category Filter Tabs -->
                     <div class="prod-filter-bar">
                         <button class="prod-filter-btn active" data-filter="all">
-                            <i class="fa fa-th-large"></i> All Products <span class="count-badge">12</span>
+                            <i class="fa fa-th-large"></i> All Products
                         </button>
                         <button class="prod-filter-btn" data-filter="cat-mixers">
-                            <i class="fa fa-recycle"></i> Mixing Solutions <span class="count-badge">4</span>
+                            <i class="fa fa-recycle"></i> Mixing Solutions
                         </button>
                         <button class="prod-filter-btn" data-filter="cat-size-reduction">
-                            <i class="fa fa-scissors"></i> Size Reduction <span class="count-badge">3</span>
+                            <i class="fa fa-scissors"></i> Size Reduction
                         </button>
                         <button class="prod-filter-btn" data-filter="cat-conveying-automation">
-                            <i class="fa fa-cogs"></i> Conveying and Automation <span class="count-badge">5</span>
+                            <i class="fa fa-cogs"></i> Conveying and Automation
                         </button>
                     </div>
 
@@ -446,7 +446,6 @@ include('./includes/include.inc.php');
                          ============================================================== -->
                     <div class="prod-category-section" id="cat-mixers">
                         <div class="prod-category-header">
-                            <span class="prod-category-tag">Category 01</span>
                             <h3>Mixing Solutions</h3>
                             <p>High-speed compounding, rapid thermal cooling, homogenization, and laboratory testing mixers.</p>
                         </div>
@@ -546,7 +545,6 @@ include('./includes/include.inc.php');
                          ============================================================== -->
                     <div class="prod-category-section" id="cat-size-reduction">
                         <div class="prod-category-header">
-                            <span class="prod-category-tag">Category 02</span>
                             <h3>Size Reduction</h3>
                             <p>Ultrafine pulverizing, scrap granulating, and high-torque shredding machinery.</p>
                         </div>
@@ -624,7 +622,6 @@ include('./includes/include.inc.php');
                          ============================================================== -->
                     <div class="prod-category-section" id="cat-conveying-automation">
                         <div class="prod-category-header">
-                            <span class="prod-category-tag">Category 03</span>
                             <h3>Conveying and Automation</h3>
                             <p>Automated bulk powder transfer, dust-free conveying, precision screening, and complete turnkey mixing plant automation.</p>
                         </div>
@@ -712,7 +709,7 @@ include('./includes/include.inc.php');
                                         <p class="prod-card-desc">High-efficiency circular multi-deck gyratory vibro-screen for continuous grading, scalping, and dust separation of plastic powders, masterbatches, and chemical compounds.</p>
                                     </div>
                                     <a href="<?php echo $GLBHost; ?>products/gyro-vibrating-screen/" class="prod-card-btn">
-                                        <span>Explore Gyro Vibrating Screen</span>
+                                        <span>View Specifications</span>
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -734,7 +731,7 @@ include('./includes/include.inc.php');
                                         <p class="prod-card-desc">Fully automated turnkey compounding systems integrating vacuum and spiral pneumatic conveying, loss-in-weight batching, weighing, silo storage, and central PLC-SCADA automation.</p>
                                     </div>
                                     <a href="<?php echo $GLBHost; ?>products/mixing-plant-automation/" class="prod-card-btn">
-                                        <span>Explore Mixing Plant Automation</span>
+                                        <span>View Specifications</span>
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>

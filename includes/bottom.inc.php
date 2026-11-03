@@ -14,7 +14,7 @@
                 <div class="block">
                     <div class="icon"><i class="sprite call"></i></div>
                     <h3 class="title">Phone</h3>
-                    <p><b>Mobile:</b><br> <a href="tel:+91-9687000743">+91-9687000743</a><br><a href="tel:+91-9687000757">+91-9687000757</a><br><a href="tel:+91-9081000745">+91-9081000745</a><br><a href="tel:+91-9898515858">+91-9898515858</a><br><a href="tel:+91-9824167062">+91-9824167062</a></p>
+                    <p><b>Mobile / Direct:</b><br> <a href="tel:+91-9081000745">+91-9081000745</a><br><a href="tel:+91-9687000743">+91-9687000743</a></p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">

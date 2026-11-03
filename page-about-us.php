@@ -193,27 +193,55 @@ include('./includes/include.inc.php');
             }
             .oem-partner-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: 14px;
-                margin: 20px 0 30px;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 18px;
+                margin: 25px 0 35px;
             }
-            .oem-partner-card {
+            .oem-logo-card {
                 background: #ffffff;
                 border: 1px solid #e2e8f0;
-                border-left: 4px solid #ad171e;
-                border-radius: 8px;
-                padding: 14px 16px;
-                font-size: 14px;
-                font-weight: 600;
-                color: #1e293b;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+                border-radius: 12px;
+                padding: 16px 14px 12px;
+                box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            }
+            .oem-logo-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 24px rgba(173, 23, 30, 0.12);
+                border-color: #ad171e;
+            }
+            .oem-logo-wrap {
+                width: 100%;
+                height: 70px;
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                justify-content: center;
+                margin-bottom: 8px;
             }
-            .oem-partner-card i {
-                color: #ad171e;
-                font-size: 16px;
+            .oem-logo-wrap img {
+                max-height: 58px;
+                max-width: 90%;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+                filter: grayscale(15%);
+                transition: filter 0.3s ease, transform 0.3s ease;
+            }
+            .oem-logo-card:hover .oem-logo-wrap img {
+                filter: grayscale(0%);
+                transform: scale(1.05);
+            }
+            .oem-partner-name {
+                font-size: 12.5px;
+                font-weight: 700;
+                color: #334155;
+                line-height: 1.3;
+                font-family: 'Titillium Web', sans-serif;
             }
 
             /* Certificate Gallery */
@@ -376,7 +404,7 @@ include('./includes/include.inc.php');
                             <div class="about-pillar-card">
                                 <div class="pillar-icon-header">
                                     <div class="pillar-icon-circle">
-                                        <i class="fa fa-bullseye"></i>
+                                        <span style="font-size: 34px; line-height: 1;">🎯</span>
                                     </div>
                                 </div>
                                 <div class="pillar-body">
@@ -448,14 +476,44 @@ include('./includes/include.inc.php');
                             
                             <p>Through unwavering quality consciousness and constant technological advancements, Primetech has earned an impeccable reputation as a trusted OEM machinery partner to industry leaders across India and abroad.</p>
                             
-                            <!-- OEM Clients Grid -->
+                            <!-- OEM Clients Grid with Logos -->
                             <div class="oem-partner-grid">
-                                <div class="oem-partner-card"><i class="fa fa-building-o"></i> M/s. Windsor Machines Ltd.</div>
-                                <div class="oem-partner-card"><i class="fa fa-building-o"></i> M/s. Rollepaal Engineering India Pvt. Ltd.</div>
-                                <div class="oem-partner-card"><i class="fa fa-building-o"></i> M/s. Prasad Group Of Companies</div>
-                                <div class="oem-partner-card"><i class="fa fa-building-o"></i> M/s. Pharmalab Engineering India Ltd.</div>
-                                <div class="oem-partner-card"><i class="fa fa-building-o"></i> M/s. Rajoo Bausano Extrusion Pvt. Ltd.</div>
-                                <div class="oem-partner-card"><i class="fa fa-building-o"></i> M/s. Milacron India Ltd.</div>
+                                <div class="oem-logo-card">
+                                    <div class="oem-logo-wrap">
+                                        <img src="<?php echo $GLBHost; ?>images/partners/windsor-logo.jpg" alt="Windsor Machines Ltd." class="img-responsive">
+                                    </div>
+                                    <span class="oem-partner-name">Windsor Machines Ltd.</span>
+                                </div>
+                                <div class="oem-logo-card">
+                                    <div class="oem-logo-wrap">
+                                        <img src="<?php echo $GLBHost; ?>images/partners/rollepaal-logo.jpg" alt="Rollepaal Engineering India Pvt. Ltd." class="img-responsive">
+                                    </div>
+                                    <span class="oem-partner-name">Rollepaal Engineering</span>
+                                </div>
+                                <div class="oem-logo-card">
+                                    <div class="oem-logo-wrap">
+                                        <img src="<?php echo $GLBHost; ?>images/partners/prasad-group-logo.jpg" alt="Prasad Group Of Companies" class="img-responsive">
+                                    </div>
+                                    <span class="oem-partner-name">Prasad Group</span>
+                                </div>
+                                <div class="oem-logo-card">
+                                    <div class="oem-logo-wrap">
+                                        <img src="<?php echo $GLBHost; ?>images/partners/pharmalab-logo.jpg" alt="Pharmalab Engineering India Ltd." class="img-responsive">
+                                    </div>
+                                    <span class="oem-partner-name">Pharmalab Engineering</span>
+                                </div>
+                                <div class="oem-logo-card">
+                                    <div class="oem-logo-wrap">
+                                        <img src="<?php echo $GLBHost; ?>images/partners/rajoo-bausano.jpg" alt="Rajoo Bausano Extrusion Pvt. Ltd." class="img-responsive">
+                                    </div>
+                                    <span class="oem-partner-name">Rajoo Bausano</span>
+                                </div>
+                                <div class="oem-logo-card">
+                                    <div class="oem-logo-wrap">
+                                        <img src="<?php echo $GLBHost; ?>images/partners/milacron.jpg" alt="Milacron India Ltd." class="img-responsive">
+                                    </div>
+                                    <span class="oem-partner-name">Milacron India Ltd.</span>
+                                </div>
                             </div>
 
                             <!-- Quality Excellence Awards Banner -->
