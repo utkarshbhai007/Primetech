@@ -1,629 +1,182 @@
 <?php
-include('./includes/include.inc.php');
+$pageTitle = 'About Us';
+$pageDescription = 'PRIMETECH, an ISO 9001:2015 certified enterprise founded in 1991 — leading manufacturer of plastic processing machinery in Ahmedabad, India.';
+require_once __DIR__ . '/includes/header.php';
+
+$certItems = array_map(fn($c) => ['src' => url('/assets/certs/' . $c[0]), 'caption' => $c[1]], $CERTS);
+$hcm = getProduct('high-speed-heater-cooler-mixer');
+$offerItems = array_map(fn($x) => ['k' => $x[0], 'v' => $x[1]], $OFFER);
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>About Us | Primetech Industries</title>
-        <meta name="description" content="Learn about Primetech Industries - Leading manufacturer of high-speed industrial mixers, size reduction machinery, and conveying automation systems since 1991. ISO 9001:2015 certified company.">
-        <meta name="keywords" content="About Primetech, Primetech Industries, History, Why Primetech, Quality and Achievements, Plastic Processing Machinery">
-        <meta name="robots" content="index,follow">
 
-        <?php include('./includes/header.inner.inc.php'); ?>
+<?= render_page_hero([
+    'crumbs' => [[null, 'About Us']],
+    'lines' => ['A world-class vision,', 'since 1991.'],
+    'image' => '/assets/gallery/unit1-main.jpg',
+    'testid' => 'about-hero',
+]) ?>
 
-        <style>
-            .about-intro-lead {
-                font-size: 16px;
-                line-height: 1.7;
-                color: #334155;
-                margin-bottom: 16px;
-            }
-            .about-highlight-badge {
-                display: inline-block;
-                background: rgba(173, 23, 30, 0.08);
-                color: #ad171e;
-                font-weight: 700;
-                font-size: 12px;
-                padding: 4px 14px;
-                border-radius: 20px;
-                border: 1px solid rgba(173, 23, 30, 0.2);
-                margin-bottom: 12px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-            .about-pillars {
-                margin: 30px 0 45px;
-                display: flex;
-                flex-wrap: wrap;
-            }
-            .about-pillars > [class*="col-"] {
-                display: flex;
-                flex-direction: column;
-            }
-            .about-pillar-card {
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-                margin-bottom: 25px;
-                height: 100%;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-            }
-            .about-pillar-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 12px 28px rgba(173, 23, 30, 0.12);
-                border-color: #ad171e;
-            }
-            .pillar-icon-header {
-                background: linear-gradient(135deg, #fdf8f8 0%, #f7ebeb 100%);
-                border-bottom: 1px solid #f1dede;
-                padding: 30px 20px 24px;
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .pillar-icon-circle {
-                width: 72px;
-                height: 72px;
-                border-radius: 50%;
-                background: #ad171e;
-                color: #ffffff;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 32px;
-                box-shadow: 0 6px 18px rgba(173, 23, 30, 0.25);
-                transition: transform 0.3s ease, background-color 0.3s ease;
-            }
-            .about-pillar-card:hover .pillar-icon-circle {
-                transform: scale(1.1);
-                background: #8b0f15;
-            }
-            .about-pillar-card .pillar-body {
-                padding: 24px 22px 26px;
-                flex-grow: 1;
-            }
-            .about-pillar-card .pillar-body h4 {
-                font-size: 21px;
-                font-weight: 700;
-                color: #ad171e;
-                margin: 0 0 12px;
-                font-family: 'Titillium Web', sans-serif;
-            }
-            .about-pillar-card .pillar-body p {
-                font-size: 14px;
-                line-height: 1.65;
-                color: #4a5568;
-                margin: 0;
-            }
+<section class="bg-white py-10 sm:py-12 lg:py-14" data-testid="about-profile">
+  <div class="container-x grid gap-14 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <?= render_mask_lines(['From a family', 'enterprise to a', 'global supplier.'], ['class' => 't-h2', 'accent' => 2]) ?>
+      <div class="relative mt-8 hidden lg:block">
+        <?= render_clip_image('/assets/gallery/unit1-01.jpg', 'Fabrication Bay & Material Intake, Unit 1', ['class' => 'aspect-[16/10] w-full']) ?>
+      </div>
+    </div>
+    <div class="space-y-6 text-base leading-relaxed text-ink/75 lg:col-span-6 lg:col-start-7 lg:pt-2">
+      <?php foreach ($ABOUT_PROFILE as $i => $p): ?>
+        <p class="<?= $i === 0 ? 't-lead text-ink' : '' ?>" data-reveal style="--delay:<?= $i * 0.05 ?>s"><?= e($p) ?></p>
+      <?php endforeach; ?>
+      <?= render_clip_image('/assets/gallery/unit1-01.jpg', 'Fabrication Bay & Material Intake, Unit 1', ['class' => 'aspect-[4/3] w-full lg:hidden']) ?>
+    </div>
+  </div>
+</section>
 
-            /* Why Primetech Section */
-            .why-section-box {
-                background: #f8fafc;
-                border: 1px solid #e2e8f0;
-                border-radius: 14px;
-                padding: 30px 25px;
-                margin-bottom: 30px;
-                height: calc(100% - 30px);
-                box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .why-section-box:hover {
-                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            }
-            .why-section-header {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                margin-bottom: 20px;
-                padding-bottom: 15px;
-                border-bottom: 2px solid #e2e8f0;
-            }
-            .why-icon-circle {
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                background: #ad171e;
-                color: #ffffff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 18px;
-                flex-shrink: 0;
-            }
-            .why-section-header h3 {
-                margin: 0;
-                font-size: 22px;
-                font-weight: 700;
-                color: #1a202c;
-                font-family: 'Titillium Web', sans-serif;
-            }
-            .why-feature-list {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-            .why-feature-list li {
-                position: relative;
-                padding-left: 28px;
-                margin-bottom: 14px;
-                font-size: 14px;
-                line-height: 1.55;
-                color: #334155;
-            }
-            .why-feature-list li:before {
-                content: "\f00c";
-                font-family: FontAwesome;
-                position: absolute;
-                left: 0;
-                top: 2px;
-                color: #ad171e;
-                font-size: 13px;
-                font-weight: 900;
-            }
+<section class="border-y border-ink/10 bg-paper" data-testid="about-pillars">
+  <div class="container-x grid md:grid-cols-3">
+    <?php foreach ($PILLARS as $i => $p): ?>
+      <div class="border-ink/10 py-14 md:border-l md:px-10 md:first:border-l-0 md:first:pl-0" data-reveal style="--delay:<?= $i * 0.08 ?>s">
+        <span class="text-xs font-semibold tabular-nums text-brand">0<?= $i + 1 ?></span>
+        <h3 class="t-h3 mt-4"><?= e($p['k']) ?></h3>
+        <p class="mt-4 text-[15px] leading-relaxed text-ink/70"><?= e($p['v']) ?></p>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</section>
 
-            /* OEM Partners & Quality Excellence Award Banner */
-            .award-banner-box {
-                background: linear-gradient(135deg, #ad171e 0%, #780f12 100%);
-                color: #ffffff;
-                border-radius: 12px;
-                padding: 24px 30px;
-                margin: 25px 0 35px;
-                box-shadow: 0 8px 24px rgba(173, 23, 30, 0.25);
-            }
-            .award-banner-box h4 {
-                color: #ffffff;
-                font-size: 21px;
-                font-weight: 700;
-                margin: 0 0 10px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-            .award-banner-box p {
-                color: #fce7e7;
-                font-size: 14.5px;
-                line-height: 1.6;
-                margin: 0;
-            }
-            .oem-partner-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-                gap: 18px;
-                margin: 25px 0 35px;
-            }
-            .oem-logo-card {
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 12px;
-                padding: 16px 14px 12px;
-                box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            }
-            .oem-logo-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 10px 24px rgba(173, 23, 30, 0.12);
-                border-color: #ad171e;
-            }
-            .oem-logo-wrap {
-                width: 100%;
-                height: 70px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 8px;
-            }
-            .oem-logo-wrap img {
-                max-height: 58px;
-                max-width: 90%;
-                width: auto;
-                height: auto;
-                object-fit: contain;
-                filter: grayscale(15%);
-                transition: filter 0.3s ease, transform 0.3s ease;
-            }
-            .oem-logo-card:hover .oem-logo-wrap img {
-                filter: grayscale(0%);
-                transform: scale(1.05);
-            }
-            .oem-partner-name {
-                font-size: 12.5px;
-                font-weight: 700;
-                color: #334155;
-                line-height: 1.3;
-                font-family: 'Titillium Web', sans-serif;
-            }
-
-            /* Certificate Gallery */
-            .cert-grid-wrapper {
-                margin: 25px 0 45px;
-            }
-            .gallery-outer {
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 10px;
-                padding: 12px;
-                text-align: center;
-                box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                margin-bottom: 25px;
-            }
-            .gallery-outer:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            }
-            .gallery-outer .gallery {
-                display: block;
-                position: relative;
-                overflow: hidden;
-                border-radius: 6px;
-            }
-            .gallery-outer .gallery img {
-                transition: transform 0.4s ease;
-                width: 100%;
-                height: 220px;
-                object-fit: contain;
-                background: #f8fafc;
-                padding: 6px;
-            }
-            .gallery-outer:hover .gallery img {
-                transform: scale(1.05);
-            }
-            .gallery-outer h5 {
-                margin: 12px 0 4px;
-                font-size: 14px;
-                font-weight: 700;
-                color: #1e293b;
-            }
-
-            .section-heading-unified {
-                position: relative;
-                margin: 45px 0 25px;
-                padding-bottom: 12px;
-                border-bottom: 2px solid #e2e8f0;
-            }
-            .section-heading-unified:after {
-                content: "";
-                position: absolute;
-                bottom: -2px;
-                left: 0;
-                width: 60px;
-                height: 2px;
-                background: #ad171e;
-            }
-            .section-heading-unified h2 {
-                margin: 0;
-                font-size: 26px;
-                font-weight: 700;
-                color: #1a202c;
-                font-family: 'Titillium Web', sans-serif;
-            }
-            .section-heading-unified h2 span {
-                color: #ad171e;
-            }
-
-            @media (max-width: 767px) {
-                .why-section-box {
-                    height: auto;
-                }
-                .about-pillar-card {
-                    height: auto;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <div onMouseDown="return false">  
-        <div id="mobile-menu"></div>
-
-        <div id="wrapper">
-
-            <?php include('./includes/top.inc.php'); ?>
-
-            <section id="inner-title" class="bg06">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            <h1><span>About Us</span></h1>
-                        </div>
-                        <div class="hidden-xs hidden-sm col-md-6">
-                            <div id="breadcrumb">
-                                <ul class="breadcrumb">
-                                    <li><a href="<?php echo $GLBHost; ?>">Home</a></li>
-                                    <li class="active">About Us</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="content">
-                <div class="container">
-                    
-                    <!-- ==========================================
-                         1. COMPANY HISTORY & OVERVIEW
-                         ========================================== -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <span class="about-highlight-badge"><i class="fa fa-certificate"></i> Founded 1991 &bull; ISO 9001:2015 Certified</span>
-                            <h2 class="title mt0 text-small"><span>Company Profile &amp; History</span></h2>
-                            
-                            <p class="about-intro-lead"><strong>PRIMETECH</strong>, an ISO 9001:2015 certified enterprise, laid its foundation in 1991 with a strong vision of becoming a world-class leader by engineering and delivering ultimate quality plastic processing machinery across the globe.</p>
-                            
-                            <p>Primetech has evolved to its present premier establishment status as a leading manufacturer of advanced plastic processing equipment in India, while continuously expanding its footprint across international markets. Our modern manufacturing facility in Ahmedabad, Gujarat, is equipped with high-precision fabrication, assembly, and testing infrastructure.</p>
-                            
-                            <p>We maintain an agile edge through our dedicated <strong>Research &amp; Development (R&amp;D)</strong> division, meeting specialized technological challenges with cutting-edge engineering solutions. Total Quality Management (TQM) systems relentlessly drive towards zero-defect and failure-free performance, delivering superior machinery at remarkably competitive investment costs.</p>
-                            
-                            <p>With deep technical know-how in high-speed industrial mixing technology, automated bulk material handling and conveying systems, and precision size reduction technology, our dynamic engineers work in close collaboration with client specialists to customize solutions that define industry standards for tomorrow.</p>
-                        </div>
-                    </div>
-
-                    <!-- ==========================================
-                         2. CORE PILLARS: PHILOSOPHY, VISION, MISSION
-                         ========================================== -->
-                    <div class="row about-pillars">
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                            <div class="about-pillar-card">
-                                <div class="pillar-icon-header">
-                                    <div class="pillar-icon-circle">
-                                        <i class="fa fa-lightbulb-o"></i>
-                                    </div>
-                                </div>
-                                <div class="pillar-body">
-                                    <h4>Philosophy</h4>
-                                    <p>A relentless drive for excellence has driven the company's remarkable growth. Enthusiasm, engineering integrity, and passion form the foundation of our commitment to every client.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                            <div class="about-pillar-card">
-                                <div class="pillar-icon-header">
-                                    <div class="pillar-icon-circle">
-                                        <i class="fa fa-eye"></i>
-                                    </div>
-                                </div>
-                                <div class="pillar-body">
-                                    <h4>Vision</h4>
-                                    <p>Customer satisfaction is our prime motto. We aspire to build enduring global client relationships benchmarked on trust, technology leadership, and prompt support.</p>
-                                </div>   
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4">
-                            <div class="about-pillar-card">
-                                <div class="pillar-icon-header">
-                                    <div class="pillar-icon-circle">
-                                        <span style="font-size: 34px; line-height: 1;">🎯</span>
-                                    </div>
-                                </div>
-                                <div class="pillar-body">
-                                    <h4>The Mission</h4>
-                                    <p>To deliver uncompromising quality by paying utmost attention to small details, continuous innovation, manufacturing accuracy, safety, and lifelong service dependability.</p>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ==========================================
-                         3. WHY PRIMETECH: OFFERINGS & ADVANTAGES
-                         ========================================== -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="section-heading-unified">
-                                <h2>Why <span>Primetech</span></h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            <div class="why-section-box">
-                                <div class="why-section-header">
-                                    <div class="why-icon-circle"><i class="fa fa-cogs"></i></div>
-                                    <h3>What We Offer</h3>
-                                </div>
-                                <ul class="why-feature-list">
-                                    <li><strong>Reputed Global Components:</strong> All bought-out components from internationally renowned, trusted brands.</li>
-                                    <li><strong>Extended Tool Life:</strong> Promising tool longevity with minimal wear rate, even under intense filler loadings.</li>
-                                    <li><strong>Proven Pneuma-Seal:</strong> Extended bearing life backed by our proprietary Pneuma-seal technology.</li>
-                                    <li><strong>Centralized Lubrication:</strong> Convenient lubrication ports for effortless maintenance and servicing.</li>
-                                    <li><strong>Heavy &amp; Robust Construction:</strong> Sturdy structural frames with integrated intelligent safety parameters.</li>
-                                    <li><strong>In-House Manufacturing:</strong> Complete in-house fabrication of key parts under strict quality control.</li>
-                                    <li><strong>Stress-Free Components:</strong> Highly finished, precision-machined parts utilizing modern manufacturing methods.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6">
-                            <div class="why-section-box">
-                                <div class="why-section-header">
-                                    <div class="why-icon-circle"><i class="fa fa-line-chart"></i></div>
-                                    <h3>Your Advantages</h3>
-                                </div>
-                                <ul class="why-feature-list">
-                                    <li><strong>High Throughput Rates:</strong> Maximum output capacity with continuous operational reliability.</li>
-                                    <li><strong>Lowest Power Consumption:</strong> Energy-efficient design minimizing overall kilowatt per ton costs.</li>
-                                    <li><strong>Consistent Powder Quality:</strong> Highly reproducible, homogeneous blend minimizing extrusion scrap.</li>
-                                    <li><strong>Robust Working Life:</strong> Heavy-duty industrial build designed for multi-shift continuous duty.</li>
-                                    <li><strong>Easy Installation:</strong> Quick plug-and-operate setup with comprehensive operational documentation.</li>
-                                    <li><strong>Safe &amp; User-Friendly:</strong> Intuitive operator controls and fail-safe safety interlocks.</li>
-                                    <li><strong>Quick &amp; Smart Service:</strong> Fast technical response with proactive troubleshooting solutions.</li>
-                                    <li><strong>Tailored Engineering:</strong> Customized design configurations engineered for specific client processes.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ==========================================
-                         4. QUALITY STANDARDS & OEM ACHIEVEMENTS
-                         ========================================== -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="section-heading-unified">
-                                <h2>Quality &amp; <span>Achievements</span></h2>
-                            </div>
-                            <p>QUALITY has always been of prime importance since the inception of the company. Comprehensive resources and dedicated technical talents have been committed to manufacturing state-of-the-art machinery. Our equipment is dependable, robust, energy-efficient, and engineered using premium certified components.</p>
-                            
-                            <p>Through unwavering quality consciousness and constant technological advancements, Primetech has earned an impeccable reputation as a trusted OEM machinery partner to industry leaders across India and abroad.</p>
-                            
-                            <!-- OEM Clients Grid with Logos -->
-                            <div class="oem-partner-grid">
-                                <div class="oem-logo-card">
-                                    <div class="oem-logo-wrap">
-                                        <img src="<?php echo $GLBHost; ?>images/partners/windsor-logo.jpg" alt="Windsor Machines Ltd." class="img-responsive">
-                                    </div>
-                                    <span class="oem-partner-name">Windsor Machines Ltd.</span>
-                                </div>
-                                <div class="oem-logo-card">
-                                    <div class="oem-logo-wrap">
-                                        <img src="<?php echo $GLBHost; ?>images/partners/rollepaal-logo.jpg" alt="Rollepaal Engineering India Pvt. Ltd." class="img-responsive">
-                                    </div>
-                                    <span class="oem-partner-name">Rollepaal Engineering</span>
-                                </div>
-                                <div class="oem-logo-card">
-                                    <div class="oem-logo-wrap">
-                                        <img src="<?php echo $GLBHost; ?>images/partners/prasad-group-logo.jpg" alt="Prasad Group Of Companies" class="img-responsive">
-                                    </div>
-                                    <span class="oem-partner-name">Prasad Group</span>
-                                </div>
-                                <div class="oem-logo-card">
-                                    <div class="oem-logo-wrap">
-                                        <img src="<?php echo $GLBHost; ?>images/partners/pharmalab-logo.jpg" alt="Pharmalab Engineering India Ltd." class="img-responsive">
-                                    </div>
-                                    <span class="oem-partner-name">Pharmalab Engineering</span>
-                                </div>
-                                <div class="oem-logo-card">
-                                    <div class="oem-logo-wrap">
-                                        <img src="<?php echo $GLBHost; ?>images/partners/rajoo-bausano.jpg" alt="Rajoo Bausano Extrusion Pvt. Ltd." class="img-responsive">
-                                    </div>
-                                    <span class="oem-partner-name">Rajoo Bausano</span>
-                                </div>
-                                <div class="oem-logo-card">
-                                    <div class="oem-logo-wrap">
-                                        <img src="<?php echo $GLBHost; ?>images/partners/milacron.jpg" alt="Milacron India Ltd." class="img-responsive">
-                                    </div>
-                                    <span class="oem-partner-name">Milacron India Ltd.</span>
-                                </div>
-                            </div>
-
-                            <!-- Quality Excellence Awards Banner -->
-                            <div class="award-banner-box">
-                                <h4><i class="fa fa-trophy" style="color: #ffd700;"></i> Quality Excellence Recognitions</h4>
-                                <p>Reflecting our rigorous manufacturing discipline and zero-defect philosophy, Primetech has been repeatedly honoured by industry giants including <strong>M/s. Windsor Machines Ltd.</strong> and <strong>M/s. Rollepaal Engineering India Limited</strong> with their prestigious <strong>QUALITY EXCELLENCE AWARDS</strong> for outstanding workmanship and supply excellence.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ==========================================
-                         5. CERTIFICATES & ACCREDITATIONS GALLERY
-                         ========================================== -->
-                    <div class="row cert-grid-wrapper">
-                        <div class="col-xs-12">
-                            <h3 style="font-size: 20px; font-weight: 700; color: #1a202c; margin-bottom: 20px; font-family: 'Titillium Web', sans-serif;">
-                                <i class="fa fa-check-square-o" style="color:#ad171e;"></i> Certifications &amp; Accreditations
-                            </h3>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-4 col-md-4">
-                            <div class="gallery-outer">
-                                <a href="<?php echo $GLBHost; ?>images/ISO-certificate.jpg" rel="gal" class="gallery" title="ISO 9001:2015 Certificate - Primetech Industries">
-                                    <img src="<?php echo $GLBHost; ?>images/ISO-certificate.jpg" alt="ISO Certificate" class="img-responsive">
-                                    <span class="zoom"></span>
-                                </a>
-                                <h5>ISO Certificate</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-4 col-md-4">
-                            <div class="gallery-outer">
-                                <a href="<?php echo $GLBHost; ?>images/db-certificate.jpg" rel="gal" class="gallery" title="Dun &amp; Bradstreet Certificate">
-                                    <img src="<?php echo $GLBHost; ?>images/db-certificate.jpg" alt="D &amp; B Certificate" class="img-responsive">
-                                    <span class="zoom"></span>
-                                </a>
-                                <h5>D &amp; B Certificate</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-4 col-md-4">
-                            <div class="gallery-outer">
-                                <a href="<?php echo $GLBHost; ?>images/rollepaal-certificate.jpg" rel="gal" class="gallery" title="Rollepaal Quality Excellence Certificate">
-                                    <img src="<?php echo $GLBHost; ?>images/rollepaal-certificate.jpg" alt="Rollepaal Certificate" class="img-responsive">
-                                    <span class="zoom"></span>
-                                </a>
-                                <h5>Rollepaal Certificate</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-4 col-md-4">
-                            <div class="gallery-outer">
-                                <a href="<?php echo $GLBHost; ?>images/windsor-certificate.jpg" rel="gal" class="gallery" title="Windsor Quality Excellence Certificate">
-                                    <img src="<?php echo $GLBHost; ?>images/windsor-certificate.jpg" alt="Windsor Certificate" class="img-responsive">
-                                    <span class="zoom"></span>
-                                </a>
-                                <h5>Windsor Certificate</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-4 col-md-4">
-                            <div class="gallery-outer">
-                                <a href="<?php echo $GLBHost; ?>images/sintex-certificate.jpg" rel="gal" class="gallery" title="Sintex Certificate">
-                                    <img src="<?php echo $GLBHost; ?>images/sintex-certificate.jpg" alt="Sintex Certificate" class="img-responsive">
-                                    <span class="zoom"></span>
-                                </a>
-                                <h5>Sintex Certificate</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-4 col-md-4">
-                            <div class="gallery-outer">
-                                <a href="<?php echo $GLBHost; ?>images/kipper-certificate.jpg" rel="gal" class="gallery" title="Skipper Limited Certificate">
-                                    <img src="<?php echo $GLBHost; ?>images/kipper-certificate.jpg" alt="Skipper Certificate" class="img-responsive">
-                                    <span class="zoom"></span>
-                                </a>
-                                <h5>Skipper Certificate</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ==========================================
-                         6. GLOBAL EXPORTS & WORLDWIDE REACH
-                         ========================================== -->
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="section-heading-unified">
-                                <h2>Our Global <span>Exports</span></h2>
-                            </div>
-                            <p>With an ever-expanding international customer base, Primetech exports high-performance machinery across Asia, the Middle East, Africa, and beyond.</p>
-                            <div class="exports-map-wrapper">
-                                <img src="<?php echo $GLBHost; ?>images/world-map.jpeg" alt="Our Exports - World Map" class="img-responsive center-block">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>    
-
-            <?php include('./includes/bottom.inc.php'); ?>
-
-            <script src="<?php echo $GLBHost; ?>scripts/jquery.fancybox.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $("#main-menu #t-company, #f-company").addClass('active');
-                    $('.gallery').fancybox({
-                        openEffect: 'elastic',
-                        openSpeed: 500,
-                        closeEffect: 'elastic',
-                        closeClick: true
-                    });
-                });
-            </script>
-
+<section class="section bg-white" data-testid="about-stats">
+  <div class="container-x">
+    <?= render_section_head([
+        'eyebrow' => 'Manufacturing Expertise',
+        'title' => ['Mixing, size reduction', '& conveying know-how.'],
+        'intro' => 'Our dedicated R&D division and Total Quality Management systems drive towards zero-defect, failure-free performance.',
+        'align' => 'split',
+    ]) ?>
+    <div class="mt-14 grid grid-cols-2 border-t border-ink/10 lg:grid-cols-4">
+      <?php foreach ([0, 3, 5, 6] as $idx): $s = $STATS[$idx]; ?>
+        <div class="border-b border-ink/10 py-8 pr-4" data-reveal>
+          <p class="t-stat text-[clamp(2.6rem,5vw,4.2rem)]">
+            <span data-counter="<?= $s['n'] ?>" data-format="<?= e($s['format'] ?? '') ?>"><?= $s['n'] ?></span><span class="text-brand"><?= e($s['suffix']) ?></span>
+          </p>
+          <p class="mt-3 text-sm text-ink/65"><?= e($s['label']) ?></p>
         </div>
+      <?php endforeach; ?>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-8">
+      <?= render_arrow_link('#why-primetech', 'What we offer & your advantages', '', 'about-why-link') ?>
+      <?= render_arrow_link('/infrastructure', 'Our three manufacturing units', '', 'about-infra-link') ?>
+    </div>
+  </div>
+</section>
+
+<!-- Why Primetech: What We Offer -->
+<section id="why-primetech" class="section bg-paper" data-testid="why-offer">
+  <div class="container-x grid gap-14 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <?= render_section_head(['eyebrow' => 'Why Primetech · What We Offer', 'title' => ['Built in-house.', 'Built to last.']]) ?>
+      <?= render_clip_image('/assets/gallery/unit2-06.jpg', 'Precision Component Machining', ['class' => 'mt-10 hidden aspect-[4/5] lg:block']) ?>
+    </div>
+    <div class="lg:col-span-7 lg:col-start-6">
+      <?= render_accordion_list($offerItems, false, 'offer-accordion') ?>
+    </div>
+  </div>
+</section>
+
+<!-- Why Primetech: Your Advantages -->
+<section class="section bg-white" data-testid="why-advantages">
+  <div class="container-x">
+    <?= render_section_head(['eyebrow' => 'Your Advantages', 'title' => ['Eight reasons processors', 'choose Primetech.']]) ?>
+    <div class="mt-14 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+      <?php foreach ($ADVANTAGES as $i => [$t, $d]): ?>
+        <div class="group bg-white p-8 transition-colors duration-500 hover:bg-paper" data-reveal style="--delay:<?= ($i % 4) * 0.06 ?>s">
+          <span class="text-xs font-semibold tabular-nums text-brand"><?= sprintf('%02d', $i + 1) ?></span>
+          <h3 class="mt-8 font-display text-xl font-semibold"><?= e($t) ?></h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink/70"><?= e($d) ?></p>
         </div>
-    </body>
-</html>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<!-- Why Primetech: Manufacturing Strengths -->
+<section class="section grain relative overflow-hidden bg-ink text-white" data-testid="why-manufacturing">
+  <div class="blueprint absolute inset-0"></div>
+  <div class="container-x relative grid gap-14 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <?= render_section_head(['light' => true, 'eyebrow' => 'Manufacturing Strengths', 'title' => ['In-house control', 'of every component.']]) ?>
+    </div>
+    <ul class="border-t border-white/15 lg:col-span-7">
+      <?php foreach ($hcm['features'] as $f): ?>
+        <li class="flex gap-4 border-b border-white/15 py-5 text-[15px] leading-relaxed text-white/80" data-reveal>
+          <span class="mt-[9px] h-1.5 w-1.5 shrink-0 rotate-45 bg-brand"></span> <?= e($f) ?>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+</section>
+
+<section class="section bg-white" data-testid="about-certs">
+  <div class="container-x">
+    <?= render_section_head(['title' => 'Certifications & Accreditations']) ?>
+    <div class="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6" data-lightbox-group='<?= e(json_encode($certItems)) ?>'>
+      <?php foreach ($certItems as $i => $c): ?>
+        <div data-reveal style="--delay:<?= $i * 0.05 ?>s">
+          <button type="button" data-lightbox-index="<?= $i ?>" class="group block w-full text-left" data-testid="cert-<?= $i ?>">
+            <div class="aspect-[3/4] overflow-hidden border border-ink/10 bg-paper p-3">
+              <img src="<?= e($c['src']) ?>" alt="<?= e($c['caption']) ?>" loading="lazy" class="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            <p class="mt-3 text-sm font-medium group-hover:text-brand"><?= e($c['caption']) ?></p>
+          </button>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<section class="section grain relative overflow-hidden bg-ink text-white" data-testid="about-quality">
+  <div class="blueprint absolute inset-0"></div>
+  <div class="container-x relative grid gap-14 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <?= render_section_head([
+          'light' => true,
+          'eyebrow' => 'Quality & Achievements',
+          'title' => ['Quality has always', 'been of prime', 'importance.'],
+      ]) ?>
+    </div>
+    <div class="space-y-6 text-base leading-relaxed text-white/75 lg:col-span-6 lg:col-start-7">
+      <?php foreach ($QUALITY as $i => $q): ?>
+        <p data-reveal style="--delay:<?= $i * 0.06 ?>s"><?= e($q) ?></p>
+      <?php endforeach; ?>
+      <div class="border-l-2 border-brand pl-6" data-reveal style="--delay:0.15s">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/60">Quality Excellence Recognitions</p>
+        <p class="mt-3 text-white/85"><?= e($AWARDS_TEXT) ?></p>
+      </div>
+    </div>
+  </div>
+  <div class="container-x relative mt-16">
+    <p class="mb-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/60">Trusted OEM machinery partner to</p>
+    <div class="grid grid-cols-2 gap-px bg-white/10 sm:grid-cols-3 lg:grid-cols-6">
+      <?php foreach ($OEM_PARTNERS as [$f, $n]): ?>
+        <div class="flex flex-col items-center gap-3 bg-ink p-6">
+          <div class="flex h-16 w-full items-center justify-center bg-white p-3">
+            <img src="<?= e(url('/assets/clients/' . $f)) ?>" alt="<?= e($n) ?>" loading="lazy" class="max-h-full max-w-full object-contain" />
+          </div>
+          <p class="text-center text-xs text-white/70"><?= e($n) ?></p>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper" data-testid="about-exports">
+  <div class="container-x grid gap-12 lg:grid-cols-12 lg:items-center">
+    <div class="lg:col-span-4">
+      <?= render_section_head(['eyebrow' => 'Our Global Exports', 'title' => ['Across Asia,', 'the Middle East,', 'Africa & beyond.'], 'intro' => $EXPORTS_TEXT]) ?>
+    </div>
+    <?= render_clip_image('/assets/misc/world-map.jpeg', 'Our Exports - World Map', ['class' => 'aspect-[16/9] lg:col-span-8', 'imgClass' => '!object-contain bg-white', 'horizontal' => true]) ?>
+  </div>
+</section>
+
+<?= render_cta_band() ?>
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

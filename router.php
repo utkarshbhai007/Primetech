@@ -1,69 +1,64 @@
 <?php
-// router.php for PHP built-in web server
-
-$uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+/**
+ * Local router for PHP built-in server:
+ *   php -S localhost:8000 router.php
+ */
+$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $file = __DIR__ . $uri;
 
-// If the requested URI corresponds to an existing physical file, serve it directly
-if ($uri !== '/' && file_exists($file) && !is_dir($file)) {
+// Serve existing static files directly (except /data/)
+if ($uri !== '/' && strpos($uri, '/data/') !== 0 && is_file($file)) {
     return false;
 }
 
-// Clean trailing slashes or normalize
-$path = trim($uri, '/');
-
-// Match captcha rewrite rule: RewriteRule ^captcha/([^/]+) generatecaptcha.php?pg=$1 [NC]
-if (preg_match('#^captcha/([^/]+)$#i', $path, $matches)) {
-    $_GET['pg'] = $matches[1];
-    require __DIR__ . '/generatecaptcha.php';
+// Redirects
+if ($uri === '/about' || $uri === '/about/' || $uri === '/the-company' || $uri === '/the-company/') {
+    header('Location: /the-company/about-us', true, 301);
+    exit;
+}
+if ($uri === '/products/mixer/high-speed-mixer' || $uri === '/products/mixer/high-speed-mixer/') {
+    header('Location: /products/high-speed-mixer', true, 301);
     exit;
 }
 
-// Rewrite rules from .htaccess
-$routes = [
-    'the-company/about-us' => 'page-about-us.php',
-    'the-company/why-primetech' => 'page-about-us.php',
-    'the-company/quality-achievements' => 'page-about-us.php',
-    'about-us' => 'page-about-us.php',
-    'why-primetech' => 'page-about-us.php',
-    'quality-achievements' => 'page-about-us.php',
-    'products/mixer/high-speed-mixer' => 'page-high-speed-mixer.php',
-    'products/mixer/cooler-mixer' => 'page-cooler-mixer.php',
-    'products/high-speed-heater-cooler-mixer' => 'page-high-speed-heater-cooler-mixer.php',
-    'products/high-speed-mixer' => 'page-high-speed-mixer.php',
-    'products/gyro-vibrating-screen' => 'page-gyro-vibrating-screen.php',
-    'products/lab-mixer' => 'page-lab-mixer.php',
-    'products/horizontal-cooler' => 'page-horizontal-cooler.php',
-    'products/rotary-air-lock-valve' => 'page-rotary-air-lock-valve.php',
-    'products/screw-conveyor' => 'page-screw-conveyor.php',
-    'products/pulverizer' => 'page-pulverizer.php',
-    'products/granulators' => 'page-granulator.php',
-    'products/shredder' => 'page-shredder.php',
-    'products/spiral-conveyor' => 'page-spiral-conveyor.php',
-    'products/mixing-plant-automation' => 'page-mixing-plant-automation.php',
-    'products' => 'page-products.php',
-    'infrastructure' => 'page-infrastructure.php',
-    'enquiry' => 'page-enquiry.php',
-    'contact' => 'page-contact.php',
-    'downloads' => 'page-downloads.php',
-    '' => 'index.php',
-];
+$trimmed = rtrim($uri, '/') ?: '/';
 
-if (isset($routes[$path])) {
-    require __DIR__ . '/' . $routes[$path];
-    exit;
+switch ($trimmed) {
+    case '/':
+        require __DIR__ . '/index.php';
+        break;
+    case '/the-company/about-us':
+    case '/about-us':
+        require __DIR__ . '/page-about-us.php';
+        break;
+    case '/products':
+        require __DIR__ . '/page-products.php';
+        break;
+    case '/applications':
+        require __DIR__ . '/page-applications.php';
+        break;
+    case '/infrastructure':
+        require __DIR__ . '/page-infrastructure.php';
+        break;
+    case '/why-primetech':
+        header('Location: /the-company/about-us#why-primetech', true, 301);
+        exit;
+    case '/downloads':
+        require __DIR__ . '/page-downloads.php';
+        break;
+    case '/contact':
+    case '/enquiry':
+        require __DIR__ . '/page-contact.php';
+        break;
+    case '/api/enquiries':
+        require __DIR__ . '/api/enquiries.php';
+        break;
+    default:
+        if (preg_match('#^/products/([^/]+)$#', $trimmed, $m)) {
+            $_GET['slug'] = $m[1];
+            require __DIR__ . '/page-product-detail.php';
+        } else {
+            require __DIR__ . '/404.php';
+        }
+        break;
 }
-
-// Check if direct file exists
-if (file_exists(__DIR__ . '/' . $path) && is_file(__DIR__ . '/' . $path)) {
-    require __DIR__ . '/' . $path;
-    exit;
-}
-
-if (file_exists(__DIR__ . '/' . $path . '.php')) {
-    require __DIR__ . '/' . $path . '.php';
-    exit;
-}
-
-// Fallback to index.php
-require __DIR__ . '/index.php';

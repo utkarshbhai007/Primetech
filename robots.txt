@@ -1,6 +1,0 @@
-# robotstxt.org/
-User-agent: *
-Disallow: /old/
-Disallow: /cgi-bin/
- 
-Sitemap: http://www.primetechmixer.com/sitemap.xml 

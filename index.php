@@ -1,710 +1,365 @@
 <?php
-include('./includes/include.inc.php');
+require_once __DIR__ . '/includes/header.php';
+
+$firstSlide = $HERO_SLIDES[0];
+$firstProduct = getProduct($firstSlide['slug']);
+$whyIcons = ['shield-check', 'wrench', 'cog', 'gauge', 'layers', 'factory', 'sparkles'];
+$newsChannels = [
+    ['name' => 'YouTube', 'icon' => 'youtube', 'img' => '/assets/gallery/unit2-05.jpg', 'text' => 'Watch Primetech Industries on YouTube'],
+    ['name' => 'LinkedIn', 'icon' => 'linkedin', 'img' => '/assets/gallery/unit1-01.jpg', 'text' => 'Follow Primetech Industries on LinkedIn'],
+    ['name' => 'Instagram', 'icon' => 'instagram', 'img' => '/assets/gallery/unit2-04.jpg', 'text' => 'Follow Primetech Industries on Instagram'],
+];
+
+$heroSlidesJson = [];
+foreach ($HERO_SLIDES as $s) {
+    $prod = getProduct($s['slug']);
+    $heroSlidesJson[] = [
+        'slug' => $s['slug'],
+        'lines' => $s['lines'],
+        'accent' => $s['accent'],
+        'sub' => $s['sub'],
+        'img' => url($s['img']),
+        'code' => $prod['code'] ?? '',
+        'tag' => $prod['tag'] ?? '',
+        'name' => $prod['name'] ?? '',
+        'href' => url('/products/' . $s['slug']),
+    ];
+}
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Plastic Processing Machinery (Equipments) Manufacturers, Exporters in India at Ahmedabad</title>
-        <meta name="description" content="Primetech is one of the leading Plastic Processing Machinery (Equipments) Manufacturers in India at Ahmedabad that manufactured High Speed Mixer, Granulators, Pulverizer, Spiral Conveyor, Screw Conveyor, Gyro Vibrating Screen. Also we Export of Plastic Processing Machinery (Equipments) all over the world.">
-        <meta name="keywords" content="Plastic Processing Machinery Manufacturer, Plastic Processing Machinery Manufacturer in India, Plastic Processing Equipments Manufacturer, Plastic Processing Equipments Manufacturer in India, Plastic Processing Machinery Exporter, Plastic Processing Equipments Exporter, Plastic Processing Machinery Manufacturer in Ahmedabad, Plastic Processing Equipments Manufacturer in Ahmedabad">
-        <meta name="robots" content="index,follow">
 
-        <?php include('./includes/header.home.inc.php'); ?>
+<section id="home-hero" class="grain relative min-h-[100svh] overflow-hidden bg-ink text-white" data-testid="home-hero" data-hero-slides='<?= e(json_encode($heroSlidesJson)) ?>'>
+  <div class="blueprint absolute inset-0"></div>
+  <div id="hero-slash" class="hero-slash-anim absolute right-0 top-0 h-full w-full bg-brand" aria-hidden="true"></div>
+  <div class="container-x relative grid min-h-[100svh] grid-cols-1 content-center gap-8 pb-36 pt-28 lg:grid-cols-12 lg:gap-6 lg:pb-40 lg:pt-32">
+    <div id="hero-text-col" class="relative z-10 lg:col-span-7 will-change-transform">
+      <div class="grid">
+        <h1 id="hero-headline" class="text-[clamp(2.6rem,5.4vw,6rem)] font-bold leading-[1.08] tracking-[-0.045em] [grid-area:1/1]" data-testid="hero-headline">
+          <?php foreach ($firstSlide['lines'] as $i => $l): ?>
+            <span class="block overflow-hidden pb-[0.22em] -mb-[0.14em]">
+              <span class="block hero-line <?= $i === $firstSlide['accent'] ? 'text-brand' : '' ?>" style="animation-delay:<?= 1.25 + $i * 0.12 ?>s"><?= e($l) ?></span>
+            </span>
+          <?php endforeach; ?>
+        </h1>
+      </div>
+      <div class="mt-8 grid max-w-xl">
+        <p id="hero-sub" class="t-lead text-white/75 [grid-area:1/1] hero-fade-in" style="--delay:1.75s">
+          <?= e($firstSlide['sub']) ?> Leading producer of plastic processing equipments in India since 1991.
+        </p>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-3 hero-fade-in" style="--delay:1.9s">
+        <?= render_btn(['to' => '/products', 'label' => 'Explore Products', 'class' => 'min-w-[195px]', 'testid' => 'hero-explore-products']) ?>
+        <?= render_btn(['to' => '/contact', 'label' => 'Contact Us', 'variant' => 'outline-light', 'class' => 'min-w-[195px]', 'testid' => 'hero-contact']) ?>
+      </div>
+    </div>
 
-    </head>
+    <div id="hero-stage-col" class="relative z-10 lg:col-span-5 will-change-transform">
+      <div class="hero-stage-clip">
+      <?php
+      $stageInner = '<div class="absolute inset-0">'
+          . '<div id="hero-machine-wrap" class="relative h-full w-full [perspective:1200px] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" data-tilt data-testid="hero-machine">'
+          . '<img id="hero-machine-img" src="' . e(url($firstSlide['img'])) . '" alt="' . e($firstProduct['name'] ?? '') . '" loading="eager" class="tilt-target absolute inset-0 m-auto max-h-[90%] max-w-[96%] object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.55)] [transform-style:preserve-3d]" />'
+          . '</div></div>'
+          . '<a id="hero-machine-link" href="' . e(url('/products/' . $firstSlide['slug'])) . '" class="group absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 border-t border-white/15 pt-4" data-testid="hero-machine-link">'
+          . '<span><span id="hero-machine-tag" class="block text-[10px] uppercase tracking-[0.24em] text-white/60">' . e($firstProduct['tag'] ?? '') . '</span>'
+          . '<span id="hero-machine-name" class="mt-1 block font-display text-lg font-semibold sm:text-xl">' . e($firstProduct['name'] ?? '') . '</span></span></a>';
+      echo render_stage_frame(
+          $stageInner,
+          'aspect-[4/3.4] w-full sm:aspect-[4/3] lg:aspect-[4/4.6]',
+          ['', '01 / 04'],
+          'hero-stage-label'
+      );
+      ?>
+      </div>
+    </div>
+  </div>
 
-    <body id="home">
-        <div onMouseDown="return false">
-        <div id="mobile-menu"></div>
+  <div class="absolute inset-x-0 bottom-0 z-10 border-t border-white/10">
+    <div class="container-x grid grid-cols-4">
+      <?php foreach ($HERO_SLIDES as $i => $s): $prod = getProduct($s['slug']); ?>
+        <button type="button" data-hero-slide="<?= $i ?>" class="group relative py-5 pr-4 text-left" data-testid="hero-slide-<?= $i ?>" aria-label="Show <?= e($prod['name'] ?? '') ?>">
+          <span class="absolute inset-x-0 top-[-1px] h-[2px] bg-white/10">
+            <span class="hero-progress block h-full bg-brand" style="width:<?= $i === 0 ? '0%' : '0%' ?>"></span>
+          </span>
+          <span class="hero-num text-[11px] font-semibold tabular-nums <?= $i === 0 ? 'text-white' : 'text-white/50' ?>">0<?= $i + 1 ?></span>
+          <span class="hero-label ml-3 hidden text-sm transition-colors duration-300 md:inline <?= $i === 0 ? 'text-white' : 'text-white/55 group-hover:text-white' ?>"><?= e($prod['name'] ?? '') ?></span>
+        </button>
+      <?php endforeach; ?>
+    </div>
+  </div>
 
-        <div id="wrapper">
+  <div class="pointer-events-none absolute bottom-24 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 lg:flex" aria-hidden="true">
+    <span class="text-[10px] uppercase tracking-[0.3em] text-white/60">Scroll</span>
+    <span class="relative h-12 w-px overflow-hidden bg-white/15">
+      <span class="scrollcue absolute inset-x-0 top-0 h-1/2 bg-white"></span>
+    </span>
+  </div>
+</section>
 
-            <?php include('./includes/top.inc.php'); ?>
+<section class="relative bg-white py-14 sm:py-16 lg:py-20" data-testid="home-intro">
+  <div class="container-x grid gap-14 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-6 lg:pr-8">
+      <?= render_mask_lines(['Plastic processing', 'machinery, engineered', 'in Ahmedabad.'], ['class' => 't-h2 text-ink', 'accent' => 2]) ?>
+      <div class="mt-10 max-w-xl space-y-5 text-[15px] leading-relaxed text-ink/70 sm:text-base" data-reveal style="--delay:0.15s">
+        <p class="t-lead text-ink"><?= e($ABOUT_INTRO[0]) ?></p>
+        <p><?= e($ABOUT_INTRO[1]) ?></p>
+        <p><?= e($ABOUT_INTRO[4]) ?></p>
+      </div>
+      <div class="mt-10 flex flex-wrap items-center gap-6" data-reveal style="--delay:0.25s">
+        <?= render_btn(['to' => '/the-company/about-us', 'label' => 'Read More', 'variant' => 'dark', 'testid' => 'intro-read-more']) ?>
+        <?= render_arrow_link('/infrastructure', 'Our infrastructure', '', 'intro-infra-link') ?>
+      </div>
+    </div>
+    <div class="relative lg:col-span-6 lg:self-start">
+      <div class="relative" data-parallax="30">
+        <?= render_clip_image('/assets/misc/the-company-pic.jpg', 'Primetech Industries - Unit 1 Facility', ['class' => 'aspect-[4/3] w-full lg:ml-auto lg:w-[88%]', 'testid' => 'intro-image-main']) ?>
+      </div>
+      <div class="relative -mt-20 ml-auto w-[62%] border-[10px] border-white sm:-mt-28 lg:-ml-2 lg:mr-auto lg:w-[56%]">
+        <?= render_clip_image('/assets/gallery/unit1-02.jpg', 'Assembly line & testing floors, Unit 1 GIDC Vatva', ['class' => 'aspect-[4/3] w-full', 'delay' => 0.25, 'horizontal' => true]) ?>
+      </div>
+      <div class="hidden lg:block lg:absolute lg:bottom-0 lg:right-0 lg:z-10 lg:w-[40%] border-[10px] border-white bg-ink p-7 text-white" data-reveal style="--delay:0.4s">
+        <p class="t-stat text-5xl leading-none text-white">ISO</p>
+        <p class="mt-3 text-xs uppercase tracking-[0.2em] leading-relaxed text-white/75">9001:2015 certified company</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <section id="banner" class="hero-slider-section">
-                <div id="hero-slider" class="owl-carousel owl-theme">
-                    <div class="item">
-                        <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" title="High Speed Heater Cooler Mixer - Where Precision Meets Performance">
-                            <img src="<?php echo $GLBHost; ?>images/1st%20image%20to%20take%20.jpg" alt="High Speed Heater Cooler Mixer - Where Precision Meets Performance" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="<?php echo $GLBHost; ?>products/pulverizer/" title="Pulverizer - The Finer The Grind, The Higher The Value">
-                            <img src="<?php echo $GLBHost; ?>images/2nd%20image%20.jpg" alt="Pulverizer - The Finer The Grind, The Higher The Value" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="<?php echo $GLBHost; ?>products/shredder/" title="Single Shaft Shredder - Strength That Never Backs Down">
-                            <img src="<?php echo $GLBHost; ?>images/3rd%20image%20to%20take%20.jpg" alt="Single Shaft Shredder - Strength That Never Backs Down" class="img-responsive center-block">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="<?php echo $GLBHost; ?>products/granulators/" title="Granulators - Turning Waste Into Value">
-                            <img src="<?php echo $GLBHost; ?>images/4th%20image%20to%20take%20this%20.jpg" alt="Granulators - Turning Waste Into Value" class="img-responsive center-block">
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="the-company">
-                <div class="container">
-                    <h2 class="title"><span>About </span>Us</h2>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p>PRIMETECH, an ISO 9001:2015 company laid its foundation in 1991 with a strong vision of becoming a world class leader by delivering the ultimate quality  products around the globe.</p>
-                            <p>Primetech has come a long way to it's present establishment status as the leading producer of plastic processing equipments in India and have also started to make their presence felt in the global market.</p>
-                            <p class="hidden-xs">Primetech maintains a cutting-edge by efficient R & D division to meet specialized technological challenges.</p>
-                            <p class="hidden-xs">Total quality management systems relentlessly work towards achieving zero defect and failure free performance , leading to superior quality at remarkable competitive rates.</p>
-                            <p class="hidden-xs">We make our know-how in mixing technology, material handling and transfer systems and size reduction technology available to the customer with the help of  goal oriented dynamic employees and close co-operation with customer specialists. Thus allowing us to develop leading edge technology.</p>
-                            <a href="<?php echo $GLBHost; ?>the-company/about-us/" class="btn btn-custom">More</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="foot-print">
-                <div class="container">
-                    <div class="bento-header-wrap">
-                        <h2 class="title"><span>Company</span> Foot Print</h2>
-                        <p class="bento-subtitle">Over three decades of engineering precision, world-class manufacturing infrastructure, and trusted installations across the globe.</p>
-                    </div>
-
-                    <div class="bento-footprint-grid">
-                        <!-- CARD 1: HERO / HERITAGE (Span 7) -->
-                        <div class="bento-card bento-hero bento-span-7">
-                            <svg class="bento-watermark" viewBox="0 0 100 100" fill="currentColor">
-                                <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="4" fill="none" stroke-dasharray="6 4"/>
-                                <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="3" fill="none"/>
-                                <path d="M50 10 L50 22 M50 78 L50 90 M10 50 L22 50 M78 50 L90 50 M22 22 L30 30 M70 70 L78 78 M22 78 L30 70 M70 30 L78 22" stroke="currentColor" stroke-width="4"/>
-                            </svg>
-                            <div class="bento-card-inner">
-                                <div class="bento-badge bento-badge-hero">
-                                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                                    <span>Since 1991 &bull; 36 Years Legacy</span>
-                                </div>
-                                <div class="bento-num-wrap">
-                                    <span class="bento-num" data-target="36">36</span>
-                                    <span class="bento-unit">+</span>
-                                </div>
-                                <h3 class="bento-title">Years of Manufacturing Experience</h3>
-                                <p class="bento-desc">Pioneering world-class plastic processing machinery, custom turnkey mixing plants, and high-precision size reduction systems with ISO 9001:2015 certified quality.</p>
-                                <div class="bento-pills bento-hero-pills">
-                                    <span class="bento-pill-item">ISO 9001:2015</span>
-                                    <span class="bento-pill-item">In-House R&amp;D</span>
-                                    <span class="bento-pill-item">Turn-Key Projects</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CARD 2: UNITS IN INDIA (Span 5) -->
-                        <div class="bento-card bento-card-light bento-span-5">
-                            <div class="bento-card-top">
-                                <div class="bento-icon-wrap">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M6 20V10l6-4v6l6-4v12M6 14h.01M6 17h.01M10 14h.01M10 17h.01M14 14h.01M14 17h.01M18 14h.01M18 17h.01"/></svg>
-                                </div>
-                                <span class="bento-tag">Infrastructure</span>
-                            </div>
-                            <div class="bento-card-body">
-                                <div class="bento-num-wrap">
-                                    <span class="bento-num" data-target="3">03</span>
-                                </div>
-                                <h3 class="bento-title">Manufacturing Units in India</h3>
-                                <p class="bento-desc">Advanced production facilities equipped with heavy CNC machining, precision fabrication, dynamic balancing, and rigorous quality inspection bays.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARD 3: TOTAL AREA (Span 4) -->
-                        <div class="bento-card bento-card-light bento-span-4">
-                            <div class="bento-card-top">
-                                <div class="bento-icon-wrap">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9M9 3v6M15 9v12"/></svg>
-                                </div>
-                                <span class="bento-tag">Floor Area</span>
-                            </div>
-                            <div class="bento-card-body">
-                                <div class="bento-num-wrap">
-                                    <span class="bento-num" data-target="100000" data-format="indian">1,00,000</span>
-                                    <span class="bento-unit bento-unit-sm">Sq. Ft.</span>
-                                </div>
-                                <h3 class="bento-title">Total Area for Manufacturing</h3>
-                                <p class="bento-desc">Expansive facility footprint purpose-built for heavy machinery assembly, high-volume production, and comprehensive testing.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARD 5: MIXING PLANT (Span 8) -->
-                        <div class="bento-card bento-card-featured bento-span-8">
-                            <div class="bento-featured-content">
-                                <div class="bento-featured-left">
-                                    <div class="bento-badge">
-                                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
-                                        <span>Global Benchmark</span>
-                                    </div>
-                                    <div class="bento-num-wrap">
-                                        <span class="bento-num" data-target="3500">3500</span>
-                                        <span class="bento-unit">+</span>
-                                    </div>
-                                    <h3 class="bento-title">Mixing Plant Installations Worldwide</h3>
-                                </div>
-                                <div class="bento-featured-right">
-                                    <p class="bento-desc">Our flagship high-speed mixing, cooling, and automated compounding systems power top PVC pipes, profiles, cables, masterbatches, and polymer compounding processors across the globe.</p>
-                                    <div class="bento-pills">
-                                        <span class="bento-pill-item">High-Speed Heaters</span>
-                                        <span class="bento-pill-item">Cooling Mixers</span>
-                                        <span class="bento-pill-item">Automated Feeding</span>
-                                        <span class="bento-pill-item">Compounding</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CARD 4: PRODUCTION CAPACITY (Span 4) -->
-                        <div class="bento-card bento-card-light bento-span-4">
-                            <div class="bento-card-top">
-                                <div class="bento-icon-wrap">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                                </div>
-                                <span class="bento-tag">Capacity</span>
-                            </div>
-                            <div class="bento-card-body">
-                                <div class="bento-num-wrap">
-                                    <span class="bento-num" data-target="400">400</span>
-                                    <span class="bento-unit">+</span>
-                                </div>
-                                <h3 class="bento-title">Equipments Production Capacity</h3>
-                                <p class="bento-sub-badge">Annually</p>
-                                <p class="bento-desc">High production throughput delivering customized machinery promptly without compromising build quality.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARD 6: PULVERIZING SYSTEM (Span 4) -->
-                        <div class="bento-card bento-card-light bento-span-4">
-                            <div class="bento-card-top">
-                                <div class="bento-icon-wrap">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.3 4.3M14.1 14.1l4.3 4.3M5.6 18.4l4.3-4.3M14.1 9.9l4.3-4.3"/></svg>
-                                </div>
-                                <span class="bento-tag">Size Reduction</span>
-                            </div>
-                            <div class="bento-card-body">
-                                <div class="bento-num-wrap">
-                                    <span class="bento-num" data-target="1400">1400</span>
-                                    <span class="bento-unit">+</span>
-                                </div>
-                                <h3 class="bento-title">Pulverizing System Installations</h3>
-                                <p class="bento-sub-badge">Worldwide</p>
-                                <p class="bento-desc">Engineered for fine mesh powdering, high output efficiency, and minimal energy consumption across diverse materials.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARD 7: COUNTRIES SERVED (Span 4) -->
-                        <div class="bento-card bento-card-accent bento-span-4">
-                            <div class="bento-card-top">
-                                <div class="bento-icon-wrap bento-icon-globe">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                                </div>
-                                <span class="bento-tag bento-tag-accent">Global Reach</span>
-                            </div>
-                            <div class="bento-card-body">
-                                <div class="bento-num-wrap">
-                                    <span class="bento-num" data-target="25">25</span>
-                                    <span class="bento-unit">+</span>
-                                </div>
-                                <h3 class="bento-title">Countries Served in Exports</h3>
-                                <p class="bento-sub-badge">International Markets</p>
-                                <p class="bento-desc">Recognized and trusted by international processors across Asia, Africa, Middle East, Europe &amp; the Americas.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Styles for Product Range 3-Box Category Showcase (Hover-Reveal Animation) -->
-            <style>
-                .product-category-triad {
-                    margin-top: 25px;
-                }
-                .category-triad-card {
-                    background: #ffffff;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 16px;
-                    overflow: hidden;
-                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-                    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-                    display: flex;
-                    flex-direction: row;
-                    height: 450px;
-                    margin-bottom: 30px;
-                    position: relative;
-                    cursor: pointer;
-                }
-                .category-triad-card:hover,
-                .category-triad-card.active-box {
-                    transform: translateY(-6px);
-                    box-shadow: 0 18px 40px rgba(173, 23, 30, 0.14), 0 4px 12px rgba(0, 0, 0, 0.05);
-                    border-color: #ad171e;
-                }
-                /* Left side of box: Category Presentation (Full box initially, slides to 44% on hover) */
-                .triad-left {
-                    width: 100%;
-                    background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
-                    padding: 24px 20px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-                    text-align: center;
-                    position: relative;
-                    border-right: 1px solid transparent;
-                    transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease, padding 0.4s ease;
-                    flex-shrink: 0;
-                }
-                .category-triad-card:hover .triad-left,
-                .category-triad-card.active-box .triad-left {
-                    width: 44%;
-                    border-right-color: #e2e8f0;
-                    padding: 20px 14px;
-                }
-                .triad-left-header {
-                    width: 100%;
-                    transition: all 0.3s ease;
-                }
-                .triad-cat-title {
-                    font-size: 22px;
-                    font-weight: 700;
-                    color: #1a202c;
-                    margin: 0;
-                    font-family: 'Titillium Web', sans-serif;
-                    line-height: 1.25;
-                    transition: font-size 0.35s ease;
-                }
-                .category-triad-card:hover .triad-cat-title,
-                .category-triad-card.active-box .triad-cat-title {
-                    font-size: 17px;
-                }
-                .triad-badge {
-                    display: inline-block;
-                    font-size: 11px;
-                    font-weight: 700;
-                    color: #ad171e;
-                    background: rgba(173, 23, 30, 0.08);
-                    border: 1px solid rgba(173, 23, 30, 0.2);
-                    padding: 3px 12px;
-                    border-radius: 12px;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                }
-                .triad-media {
-                    width: 100%;
-                    height: 270px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 10px;
-                    position: relative;
-                    transition: height 0.4s ease;
-                }
-                .category-triad-card:hover .triad-media,
-                .category-triad-card.active-box .triad-media {
-                    height: 200px;
-                }
-                .triad-media img {
-                    max-height: 250px;
-                    max-width: 95%;
-                    width: auto;
-                    height: auto;
-                    object-fit: contain;
-                    transition: transform 0.4s ease, max-height 0.4s ease, opacity 0.25s ease;
-                    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.08));
-                }
-                .category-triad-card:hover .triad-media img,
-                .category-triad-card.active-box .triad-media img {
-                    max-height: 185px;
-                    transform: scale(1.05);
-                }
-                .triad-hover-prompt {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: 13px;
-                    font-weight: 700;
-                    color: #ad171e;
-                    background: #ffffff;
-                    border: 1px solid rgba(173, 23, 30, 0.25);
-                    padding: 8px 18px;
-                    border-radius: 20px;
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-                    transition: all 0.3s ease;
-                    letter-spacing: 0.3px;
-                }
-                .category-triad-card:hover .triad-hover-prompt,
-                .category-triad-card.active-box .triad-hover-prompt {
-                    font-size: 11px;
-                    padding: 5px 10px;
-                    opacity: 0.9;
-                }
-
-                /* Right side of box: Products stack (Slides out smoothly when hovered) */
-                .triad-right {
-                    width: 0%;
-                    opacity: 0;
-                    overflow: hidden;
-                    padding: 20px 0;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 10px;
-                    background: #ffffff;
-                    pointer-events: none;
-                    transform: translateX(25px);
-                    transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease, transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), padding 0.4s ease;
-                }
-                .category-triad-card:hover .triad-right,
-                .category-triad-card.active-box .triad-right {
-                    width: 56%;
-                    opacity: 1;
-                    overflow: visible;
-                    padding: 20px 16px;
-                    pointer-events: auto;
-                    transform: translateX(0);
-                }
-                .triad-prod-item {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 8px;
-                    padding: 12px 14px;
-                    background: #f8fafc;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 8px;
-                    color: #2d3748;
-                    text-decoration: none !important;
-                    font-size: 13px;
-                    font-weight: 600;
-                    line-height: 1.3;
-                    font-family: 'Titillium Web', sans-serif;
-                    transition: all 0.25s ease;
-                    position: relative;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-                .triad-prod-item .prod-text {
-                    flex: 1;
-                    min-width: 0;
-                    color: inherit;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                }
-                .triad-prod-item .prod-arrow {
-                    font-size: 14px;
-                    color: #ad171e;
-                    transition: transform 0.25s ease, color 0.25s ease;
-                    flex-shrink: 0;
-                }
-                .triad-prod-item:hover {
-                    background: #ad171e;
-                    color: #ffffff !important;
-                    border-color: #ad171e;
-                    transform: translateX(4px);
-                    box-shadow: 0 4px 14px rgba(173, 23, 30, 0.22);
-                }
-                .triad-prod-item:hover .prod-text {
-                    color: #ffffff !important;
-                }
-                .triad-prod-item:hover .prod-arrow {
-                    color: #ffffff;
-                    transform: translateX(3px);
-                }
-                @media (max-width: 1199px) {
-                    .category-triad-card {
-                        height: 400px;
-                    }
-                    .triad-cat-title {
-                        font-size: 22px;
-                    }
-                    .category-triad-card:hover .triad-cat-title,
-                    .category-triad-card.active-box .triad-cat-title {
-                        font-size: 18px;
-                    }
-                    .triad-prod-item {
-                        padding: 10px 12px;
-                        font-size: 12px;
-                    }
-                }
-                @media (max-width: 991px) {
-                    .category-triad-card {
-                        height: auto;
-                        min-height: 360px;
-                    }
-                }
-                @media (max-width: 480px) {
-                    .category-triad-card {
-                        flex-direction: column;
-                    }
-                    .triad-left {
-                        width: 100% !important;
-                        border-right: none !important;
-                        border-bottom: 1px solid #e2e8f0;
-                    }
-                    .triad-right {
-                        width: 100% !important;
-                        padding: 16px !important;
-                        opacity: 1 !important;
-                        transform: none !important;
-                        pointer-events: auto !important;
-                    }
-                }
-            </style>
-
-            <section id="product-range">
-                <div class="container">
-                    <h2 class="title"><span>Product </span>Range</h2>
-                    <p class="subtitle text-center" style="font-size: 16px; color: #666; margin: -10px auto 35px; max-width: 750px;">
-                        Engineering excellence in high-speed industrial mixing, size reduction solutions, and automated bulk conveying systems.
-                    </p>
-
-                    <!-- 3-Box Category Triad (Hover to Reveal Products) -->
-                    <div class="row product-category-triad">
-                        <!-- Box 1: Mixing Solutions -->
-                        <div class="col-xs-12 col-md-4">
-                            <div class="category-triad-card" id="triad-mixers">
-                                <div class="triad-left">
-                                    <div class="triad-left-header">
-                                        <h3 class="triad-cat-title">Mixing Solutions</h3>
-                                    </div>
-                                    <div class="triad-media">
-                                        <img id="mixers-preview-img" src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" alt="Mixing Solutions" class="img-responsive">
-                                    </div>
-                                    <span class="triad-hover-prompt"><i class="fa fa-cog"></i> View Specifications <i class="fa fa-search"></i></span>
-                                </div>
-                                <div class="triad-right">
-                                    <a href="<?php echo $GLBHost; ?>products/high-speed-heater-cooler-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/heater-cooler-mixers-new.png" data-target-img="#mixers-preview-img">
-                                        <span class="prod-text">High Speed Heater Cooler Mixer</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/horizontal-cooler/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/horizontal-cooler.png" data-target-img="#mixers-preview-img">
-                                        <span class="prod-text">Horizontal Cooler</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/high-speed-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/high-speed-mixer-thumb.png" data-target-img="#mixers-preview-img">
-                                        <span class="prod-text">High Speed Mixer</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/lab-mixer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/laboratory-mixer-new.png" data-target-img="#mixers-preview-img">
-                                        <span class="prod-text">Laboratory Mixer</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Box 2: Size Reduction -->
-                        <div class="col-xs-12 col-md-4">
-                            <div class="category-triad-card" id="triad-size-reduction">
-                                <div class="triad-left">
-                                    <div class="triad-left-header">
-                                        <h3 class="triad-cat-title">Size Reduction</h3>
-                                    </div>
-                                    <div class="triad-media">
-                                        <img id="size-preview-img" src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" alt="Size Reduction" class="img-responsive">
-                                    </div>
-                                    <span class="triad-hover-prompt"><i class="fa fa-cog"></i> View Specifications <i class="fa fa-search"></i></span>
-                                </div>
-                                <div class="triad-right">
-                                    <a href="<?php echo $GLBHost; ?>products/pulverizer/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/pulverizer-new.png" data-target-img="#size-preview-img">
-                                        <span class="prod-text">High Speed Pulverizer</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/granulators/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/granulator-new.png" data-target-img="#size-preview-img">
-                                        <span class="prod-text">Plastic Granulators</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/shredder/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/shredder-new.png" data-target-img="#size-preview-img">
-                                        <span class="prod-text">Heavy Duty Shredder</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Box 3: Conveying and Automation -->
-                        <div class="col-xs-12 col-md-4">
-                            <div class="category-triad-card" id="triad-conveying">
-                                <div class="triad-left">
-                                    <div class="triad-left-header">
-                                        <h3 class="triad-cat-title">Conveying and Automation</h3>
-                                    </div>
-                                    <div class="triad-media">
-                                        <img id="conveying-preview-img" src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-default-src="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" alt="Conveying and Automation" class="img-responsive">
-                                    </div>
-                                    <span class="triad-hover-prompt"><i class="fa fa-cog"></i> View Specifications <i class="fa fa-search"></i></span>
-                                </div>
-                                <div class="triad-right">
-                                    <a href="<?php echo $GLBHost; ?>products/spiral-conveyor/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/spiral-conveyor-new.png" data-target-img="#conveying-preview-img">
-                                        <span class="prod-text">Flexible Spiral Conveyor</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/screw-conveyor/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/screw-conveyor-new.png" data-target-img="#conveying-preview-img">
-                                        <span class="prod-text">Screw Conveyor</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="<?php echo $GLBHost; ?>products/rotary-air-lock-valve/" class="triad-prod-item" data-preview="<?php echo $GLBHost; ?>images/products/rotary-airlock-valve-thumb.png" data-target-img="#conveying-preview-img">
-                                        <span class="prod-text">Rotary Airlock Valve</span>
-                                        <i class="fa fa-angle-right prod-arrow" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center more-btn" style="margin-top: 20px;">
-                        <a href="<?php echo $GLBHost; ?>products/" class="btn btn-custom" style="padding: 12px 36px; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 25px;">View All Products</a>
-                    </div>
-
-                </div>
-            </section>
-
-            <?php include('./includes/client-logos.inc.php'); ?>
-
-            <?php include('./includes/bottom.inc.php'); ?>
-            <script src="<?php echo $GLBHost; ?>scripts/jquery.waypoints.min.js"></script>
-            <script src="<?php echo $GLBHost; ?>scripts/jquery.countup.js"></script>
-
-            <script>
-                (function () {
-                    function initBentoCounters() {
-                        var counters = document.querySelectorAll('.bento-num[data-target]');
-                        if (!counters.length) return;
-
-                        if ('IntersectionObserver' in window) {
-                            var observer = new IntersectionObserver(function (entries, obs) {
-                                entries.forEach(function (entry) {
-                                    if (entry.isIntersecting) {
-                                        animateCounter(entry.target);
-                                        obs.unobserve(entry.target);
-                                    }
-                                });
-                            }, { threshold: 0.2 });
-
-                            counters.forEach(function (counter) {
-                                observer.observe(counter);
-                            });
-                        } else {
-                            counters.forEach(animateCounter);
-                        }
-
-                        function animateCounter(el) {
-                            var target = parseInt(el.getAttribute('data-target'), 10);
-                            var isIndian = el.getAttribute('data-format') === 'indian';
-                            var isPadded = target < 10 && target > 0;
-                            var duration = 1600;
-                            var startTime = null;
-
-                            function step(now) {
-                                if (!startTime) startTime = now;
-                                var progress = Math.min((now - startTime) / duration, 1);
-                                var ease = 1 - Math.pow(1 - progress, 3);
-                                var current = Math.floor(ease * target);
-
-                                if (isIndian) {
-                                    el.textContent = current.toLocaleString('en-IN');
-                                } else if (isPadded) {
-                                    el.textContent = (current < 10 ? '0' : '') + current;
-                                } else {
-                                    el.textContent = current.toLocaleString();
-                                }
-
-                                if (progress < 1) {
-                                    window.requestAnimationFrame(step);
-                                } else {
-                                    if (isIndian) {
-                                        el.textContent = target.toLocaleString('en-IN');
-                                    } else if (isPadded) {
-                                        el.textContent = (target < 10 ? '0' : '') + target;
-                                    } else {
-                                        el.textContent = target.toLocaleString();
-                                    }
-                                }
-                            }
-
-                            window.requestAnimationFrame(step);
-                        }
-                    }
-
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', initBentoCounters);
-                    } else {
-                        initBentoCounters();
-                    }
-                })();
-            </script>
-            <script>
-
-                $(document).ready(function () {
-                    $("#main-menu #t-home, #f-home").addClass('active');
-
-                    var $heroSlider = $('#hero-slider');
-                    if ($heroSlider.length && typeof $.fn.owlCarousel === 'function') {
-                        $heroSlider.owlCarousel({
-                            items: 1,
-                            loop: true,
-                            margin: 0,
-                            autoplay: true,
-                            autoplayTimeout: 3800,
-                            autoplaySpeed: 900,
-                            autoplayHoverPause: true,
-                            smartSpeed: 800,
-                            dots: true,
-                            nav: true,
-                            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
-                        });
-                    }
-
-                    // Interactive dynamic machine preview image swap on product hover & reset on leave
-                    var previewResetTimer = null;
-
-                    $('.triad-prod-item').on('mouseenter', function () {
-                        clearTimeout(previewResetTimer);
-                        var preview = $(this).data('preview');
-                        var targetImg = $(this).data('target-img');
-                        if (preview && targetImg) {
-                            var $img = $(targetImg);
-                            if (!$img.attr('data-default-src')) {
-                                $img.attr('data-default-src', $img.attr('src'));
-                            }
-                            $img.attr('src', preview);
-                        }
-                    }).on('mouseleave', function () {
-                        var targetImg = $(this).data('target-img');
-                        if (targetImg) {
-                            var $img = $(targetImg);
-                            var defaultSrc = $img.attr('data-default-src');
-                            if (defaultSrc) {
-                                clearTimeout(previewResetTimer);
-                                previewResetTimer = setTimeout(function () {
-                                    // If mouse is not hovering another product in this category card, restore default
-                                    if (!$img.closest('.category-triad-card').find('.triad-prod-item:hover').length) {
-                                        $img.attr('src', defaultSrc);
-                                    }
-                                }, 70);
-                            }
-                        }
-                    });
-
-                    // Ensure immediate reversion when mouse leaves the products column or entire category box
-                    $('.triad-right, .category-triad-card').on('mouseleave', function () {
-                        clearTimeout(previewResetTimer);
-                        var $card = $(this).closest('.category-triad-card');
-                        var $img = $card.find('.triad-media img');
-                        var defaultSrc = $img.attr('data-default-src');
-                        if (defaultSrc) {
-                            $img.attr('src', defaultSrc);
-                        }
-                    });
-                });
-            </script>
-
+<section class="section bg-paper" data-testid="home-stats">
+  <div class="container-x">
+    <?= render_section_head([
+        'eyebrow' => 'Company Foot Print',
+        'title' => ['Three decades of', 'engineering precision.'],
+    ]) ?>
+    <div class="mt-16 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+      <?php
+      $statMeta = [
+          ['copy' => $FOOTPRINT_COPY['heritage'], 'big' => true, 'dark' => true, 'class' => 'sm:col-span-2 lg:row-span-2'],
+          ['copy' => $FOOTPRINT_COPY['units'], 'big' => false, 'dark' => false, 'class' => ''],
+          ['copy' => $FOOTPRINT_COPY['area'], 'big' => false, 'dark' => false, 'class' => ''],
+          ['copy' => $FOOTPRINT_COPY['mixing'], 'big' => false, 'dark' => false, 'class' => ''],
+          ['copy' => $FOOTPRINT_COPY['capacity'], 'big' => false, 'dark' => false, 'class' => ''],
+          ['copy' => $FOOTPRINT_COPY['pulverizing'], 'big' => false, 'dark' => false, 'class' => 'lg:col-span-2'],
+          ['copy' => $FOOTPRINT_COPY['countries'], 'big' => false, 'dark' => false, 'class' => 'sm:col-span-2 lg:col-span-2'],
+      ];
+      foreach ($STATS as $i => $s):
+          $m = $statMeta[$i];
+          $numSize = $m['big']
+              ? 'text-[clamp(5rem,12vw,11rem)]'
+              : (!empty($s['unit']) ? 'text-[clamp(2.2rem,3vw,3.1rem)]' : 'text-[clamp(2.8rem,4.2vw,4rem)]');
+      ?>
+        <div class="relative flex flex-col <?= $m['big'] ? 'justify-between gap-10' : 'justify-start gap-6' ?> p-7 sm:p-9 <?= $m['dark'] ? 'bg-ink text-white' : 'bg-white' ?> <?= e($m['class']) ?>" data-reveal>
+          <span class="text-[11px] font-semibold uppercase tracking-[0.22em] <?= $m['dark'] ? 'text-white/60' : 'text-ink/55' ?>"><?= e($s['note']) ?></span>
+          <div class="<?= $m['big'] ? '' : 'flex flex-1 flex-col' ?>">
+            <p class="t-stat whitespace-nowrap <?= $m['big'] ? '' : 'min-h-[3.75rem] flex items-baseline' ?> <?= $numSize ?> <?= $m['dark'] ? 'text-white' : 'text-ink' ?>" data-testid="stat-<?= $s['n'] ?>">
+              <span data-counter="<?= $s['n'] ?>" data-format="<?= e($s['format'] ?? '') ?>"><?= $s['n'] ?></span><span class="text-brand"><?= e($s['suffix']) ?></span>
+              <?php if (!empty($s['unit'])): ?>
+                <span class="ml-2 text-[0.36em] font-semibold tracking-normal"><?= e($s['unit']) ?></span>
+              <?php endif; ?>
+            </p>
+            <h3 class="mt-4 font-display text-lg font-semibold <?= $m['big'] ? 'sm:text-2xl' : 'min-h-[3.25rem]' ?>"><?= e($s['label']) ?></h3>
+                <p class="mt-3 max-w-md text-sm leading-relaxed <?= $m['dark'] ? 'text-white/65' : 'text-ink/60' ?>"><?= e($m['copy']) ?></p>
+          </div>
         </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-white" data-testid="home-products">
+  <div class="container-x">
+    <?= render_section_head([
+        'eyebrow' => 'Product Range',
+        'title' => ['Engineered for every', 'stage of the process.'],
+        'intro' => 'Engineering excellence in high-speed industrial mixing, size reduction solutions, and automated bulk conveying systems.',
+        'align' => 'split',
+    ]) ?>
+    <div class="mt-14 flex gap-2 overflow-x-auto border-b border-ink/10 pb-px" role="tablist" data-home-tabs>
+      <?php foreach ($CATEGORIES as $i => $c): $count = count(byCategory($c['id'])); ?>
+        <button type="button" role="tab" aria-selected="<?= $i === 0 ? 'true' : 'false' ?>" data-home-cat="<?= e($c['id']) ?>" class="relative shrink-0 px-1 pb-4 pr-8 text-left transition-colors duration-300 <?= $i === 0 ? 'text-ink' : 'text-ink/50 hover:text-ink' ?>" data-testid="home-cat-<?= e($c['id']) ?>">
+          <span class="mr-2 text-xs font-semibold text-brand">0<?= $i + 1 ?></span>
+          <span class="font-display text-lg font-semibold sm:text-2xl"><?= e($c['name']) ?></span>
+          <span class="ml-2 align-top text-xs text-ink/50">(<?= $count ?>)</span>
+          <span class="home-cat-line absolute inset-x-0 -bottom-px h-[2px] bg-brand <?= $i === 0 ? '' : 'hidden' ?>"></span>
+        </button>
+      <?php endforeach; ?>
+    </div>
+    <?php foreach ($CATEGORIES as $ci => $c):
+        $items = byCategory($c['id']);
+        $first = $items[0];
+        $firstGlobalIdx = getProductIndex($first['slug']);
+    ?>
+      <div class="mt-10 grid gap-8 lg:grid-cols-12 lg:items-stretch <?= $ci === 0 ? '' : 'hidden' ?>" data-home-panel="<?= e($c['id']) ?>">
+        <div class="lg:col-span-7">
+          <a href="<?= e(url('/products/' . $first['slug'])) ?>" class="group relative flex h-full flex-col overflow-hidden bg-paper text-ink" data-home-preview data-testid="product-tile-<?= e($first['slug']) ?>">
+            <div class="relative aspect-[4/3] overflow-hidden lg:min-h-[380px] lg:flex-1">
+              <div class="blueprint-light absolute inset-0 transition-opacity duration-500 group-hover:opacity-60"></div>
+              <div class="absolute bottom-[9%] left-1/2 h-6 w-[55%] -translate-x-1/2 rounded-[50%] bg-black/20 blur-xl transition-all duration-700 group-hover:w-[62%]"></div>
+              <img data-preview-img src="<?= e(url($first['image'])) ?>" alt="<?= e($first['name']) ?>" loading="lazy" decoding="async" class="absolute inset-0 m-auto h-[78%] w-[82%] object-contain transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]" />
+              <span data-preview-code class="absolute left-5 top-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+                <?= sprintf('%02d', $firstGlobalIdx + 1) ?>
+              </span>
+              <span class="absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center bg-brand text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
+                <?= icon('arrow-up-right', 'h-4 w-4 transition-transform duration-300 group-hover:rotate-45') ?>
+              </span>
+            </div>
+            <div class="relative border-t border-ink/10 p-6 sm:p-7">
+              <span class="absolute left-0 top-[-1px] h-px w-0 bg-brand transition-all duration-500 group-hover:w-full"></span>
+              <p data-preview-tag class="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand"><?= e($first['tag']) ?></p>
+              <h3 data-preview-name class="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl"><?= e($first['name']) ?></h3>
+              <p data-preview-short class="mt-3 text-sm leading-relaxed text-ink/65"><?= e($first['short']) ?></p>
+              <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold">
+                <span class="link-u pb-0.5 group-hover:[background-size:100%_1px]">Explore Product</span>
+                <?= icon('arrow-up-right', 'h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5') ?>
+              </span>
+            </div>
+          </a>
         </div>
-    </body>
-</html>
+
+        <ul class="flex flex-col justify-center border-t border-ink/10 lg:col-span-5">
+          <?php foreach ($items as $i => $p):
+              $gIdx = getProductIndex($p['slug']);
+              $isActive = $i === 0;
+          ?>
+            <li class="border-b border-ink/10">
+              <a href="<?= e(url('/products/' . $p['slug'])) ?>"
+                 data-home-list-item
+                 data-slug="<?= e($p['slug']) ?>"
+                 data-name="<?= e($p['name']) ?>"
+                 data-tag="<?= e($p['tag']) ?>"
+                 data-short="<?= e($p['short']) ?>"
+                 data-code="<?= sprintf('%02d', $gIdx + 1) ?>"
+                 data-img="<?= e(url($p['image'])) ?>"
+                 data-href="<?= e(url('/products/' . $p['slug'])) ?>"
+                 class="group flex items-center justify-between gap-4 py-5 px-3 transition-colors duration-300 <?= $isActive ? 'bg-paper text-ink' : 'hover:bg-paper/60 text-ink/80 hover:text-ink' ?>">
+                <div class="flex items-baseline gap-4 min-w-0">
+                  <span class="list-num text-xs font-semibold tabular-nums <?= $isActive ? 'text-brand' : 'text-ink/45 group-hover:text-brand' ?>"><?= sprintf('%02d', $i + 1) ?></span>
+                  <div class="min-w-0">
+                    <span class="block font-display text-lg font-semibold sm:text-xl transition-transform duration-300 group-hover:translate-x-1"><?= e($p['name']) ?></span>
+                    <span class="mt-0.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50"><?= e($p['tag']) ?></span>
+                  </div>
+                </div>
+                <?= icon('arrow-up-right', 'h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ' . ($isActive ? 'text-brand' : 'text-ink/40 group-hover:text-brand')) ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    <?php endforeach; ?>
+    <div class="mt-12 flex justify-center">
+      <?= render_btn(['to' => '/products', 'label' => 'View All Products', 'variant' => 'outline-dark', 'testid' => 'home-view-all-products']) ?>
+    </div>
+  </div>
+</section>
+
+<section class="section border-t border-ink/10 bg-white" data-testid="home-industries">
+  <div class="container-x">
+    <?= render_section_head([
+        'eyebrow' => 'Industries & Applications',
+        'title' => ['From PVC pipes to', 'pharma powders.'],
+        'intro' => 'Our mixers, size reduction and conveying systems serve plastics and polymers processors as well as food, chemical, pharmaceutical and mineral industries.',
+        'align' => 'split',
+    ]) ?>
+    <div class="mt-14">
+      <?= render_application_icons() ?>
+    </div>
+    <ul class="mt-14 grid border-t border-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+      <?php foreach ($INDUSTRIES as $i => $n): ?>
+        <li class="group flex items-center justify-between border-b border-ink/10 py-5 pr-4 sm:pr-8" data-reveal style="--delay:<?= ($i % 4) * 0.05 ?>s">
+          <span class="flex items-baseline gap-3">
+            <span class="text-[11px] font-semibold tabular-nums text-ink/45"><?= sprintf('%02d', $i + 1) ?></span>
+            <span class="font-display text-lg font-semibold transition-colors duration-300 group-hover:text-brand"><?= e($n) ?></span>
+          </span>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+    <div class="mt-10">
+      <?= render_arrow_link('/applications', 'Explore all applications', '', 'home-applications-link') ?>
+    </div>
+  </div>
+</section>
+
+<section class="section overflow-hidden bg-paper" data-testid="home-global">
+  <div class="container-x grid gap-14 lg:grid-cols-12 lg:items-center">
+    <div class="lg:col-span-5">
+      <span class="eyebrow mb-6 text-brand">Global Presence</span>
+      <p class="t-stat text-[clamp(5rem,13vw,12rem)] text-ink">
+        <span data-counter="25">25</span><span class="text-brand">+</span>
+      </p>
+      <h2 class="t-h3 mt-2">Countries Served in Exports</h2>
+      <p class="mt-6 max-w-md text-base leading-relaxed text-ink/70"><?= e($EXPORTS_TEXT) ?> Recognized and trusted by international processors across Asia, Africa, Middle East, Europe &amp; the Americas.</p>
+    </div>
+    <div class="lg:col-span-7">
+      <?= render_clip_image('/assets/misc/world-map.jpeg', 'Our Exports - World Map', ['class' => 'aspect-[16/9] w-full', 'imgClass' => '!object-contain bg-white', 'horizontal' => true, 'testid' => 'world-map']) ?>
+    </div>
+  </div>
+  <div class="container-x mt-20 lg:mt-24">
+    <div class="text-center">
+      <h3 class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+        <span class="text-brand">Our Valued</span> Clients
+      </h3>
+      <p class="mx-auto mt-3 max-w-2xl text-sm text-ink/65 sm:text-base">
+        Trusted by industry leaders, infrastructure pioneers, and global compounding specialists
+      </p>
+    </div>
+
+    <!-- 18 Featured Clients Wall (3 Lines x 6 Columns) -->
+    <div class="client-wall-wrapper">
+      <div class="client-wall-grid">
+        <?php foreach ($CLIENTS_FEATURED as $c): ?>
+          <div class="client-card">
+            <div class="client-card-inner">
+              <img src="<?= e(url($c['src'])) ?>" alt="<?= e($c['name']) ?>" loading="lazy" title="<?= e($c['name']) ?>" />
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <!-- Distinct Showcase Ribbon with Left & Right Nav Controls -->
+    <div class="client-slider-container">
+      <div class="slider-header-bar">
+        <div class="slider-header-line"></div>
+        <div class="slider-badge">
+          <span class="badge-dot"></span>
+          <span>More Esteemed Clients &amp; Global Partners</span>
+          <span class="badge-dot"></span>
+        </div>
+        <div class="slider-header-line"></div>
+      </div>
+
+      <div class="slider-ribbon-box">
+        <button type="button" class="slider-side-btn slider-btn-prev" id="clients-prev" aria-label="Previous Clients" title="Previous">
+          <?= icon('chevron-left', 'h-4 w-4') ?>
+        </button>
+
+        <div class="slider-fade-mask slider-fade-left"></div>
+
+        <div class="client-infinite-viewport" id="clients-viewport">
+          <div class="client-infinite-track" id="clients-track">
+            <?php for ($dup = 0; $dup < 2; $dup++): ?>
+              <?php foreach ($CLIENTS_MORE as $c): ?>
+                <div class="client-infinite-item"<?= $dup === 1 ? ' aria-hidden="true"' : '' ?>>
+                  <div class="client-slider-pill">
+                    <div class="client-card-inner">
+                      <img src="<?= e(url($c['src'])) ?>" alt="<?= e($c['name']) ?>" loading="lazy" title="<?= e($c['name']) ?>" />
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endfor; ?>
+          </div>
+        </div>
+
+        <div class="slider-fade-mask slider-fade-right"></div>
+
+        <button type="button" class="slider-side-btn slider-btn-next" id="clients-next" aria-label="Next Clients" title="Next">
+          <?= icon('chevron-right', 'h-4 w-4') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<?= render_cta_band() ?>
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
